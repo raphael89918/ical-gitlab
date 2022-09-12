@@ -1,0 +1,11 @@
+<launch>
+
+    <node name="keyCtrl_node" pkg="wheel_tokyo_weili" type="keyCtrl_node" output="screen"/>
+
+    <node name="motorCtrl_node" pkg="wheel_tokyo_weili" type="motorCtrl_node" output="screen"/>
+
+    <node name="serial_node" pkg="rosserial_python" type="serial_node.py" output="screen">
+        <param name="~port" type="String" value="/dev/ttyACM0"/>
+    </node>
+
+</launch>
