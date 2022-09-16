@@ -40,8 +40,8 @@ void motorCtrl::transform(float vel_x, float vel_y, float vel_th)
     //轉換成四個輪子
     wheel_vel[FL] = vel_x - vel_y - WHEEL_K * vel_th;
     wheel_vel[BL] = vel_x + vel_y - WHEEL_K * vel_th;
-    wheel_vel[FR] = vel_x - vel_y + WHEEL_K * vel_th;
-    wheel_vel[BR] = vel_x + vel_y + WHEEL_K * vel_th;
+    wheel_vel[BR] = vel_x - vel_y + WHEEL_K * vel_th;
+    wheel_vel[FR] = vel_x + vel_y + WHEEL_K * vel_th;
 
     //轉換成輪子的速度RPS（弧度/S）
     wheel_vel[FL] = wheel_vel[FL]/(2.0 * WHEEL_R * WHEEL_PI);

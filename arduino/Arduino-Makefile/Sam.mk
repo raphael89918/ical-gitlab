@@ -32,10 +32,10 @@ ifndef COMMON_INCLUDED
 endif
 
 ifneq ($(TEST),)
-    CORE_VER = 1.8.6
+    CORE_VER = 1.8.13
     CMSIS_VER = 4.5.0
     CMSIS_ATMEL_VER = 1.2.0
-    ALTERNATE_CORE_PATH = $(DEPENDENCIES_DIR)/samd
+    ALTERNATE_CORE_PATH = $(DEPENDENCIES_DIR)/samd/1.8.13
     CMSIS_DIR = $(DEPENDENCIES_DIR)/CMSIS/CMSIS
     CMSIS_ATMEL_DIR = $(DEPENDENCIES_DIR)/CMSIS-Atmel/CMSIS
     ARM_TOOLS_DIR := $(basename $(basename $(firstword $(wildcard $(DEPENDENCIES_DIR)/gcc-arm-none-eabi*))))
@@ -44,10 +44,10 @@ endif
 ifndef ARDUINO_PACKAGE_DIR
     # attempt to find based on Linux, macOS and Windows default
     ARDUINO_PACKAGE_DIR := $(firstword \
-        $(call dir_if_exists,$(HOME)/.arduino15/packages) \
+        $(call dir_if_exists,$(HOME)/.arduino18/packages) \
         $(call dir_if_exists,$(ARDUINO_DIR)/packages) \
         $(call dir_if_exists,$(HOME)/Library/Arduino15/packages) \
-        $(call dir_if_exists,$(USERPROFILE)/AppData/Local/Arduino15/packages) )
+        $(call dir_if_exists,$(USERPROFILE)/AppData/Local/Arduino18/packages) )
     $(call show_config_variable,ARDUINO_PACKAGE_DIR,[AUTODETECTED],(from DEFAULT))
 else
     $(call show_config_variable,ARDUINO_PACKAGE_DIR,[USER])
@@ -188,6 +188,7 @@ ifndef ARM_TOOLS_DIR
         ARM_TOOLS_VER := $(shell basename $(lastword $(wildcard $(ARDUINO_PACKAGE_DIR)/$(ARDMK_VENDOR)/tools/$(TOOL_PREFIX)-gcc/*)))
     endif
     ARM_TOOLS_DIR = $(ARDUINO_PACKAGE_DIR)/$(ARDMK_VENDOR)/tools/$(TOOL_PREFIX)-gcc/$(ARM_TOOLS_VER)
+
     ifdef ARM_TOOLS_DIR
         $(call show_config_variable,ARM_TOOLS_DIR,[COMPUTED],(from ARDUINO_PACKAGE_DIR))
     endif

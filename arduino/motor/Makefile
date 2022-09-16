@@ -6,12 +6,9 @@ ARDUINO_LIB_PATH := $(realpath ../libraries)
 
 BOARD_TAG    = mega
 BOARD_SUB	 = atmega2560
-#ALTERNTE_CORE_PATH = $(realpath ../libraries/ArduinoCore-samd)
-
-#ALTERNTE_CORE_PATH = $(HOME)/.arduino15/packages/arduino/hardware/samd/1.8.13
 
 MONITOR_PORT = /dev/ttyACM0
-MNITOR_BAUDRATE = 57600
+MNITOR_BAUDRATE = 9600
 ARDUINO_SKETCHBOOK := $(realpath ../libraries)
 CXXFLAGS_STD = -std=gnu++14
 
