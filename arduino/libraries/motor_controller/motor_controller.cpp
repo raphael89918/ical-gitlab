@@ -1,7 +1,7 @@
 #include "motor_controller.hpp"
 
 MotorController::MotorController(ros::NodeHandle &nh)
-    : m_motor_flip_rotation{false, true, false, true}, m_driver_id(0), m_driver_num(0),
+    : m_motor_flip_rotation{true, false, true, false}, m_driver_id(0), m_driver_num(0),
       m_nh(nh), m_sub("/wheel/motor", &MotorController::motor_callback, this)
 {
     m_nh.loginfo("MotorController Constructed");

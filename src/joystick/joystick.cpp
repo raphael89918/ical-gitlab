@@ -23,12 +23,13 @@ Teleop::Teleop()
 {
     n.param<int>("axis_linear_x",axis_lin_x,1);
     n.param<int>("axis_linear_y",axis_lin_y,0);//test
-    n.param<int>("axis_angular",axis_ang,2);
+    n.param<int>("axis_angular",axis_ang,3);
+    //n.param<int>("axis_angular",axis_ang,2);
     n.param<double>("vel_linear",vlinear,0.5);
     n.param<double>("vel_angular",vangular,1);
     n.param<int>("button",ton,5);
     pub = n.advertise<geometry_msgs::Twist>("/cmd_vel",1);
-    sub = n.subscribe<sensor_msgs::Joy>("joy",1,&Teleop::callback,this);
+    sub = n.subscribe<sensor_msgs::Joy>("/joy",1,&Teleop::callback,this);
 }
 
 void Teleop::callback(const sensor_msgs::Joy::ConstPtr& Joy)
@@ -39,7 +40,7 @@ void Teleop::callback(const sensor_msgs::Joy::ConstPtr& Joy)
      {
      v.linear.x =(Joy->axes[axis_lin_x])*vlinear;
      v.linear.y =(Joy->axes[axis_lin_y])*vlinear;//test
-     v.angular.z = - (Joy->axes[axis_ang])*vangular;
+     v.angular.z = (Joy->axes[axis_ang])*vangular;
      ROS_INFO("linear_x:%.3lf  linear_y:%.3lf  angular:%.3lf",v.linear.x,v.linear.y,v.angular.z);//test
      pub.publish(v);
      loop_rate.sleep();

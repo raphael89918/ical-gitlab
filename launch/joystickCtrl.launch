@@ -2,7 +2,7 @@
 
     <node name="joystick_node" pkg="wheel_tokyo_weili" type="joystick_node"/>
 
-    <node pkg="joy" type="joy_node" name="joy_node"/>
+    <node respawn = "true" pkg="joy" type="joy_node" name="joy_node"/>
 
     <node name="motorCtrl_node" pkg="wheel_tokyo_weili" type="motorCtrl_node" output="screen"/>
 
