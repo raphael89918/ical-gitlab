@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "${default}",
+                "limitSymbolsToIncludedHeaders": false
+            },
+            "includePath": [
+                "/home/ical/tokyo_2022/devel/include/**",
+                "/opt/ros/melodic/include/**",
+                "/home/ical/tokyo_2022/src/wheel_tokyo_weili/include/**",
+                "/usr/include/**",
+                "/usr/include/boost/iostreams/detail",
+                "/opt/ros/melodic/include"
+            ],
+            "name": "ROS",
+            "intelliSenseMode": "gcc-arm64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu11",
+            "cppStandard": "c++14",
+            "configurationProvider": "ms-vscode.makefile-tools"
+        }
+    ],
+    "version": 4
+}
