@@ -2,7 +2,6 @@
 #include "geometry_msgs/Twist.h"
 #include "wheel_tokyo_weili/motor.h"
 
-#define ROBOT_WIDTH 250
 #define LEFT 0
 #define RIGHT 1
 
@@ -32,17 +31,22 @@ public:
     motorCtrl(const ros::NodeHandle &nh);
     ~motorCtrl();
 
+    wheel_tokyo_weili::motor m_msg;
+    ros::Publisher m_pub;
+
     void start();
 
     void callback(const geometry_msgs::Twist &msg);
     void execute();
+
+    float vel_x;
+    float vel_y;
+    float vel_th;
+    void transform_to_pwm(float* wheel_vel);
+
 private:
     ros::NodeHandle m_nh;
     ros::NodeHandle t_nh;
-
-    ros::Publisher m_pub;
-
-    wheel_tokyo_weili::motor m_msg;
 
     ros::Subscriber m_sub;
 
@@ -50,7 +54,4 @@ private:
 
     float wheel_vel[4];
     bool wheel_dir[4];
-    void transform(float vel_x, float vel_y, float vel_th);
-    void pub_to_pwm();
 };
-

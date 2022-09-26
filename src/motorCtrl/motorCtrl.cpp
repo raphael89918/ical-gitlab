@@ -1,4 +1,5 @@
 #include "motorCtrl/motorCtrl.hpp"
+#include "mecanum_wheel/mecanum_wheel.hpp"
 
 int main (int argc, char **argv)
 {
@@ -6,12 +7,16 @@ int main (int argc, char **argv)
     ros::NodeHandle nh;
     ros::Rate loop_rate(30);
 
-
+    mecanum_wheel mecanum_wheel(0.21, 0.035, 1);
     motorCtrl motorCtrl(nh);
+
     motorCtrl.start();
     while(ros::ok())
     {
-        motorCtrl.execute();
+        ros::Rate loop_rate(10);
+        ros::spinOnce();
+        motorCtrl.transform_to_pwm(mecanum_wheel.robot_to_wheel(motorCtrl.vel_x, motorCtrl.vel_y, motorCtrl.vel_th));
+        motorCtrl.m_pub.publish(motorCtrl.m_msg);
+        loop_rate.sleep();
     }
 }
-

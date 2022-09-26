@@ -1,11 +1,12 @@
-#include "mecanum_wheel.hpp"
+#include "mecanum_wheel/mecanum_wheel.hpp"
 
 mecanum_wheel::mecanum_wheel(float wheel_K, float wheel_R, float wheel_RATIO)
 {
     this->wheel_k = wheel_K;
     this->wheel_r = wheel_R;
-    this->wheel_ratio = wheel_RATIO;
+    this->wheel_ratio = wheel_RATIO; 
 }
+
 float* mecanum_wheel::wheel_to_robot(float wheel_fl, float wheel_fr, float wheel_bl, float wheel_br)
 {
     robot_movement_vector[linear_x] = (wheel_fl + wheel_br + wheel_fr + wheel_bl)/4;

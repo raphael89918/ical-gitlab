@@ -10,6 +10,7 @@ ${catkin_LIBRARIES}
 )
 
 target_link_libraries(motorCtrl_node
+mecanum_wheel_lib
 motorCtrl_lib
 ${catkin_LIBRARIES}
 )
