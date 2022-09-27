@@ -1,43 +1,21 @@
-#include <iostream.hpp>
-#include <ros/ros.h>
-#include "wheel_tokyo_weili/encoder.h"
+#include "encoderCounter/encoderCounter.hpp"
+#include "mecanum_wheel/mecanum_wheel.hpp"
 
-class Encoder
+int main(int argc, char **argv)
 {
-private:
+    ros::init(argc, argv, "encoderCounter_node");
     ros::NodeHandle nh;
-    ros::Publisher pub;
-    ros::Subscriber sub;
-    wheel_tokyo_weili::encoder msg;
+    ros::Rate loop_rate(30);
 
-    int wheel_distance[4];
-public:
-    Encoder(const ros::NodeHandle &nh)
-    void callback(const wheel_tokyo_weili::encoder &msg);
-    void start();
-    void encoder_to_distance();
-};
-
-Encoder::Encoder(const ros::NodeHandle &nh):nh(nh)
-{
-    ROS_INFO("Encoder constructed");    
-}
-
-void Encoder::start()
-{
-    pub = nh.advertise<wheel_tokyo_weili::encoder>("/wheel_distance",1);
-    sub = nh.subscribe("/encoder", 1, &wheel_tokyo_weili::callback, this);
-}
-
-void Encoder::callback(const wheel_tokyo_weili::encoder &msg)
-{
-    for(int i=0;i<4;i++)
-    {
-        wheel_distance[i] = msg.value[i];
-    }
-}
-
-void Encoder::encoder_to_distance()
-{
+    Encoder Encoder(nh);
+    mecanum_wheel mecanum_wheel(0.21, 0.035, 1);
     
+    while(ros::ok())
+    {
+        ros::Rate loop_rate(10);
+        ros::spinOnce();
+        Encoder.transform_to_msg(mecanum_wheel.wheel_to_robot(Encoder.fl,Encoder.fr,Encoder.bl,Encoder.br));       
+        Encoder.pub.publish(Encoder.distance_msg);
+        loop_rate.sleep();
+    }
 }

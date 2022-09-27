@@ -42,8 +42,6 @@ build-nano_33_iot/libcore.a(new.cpp.o)
                               build-nano_33_iot/libcore.a(USBCore.cpp.o) (operator new(unsigned int))
 build-nano_33_iot/libcore.a(PluggableUSB.cpp.o)
                               build-nano_33_iot/libcore.a(USBCore.cpp.o) (arduino::PluggableUSB_::getInterface(unsigned char*))
-build-nano_33_iot/libcore.a(duration.cpp.o)
-                              build-nano_33_iot/libcore.a(time.cpp.o) (ros::normalizeSecNSecSigned(long&, long&))
 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libstdc++_nano.a(del_ops.o)
                               build-nano_33_iot/libcore.a(USBCore.cpp.o) (operator delete(void*, unsigned int))
 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(_thumb1_case_uqi.o)
@@ -79,9 +77,7 @@ build-nano_33_iot/libcore.a(duration.cpp.o)
 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(unorddf2.o)
                               build-nano_33_iot/libcore.a(Print.cpp.o) (__aeabi_dcmpun)
 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(fixdfsi.o)
-                              build-nano_33_iot/libcore.a(duration.cpp.o) (__aeabi_d2iz)
-/home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(floatsidf.o)
-                              build-nano_33_iot/libcore.a(duration.cpp.o) (__aeabi_i2d)
+                              /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(_fixunsdfsi.o) (__aeabi_d2iz)
 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(floatunsidf.o)
                               build-nano_33_iot/libcore.a(Print.cpp.o) (__aeabi_ui2d)
 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(_clzsi2.o)
@@ -428,11 +424,9 @@ Discarded input sections
  .text._ZN3ros4Time8fromNSecEl
                 0x0000000000000000       0x2c build-nano_33_iot/libcore.a(time.cpp.o)
  .text._ZN3ros4TimepLERKNS_8DurationE
-                0x0000000000000000       0x28 build-nano_33_iot/libcore.a(time.cpp.o)
+                0x0000000000000000       0x1e build-nano_33_iot/libcore.a(time.cpp.o)
  .text._ZN3ros4TimemIERKNS_8DurationE
-                0x0000000000000000       0x28 build-nano_33_iot/libcore.a(time.cpp.o)
- .text._ZNK3ros4TimemiERKS0_
-                0x0000000000000000       0x20 build-nano_33_iot/libcore.a(time.cpp.o)
+                0x0000000000000000       0x1e build-nano_33_iot/libcore.a(time.cpp.o)
  .text          0x0000000000000000        0x0 build-nano_33_iot/libcore.a(wiring.c.o)
  .data          0x0000000000000000        0x0 build-nano_33_iot/libcore.a(wiring.c.o)
  .bss           0x0000000000000000        0x0 build-nano_33_iot/libcore.a(wiring.c.o)
@@ -483,20 +477,6 @@ Discarded input sections
  .text          0x0000000000000000        0x0 build-nano_33_iot/libcore.a(PluggableUSB.cpp.o)
  .data          0x0000000000000000        0x0 build-nano_33_iot/libcore.a(PluggableUSB.cpp.o)
  .bss           0x0000000000000000        0x0 build-nano_33_iot/libcore.a(PluggableUSB.cpp.o)
- .text          0x0000000000000000        0x0 build-nano_33_iot/libcore.a(duration.cpp.o)
- .data          0x0000000000000000        0x0 build-nano_33_iot/libcore.a(duration.cpp.o)
- .bss           0x0000000000000000        0x0 build-nano_33_iot/libcore.a(duration.cpp.o)
- .text._ZN3ros22normalizeSecNSecSignedERlS0_
-                0x0000000000000000       0x30 build-nano_33_iot/libcore.a(duration.cpp.o)
- .text._ZN3ros8DurationpLERKS0_
-                0x0000000000000000       0x1e build-nano_33_iot/libcore.a(duration.cpp.o)
- .text._ZN3ros8DurationmIERKS0_
-                0x0000000000000000       0x1e build-nano_33_iot/libcore.a(duration.cpp.o)
- .text._ZN3ros8DurationmLEd
-                0x0000000000000000       0x3c build-nano_33_iot/libcore.a(duration.cpp.o)
- .comment       0x0000000000000000       0x80 build-nano_33_iot/libcore.a(duration.cpp.o)
- .ARM.attributes
-                0x0000000000000000       0x32 build-nano_33_iot/libcore.a(duration.cpp.o)
  .text          0x0000000000000000        0x0 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libstdc++_nano.a(del_ops.o)
  .data          0x0000000000000000        0x0 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libstdc++_nano.a(del_ops.o)
  .bss           0x0000000000000000        0x0 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libstdc++_nano.a(del_ops.o)
@@ -592,12 +572,6 @@ Discarded input sections
  .debug_frame   0x0000000000000000       0x2c /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(fixdfsi.o)
  .ARM.attributes
                 0x0000000000000000       0x2c /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(fixdfsi.o)
- .text          0x0000000000000000       0x74 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(floatsidf.o)
- .data          0x0000000000000000        0x0 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(floatsidf.o)
- .bss           0x0000000000000000        0x0 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(floatsidf.o)
- .debug_frame   0x0000000000000000       0x2c /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(floatsidf.o)
- .ARM.attributes
-                0x0000000000000000       0x2c /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(floatsidf.o)
  .text          0x0000000000000000       0x64 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(floatunsidf.o)
  .data          0x0000000000000000        0x0 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(floatunsidf.o)
  .bss           0x0000000000000000        0x0 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(floatunsidf.o)
@@ -721,7 +695,7 @@ END GROUP
 LOAD /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtend.o
 LOAD /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtn.o
 
-.text           0x0000000000002000     0x3ef8
+.text           0x0000000000002000     0x3f10
                 0x0000000000002000                __text_start__ = .
  *(.sketch_boot)
                 0x0000000000002000                . = ALIGN (0x2000)
@@ -788,610 +762,609 @@ LOAD /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin
                 0x0000000000002254       0x2c build-nano_33_iot/encoder.ino.o
                 0x0000000000002254                readEncoder3()
  .text._ZN3ros11NodeHandle_I15ArduinoHardwareLi25ELi25ELi512ELi512EE7publishEiPKNS_3MsgE
-                0x0000000000002280       0xd0 build-nano_33_iot/encoder.ino.o
+                0x0000000000002280       0xdc build-nano_33_iot/encoder.ino.o
                 0x0000000000002280                ros::NodeHandle_<ArduinoHardware, 25, 25, 512, 512>::publish(int, ros::Msg const*)
- .text.setup    0x0000000000002350       0xd8 build-nano_33_iot/encoder.ino.o
-                0x0000000000002350                setup
+ .text.setup    0x000000000000235c       0xd8 build-nano_33_iot/encoder.ino.o
+                0x000000000000235c                setup
  .text._ZN3ros3Msg8varToArrIPhmEEvT_T0_
-                0x0000000000002428       0x10 build-nano_33_iot/encoder.ino.o
-                0x0000000000002428                void ros::Msg::varToArr<unsigned char*, unsigned long>(unsigned char*, unsigned long)
+                0x0000000000002434       0x10 build-nano_33_iot/encoder.ino.o
+                0x0000000000002434                void ros::Msg::varToArr<unsigned char*, unsigned long>(unsigned char*, unsigned long)
  .text._ZNK8std_msgs6Header9serializeEPh
-                0x0000000000002438       0x6c build-nano_33_iot/encoder.ino.o
-                0x0000000000002438                std_msgs::Header::serialize(unsigned char*) const
+                0x0000000000002444       0x6c build-nano_33_iot/encoder.ino.o
+                0x0000000000002444                std_msgs::Header::serialize(unsigned char*) const
  .text._ZNK17wheel_tokyo_weili7encoder9serializeEPh
-                0x00000000000024a4       0x20 build-nano_33_iot/encoder.ino.o
-                0x00000000000024a4                wheel_tokyo_weili::encoder::serialize(unsigned char*) const
+                0x00000000000024b0       0x40 build-nano_33_iot/encoder.ino.o
+                0x00000000000024b0                wheel_tokyo_weili::encoder::serialize(unsigned char*) const
  .text._ZNK14rosserial_msgs20RequestParamResponse9serializeEPh
-                0x00000000000024c4       0xe4 build-nano_33_iot/encoder.ino.o
-                0x00000000000024c4                rosserial_msgs::RequestParamResponse::serialize(unsigned char*) const
+                0x00000000000024f0       0xe4 build-nano_33_iot/encoder.ino.o
+                0x00000000000024f0                rosserial_msgs::RequestParamResponse::serialize(unsigned char*) const
  .text._ZNK14rosserial_msgs3Log9serializeEPh
-                0x00000000000025a8       0x28 build-nano_33_iot/encoder.ino.o
-                0x00000000000025a8                rosserial_msgs::Log::serialize(unsigned char*) const
+                0x00000000000025d4       0x28 build-nano_33_iot/encoder.ino.o
+                0x00000000000025d4                rosserial_msgs::Log::serialize(unsigned char*) const
  .text._ZNK14rosserial_msgs9TopicInfo9serializeEPh
-                0x00000000000025d0       0x7e build-nano_33_iot/encoder.ino.o
-                0x00000000000025d0                rosserial_msgs::TopicInfo::serialize(unsigned char*) const
+                0x00000000000025fc       0x7e build-nano_33_iot/encoder.ino.o
+                0x00000000000025fc                rosserial_msgs::TopicInfo::serialize(unsigned char*) const
  .text._ZN3ros3Msg8arrToVarImPhEEvRT_T0_
-                0x000000000000264e       0x1a build-nano_33_iot/encoder.ino.o
-                0x000000000000264e                void ros::Msg::arrToVar<unsigned long, unsigned char*>(unsigned long&, unsigned char*)
+                0x000000000000267a       0x1a build-nano_33_iot/encoder.ino.o
+                0x000000000000267a                void ros::Msg::arrToVar<unsigned long, unsigned char*>(unsigned long&, unsigned char*)
  .text._ZN14rosserial_msgs3Log11deserializeEPh
-                0x0000000000002668       0x34 build-nano_33_iot/encoder.ino.o
-                0x0000000000002668                rosserial_msgs::Log::deserialize(unsigned char*)
+                0x0000000000002694       0x34 build-nano_33_iot/encoder.ino.o
+                0x0000000000002694                rosserial_msgs::Log::deserialize(unsigned char*)
  .text._ZN14rosserial_msgs9TopicInfo11deserializeEPh
-                0x000000000000269c       0xae build-nano_33_iot/encoder.ino.o
-                0x000000000000269c                rosserial_msgs::TopicInfo::deserialize(unsigned char*)
+                0x00000000000026c8       0xae build-nano_33_iot/encoder.ino.o
+                0x00000000000026c8                rosserial_msgs::TopicInfo::deserialize(unsigned char*)
  .text._ZN14rosserial_msgs20RequestParamResponse11deserializeEPh
-                0x000000000000274a      0x138 build-nano_33_iot/encoder.ino.o
-                0x000000000000274a                rosserial_msgs::RequestParamResponse::deserialize(unsigned char*)
+                0x0000000000002776      0x138 build-nano_33_iot/encoder.ino.o
+                0x0000000000002776                rosserial_msgs::RequestParamResponse::deserialize(unsigned char*)
  .text._ZN8std_msgs6Header11deserializeEPh
-                0x0000000000002882       0x88 build-nano_33_iot/encoder.ino.o
-                0x0000000000002882                std_msgs::Header::deserialize(unsigned char*)
+                0x00000000000028ae       0x88 build-nano_33_iot/encoder.ino.o
+                0x00000000000028ae                std_msgs::Header::deserialize(unsigned char*)
  .text._ZN17wheel_tokyo_weili7encoder11deserializeEPh
-                0x000000000000290a       0x20 build-nano_33_iot/encoder.ino.o
-                0x000000000000290a                wheel_tokyo_weili::encoder::deserialize(unsigned char*)
- *fill*         0x000000000000292a        0x2 
+                0x0000000000002936       0x46 build-nano_33_iot/encoder.ino.o
+                0x0000000000002936                wheel_tokyo_weili::encoder::deserialize(unsigned char*)
  .text._ZN3ros11NodeHandle_I15ArduinoHardwareLi25ELi25ELi512ELi512EE15requestSyncTimeEv
-                0x000000000000292c       0x24 build-nano_33_iot/encoder.ino.o
-                0x000000000000292c                ros::NodeHandle_<ArduinoHardware, 25, 25, 512, 512>::requestSyncTime()
+                0x000000000000297c       0x24 build-nano_33_iot/encoder.ino.o
+                0x000000000000297c                ros::NodeHandle_<ArduinoHardware, 25, 25, 512, 512>::requestSyncTime()
  .text._ZN3ros11NodeHandle_I15ArduinoHardwareLi25ELi25ELi512ELi512EE15negotiateTopicsEv
-                0x0000000000002950       0xc8 build-nano_33_iot/encoder.ino.o
-                0x0000000000002950                ros::NodeHandle_<ArduinoHardware, 25, 25, 512, 512>::negotiateTopics()
+                0x00000000000029a0       0xc8 build-nano_33_iot/encoder.ino.o
+                0x00000000000029a0                ros::NodeHandle_<ArduinoHardware, 25, 25, 512, 512>::negotiateTopics()
  .text._ZN3ros11NodeHandle_I15ArduinoHardwareLi25ELi25ELi512ELi512EE8syncTimeEPh
-                0x0000000000002a18       0xa0 build-nano_33_iot/encoder.ino.o
-                0x0000000000002a18                ros::NodeHandle_<ArduinoHardware, 25, 25, 512, 512>::syncTime(unsigned char*)
+                0x0000000000002a68       0xa0 build-nano_33_iot/encoder.ino.o
+                0x0000000000002a68                ros::NodeHandle_<ArduinoHardware, 25, 25, 512, 512>::syncTime(unsigned char*)
  .text._ZN3ros11NodeHandle_I15ArduinoHardwareLi25ELi25ELi512ELi512EE8spinOnceEv
-                0x0000000000002ab8      0x218 build-nano_33_iot/encoder.ino.o
-                0x0000000000002ab8                ros::NodeHandle_<ArduinoHardware, 25, 25, 512, 512>::spinOnce()
- .text.loop     0x0000000000002cd0       0xb0 build-nano_33_iot/encoder.ino.o
-                0x0000000000002cd0                loop
+                0x0000000000002b08      0x218 build-nano_33_iot/encoder.ino.o
+                0x0000000000002b08                ros::NodeHandle_<ArduinoHardware, 25, 25, 512, 512>::spinOnce()
+ .text.loop     0x0000000000002d20       0xb0 build-nano_33_iot/encoder.ino.o
+                0x0000000000002d20                loop
  .text.startup._GLOBAL__sub_I_nh
-                0x0000000000002d80      0x124 build-nano_33_iot/encoder.ino.o
+                0x0000000000002dd0       0xec build-nano_33_iot/encoder.ino.o
  .text.initVariant
-                0x0000000000002ea4       0x24 build-nano_33_iot/libcore.a(variant.cpp.o)
-                0x0000000000002ea4                initVariant
+                0x0000000000002ebc       0x24 build-nano_33_iot/libcore.a(variant.cpp.o)
+                0x0000000000002ebc                initVariant
  .text.SERCOM5_Handler
-                0x0000000000002ec8       0x10 build-nano_33_iot/libcore.a(variant.cpp.o)
-                0x0000000000002ec8                SERCOM5_Handler
+                0x0000000000002ee0       0x10 build-nano_33_iot/libcore.a(variant.cpp.o)
+                0x0000000000002ee0                SERCOM5_Handler
  .text.SERCOM3_Handler
-                0x0000000000002ed8       0x10 build-nano_33_iot/libcore.a(variant.cpp.o)
-                0x0000000000002ed8                SERCOM3_Handler
+                0x0000000000002ef0       0x10 build-nano_33_iot/libcore.a(variant.cpp.o)
+                0x0000000000002ef0                SERCOM3_Handler
  .text.SERCOM2_Handler
-                0x0000000000002ee8       0x10 build-nano_33_iot/libcore.a(variant.cpp.o)
-                0x0000000000002ee8                SERCOM2_Handler
+                0x0000000000002f00       0x10 build-nano_33_iot/libcore.a(variant.cpp.o)
+                0x0000000000002f00                SERCOM2_Handler
  .text.startup._GLOBAL__sub_I_g_APinDescription
-                0x0000000000002ef8       0xbc build-nano_33_iot/libcore.a(variant.cpp.o)
+                0x0000000000002f10       0xbc build-nano_33_iot/libcore.a(variant.cpp.o)
  .text.attachInterrupt
-                0x0000000000002fb4      0x130 build-nano_33_iot/libcore.a(WInterrupts.c.o)
-                0x0000000000002fb4                attachInterrupt
+                0x0000000000002fcc      0x130 build-nano_33_iot/libcore.a(WInterrupts.c.o)
+                0x0000000000002fcc                attachInterrupt
  .text.EIC_Handler
-                0x00000000000030e4       0x3c build-nano_33_iot/libcore.a(WInterrupts.c.o)
-                0x00000000000030e4                EIC_Handler
- .text.pinMode  0x0000000000003120       0x98 build-nano_33_iot/libcore.a(wiring_digital.c.o)
-                0x0000000000003120                pinMode
+                0x00000000000030fc       0x3c build-nano_33_iot/libcore.a(WInterrupts.c.o)
+                0x00000000000030fc                EIC_Handler
+ .text.pinMode  0x0000000000003138       0x98 build-nano_33_iot/libcore.a(wiring_digital.c.o)
+                0x0000000000003138                pinMode
  .text.digitalWrite
-                0x00000000000031b8       0x58 build-nano_33_iot/libcore.a(wiring_digital.c.o)
-                0x00000000000031b8                digitalWrite
+                0x00000000000031d0       0x58 build-nano_33_iot/libcore.a(wiring_digital.c.o)
+                0x00000000000031d0                digitalWrite
  .text.digitalRead
-                0x0000000000003210       0x30 build-nano_33_iot/libcore.a(wiring_digital.c.o)
-                0x0000000000003210                digitalRead
+                0x0000000000003228       0x30 build-nano_33_iot/libcore.a(wiring_digital.c.o)
+                0x0000000000003228                digitalRead
  .text.pinPeripheral
-                0x0000000000003240       0xc0 build-nano_33_iot/libcore.a(wiring_private.c.o)
-                0x0000000000003240                pinPeripheral
- .text.millis   0x0000000000003300        0xc build-nano_33_iot/libcore.a(delay.c.o)
-                0x0000000000003300                millis
- .text.micros   0x000000000000330c       0x60 build-nano_33_iot/libcore.a(delay.c.o)
-                0x000000000000330c                micros
- .text.delay    0x000000000000336c       0x30 build-nano_33_iot/libcore.a(delay.c.o)
-                0x000000000000336c                delay
+                0x0000000000003258       0xc0 build-nano_33_iot/libcore.a(wiring_private.c.o)
+                0x0000000000003258                pinPeripheral
+ .text.millis   0x0000000000003318        0xc build-nano_33_iot/libcore.a(delay.c.o)
+                0x0000000000003318                millis
+ .text.micros   0x0000000000003324       0x60 build-nano_33_iot/libcore.a(delay.c.o)
+                0x0000000000003324                micros
+ .text.delay    0x0000000000003384       0x30 build-nano_33_iot/libcore.a(delay.c.o)
+                0x0000000000003384                delay
  .text.resetExternalChip
-                0x000000000000339c        0x2 build-nano_33_iot/libcore.a(delay.c.o)
-                0x000000000000339c                resetExternalChip
- *fill*         0x000000000000339e        0x2 
- .text.SysTick_DefaultHandler
-                0x00000000000033a0       0x14 build-nano_33_iot/libcore.a(delay.c.o)
-                0x00000000000033a0                SysTick_DefaultHandler
- .text.Dummy_Handler
-                0x00000000000033b4        0x2 build-nano_33_iot/libcore.a(cortex_handlers.c.o)
-                0x00000000000033b4                DMAC_Handler
-                0x00000000000033b4                HardFault_Handler
-                0x00000000000033b4                AC_Handler
-                0x00000000000033b4                PendSV_Handler
-                0x00000000000033b4                NMI_Handler
-                0x00000000000033b4                TC7_Handler
-                0x00000000000033b4                SERCOM1_Handler
-                0x00000000000033b4                ADC_Handler
-                0x00000000000033b4                TCC1_Handler
-                0x00000000000033b4                TCC0_Handler
-                0x00000000000033b4                RTC_Handler
-                0x00000000000033b4                TC6_Handler
-                0x00000000000033b4                WDT_Handler
-                0x00000000000033b4                TC4_Handler
-                0x00000000000033b4                TC3_Handler
-                0x00000000000033b4                Dummy_Handler
-                0x00000000000033b4                PM_Handler
-                0x00000000000033b4                SVC_Handler
-                0x00000000000033b4                TCC2_Handler
-                0x00000000000033b4                EVSYS_Handler
-                0x00000000000033b4                SERCOM4_Handler
-                0x00000000000033b4                I2S_Handler
-                0x00000000000033b4                NVMCTRL_Handler
-                0x00000000000033b4                SERCOM0_Handler
-                0x00000000000033b4                DAC_Handler
-                0x00000000000033b4                PTC_Handler
-                0x00000000000033b4                SYSCTRL_Handler
+                0x00000000000033b4        0x2 build-nano_33_iot/libcore.a(delay.c.o)
+                0x00000000000033b4                resetExternalChip
  *fill*         0x00000000000033b6        0x2 
+ .text.SysTick_DefaultHandler
+                0x00000000000033b8       0x14 build-nano_33_iot/libcore.a(delay.c.o)
+                0x00000000000033b8                SysTick_DefaultHandler
+ .text.Dummy_Handler
+                0x00000000000033cc        0x2 build-nano_33_iot/libcore.a(cortex_handlers.c.o)
+                0x00000000000033cc                DMAC_Handler
+                0x00000000000033cc                HardFault_Handler
+                0x00000000000033cc                AC_Handler
+                0x00000000000033cc                PendSV_Handler
+                0x00000000000033cc                NMI_Handler
+                0x00000000000033cc                TC7_Handler
+                0x00000000000033cc                SERCOM1_Handler
+                0x00000000000033cc                ADC_Handler
+                0x00000000000033cc                TCC1_Handler
+                0x00000000000033cc                TCC0_Handler
+                0x00000000000033cc                RTC_Handler
+                0x00000000000033cc                TC6_Handler
+                0x00000000000033cc                WDT_Handler
+                0x00000000000033cc                TC4_Handler
+                0x00000000000033cc                TC3_Handler
+                0x00000000000033cc                Dummy_Handler
+                0x00000000000033cc                PM_Handler
+                0x00000000000033cc                SVC_Handler
+                0x00000000000033cc                TCC2_Handler
+                0x00000000000033cc                EVSYS_Handler
+                0x00000000000033cc                SERCOM4_Handler
+                0x00000000000033cc                I2S_Handler
+                0x00000000000033cc                NVMCTRL_Handler
+                0x00000000000033cc                SERCOM0_Handler
+                0x00000000000033cc                DAC_Handler
+                0x00000000000033cc                PTC_Handler
+                0x00000000000033cc                SYSCTRL_Handler
+ *fill*         0x00000000000033ce        0x2 
  .text.USB_Handler
-                0x00000000000033b8       0x14 build-nano_33_iot/libcore.a(cortex_handlers.c.o)
-                0x00000000000033b8                USB_Handler
+                0x00000000000033d0       0x14 build-nano_33_iot/libcore.a(cortex_handlers.c.o)
+                0x00000000000033d0                USB_Handler
  .text.Reset_Handler
-                0x00000000000033cc       0x54 build-nano_33_iot/libcore.a(cortex_handlers.c.o)
-                0x00000000000033cc                Reset_Handler
+                0x00000000000033e4       0x54 build-nano_33_iot/libcore.a(cortex_handlers.c.o)
+                0x00000000000033e4                Reset_Handler
  .text.SysTick_Handler
-                0x0000000000003420       0x10 build-nano_33_iot/libcore.a(cortex_handlers.c.o)
-                0x0000000000003420                SysTick_Handler
+                0x0000000000003438       0x10 build-nano_33_iot/libcore.a(cortex_handlers.c.o)
+                0x0000000000003438                SysTick_Handler
  .text.USB_SetHandler
-                0x0000000000003430        0xc build-nano_33_iot/libcore.a(cortex_handlers.c.o)
-                0x0000000000003430                USB_SetHandler
+                0x0000000000003448        0xc build-nano_33_iot/libcore.a(cortex_handlers.c.o)
+                0x0000000000003448                USB_SetHandler
  .text.initiateReset
-                0x000000000000343c       0x14 build-nano_33_iot/libcore.a(Reset.cpp.o)
-                0x000000000000343c                initiateReset
+                0x0000000000003454       0x14 build-nano_33_iot/libcore.a(Reset.cpp.o)
+                0x0000000000003454                initiateReset
  .text.cancelReset
-                0x0000000000003450       0x10 build-nano_33_iot/libcore.a(Reset.cpp.o)
-                0x0000000000003450                cancelReset
+                0x0000000000003468       0x10 build-nano_33_iot/libcore.a(Reset.cpp.o)
+                0x0000000000003468                cancelReset
  .text.tickReset
-                0x0000000000003460       0x78 build-nano_33_iot/libcore.a(Reset.cpp.o)
-                0x0000000000003460                tickReset
+                0x0000000000003478       0x78 build-nano_33_iot/libcore.a(Reset.cpp.o)
+                0x0000000000003478                tickReset
  .text._ZN6SERCOMC2EP6Sercom
-                0x00000000000034d8        0x8 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
-                0x00000000000034d8                SERCOM::SERCOM(Sercom*)
-                0x00000000000034d8                SERCOM::SERCOM(Sercom*)
+                0x00000000000034f0        0x8 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
+                0x00000000000034f0                SERCOM::SERCOM(Sercom*)
+                0x00000000000034f0                SERCOM::SERCOM(Sercom*)
  .text._ZN6SERCOM9initFrameE18SercomUartCharSize15SercomDataOrder16SercomParityMode19SercomNumberStopBit
-                0x00000000000034e0       0x3a build-nano_33_iot/libcore.a(SERCOM.cpp.o)
-                0x00000000000034e0                SERCOM::initFrame(SercomUartCharSize, SercomDataOrder, SercomParityMode, SercomNumberStopBit)
+                0x00000000000034f8       0x3a build-nano_33_iot/libcore.a(SERCOM.cpp.o)
+                0x00000000000034f8                SERCOM::initFrame(SercomUartCharSize, SercomDataOrder, SercomParityMode, SercomNumberStopBit)
  .text._ZN6SERCOM8initPadsE15SercomUartTXPad11SercomRXPad
-                0x000000000000351a       0x26 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
-                0x000000000000351a                SERCOM::initPads(SercomUartTXPad, SercomRXPad)
+                0x0000000000003532       0x26 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
+                0x0000000000003532                SERCOM::initPads(SercomUartTXPad, SercomRXPad)
  .text._ZN6SERCOM9resetUARTEv
-                0x0000000000003540       0x1a build-nano_33_iot/libcore.a(SERCOM.cpp.o)
-                0x0000000000003540                SERCOM::resetUART()
+                0x0000000000003558       0x1a build-nano_33_iot/libcore.a(SERCOM.cpp.o)
+                0x0000000000003558                SERCOM::resetUART()
  .text._ZN6SERCOM10enableUARTEv
-                0x000000000000355a       0x14 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
-                0x000000000000355a                SERCOM::enableUART()
+                0x0000000000003572       0x14 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
+                0x0000000000003572                SERCOM::enableUART()
  .text._ZN6SERCOM9flushUARTEv
-                0x000000000000356e       0x14 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
-                0x000000000000356e                SERCOM::flushUART()
+                0x0000000000003586       0x14 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
+                0x0000000000003586                SERCOM::flushUART()
  .text._ZN6SERCOM15clearStatusUARTEv
-                0x0000000000003582        0x8 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
-                0x0000000000003582                SERCOM::clearStatusUART()
+                0x000000000000359a        0x8 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
+                0x000000000000359a                SERCOM::clearStatusUART()
  .text._ZN6SERCOM17availableDataUARTEv
-                0x000000000000358a        0xa build-nano_33_iot/libcore.a(SERCOM.cpp.o)
-                0x000000000000358a                SERCOM::availableDataUART()
+                0x00000000000035a2        0xa build-nano_33_iot/libcore.a(SERCOM.cpp.o)
+                0x00000000000035a2                SERCOM::availableDataUART()
  .text._ZN6SERCOM11isUARTErrorEv
-                0x0000000000003594        0x8 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
-                0x0000000000003594                SERCOM::isUARTError()
+                0x00000000000035ac        0x8 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
+                0x00000000000035ac                SERCOM::isUARTError()
  .text._ZN6SERCOM20acknowledgeUARTErrorEv
-                0x000000000000359c        0xe build-nano_33_iot/libcore.a(SERCOM.cpp.o)
-                0x000000000000359c                SERCOM::acknowledgeUARTError()
+                0x00000000000035b4        0xe build-nano_33_iot/libcore.a(SERCOM.cpp.o)
+                0x00000000000035b4                SERCOM::acknowledgeUARTError()
  .text._ZN6SERCOM16isFrameErrorUARTEv
-                0x00000000000035aa        0xa build-nano_33_iot/libcore.a(SERCOM.cpp.o)
-                0x00000000000035aa                SERCOM::isFrameErrorUART()
+                0x00000000000035c2        0xa build-nano_33_iot/libcore.a(SERCOM.cpp.o)
+                0x00000000000035c2                SERCOM::isFrameErrorUART()
  .text._ZN6SERCOM19clearFrameErrorUARTEv
-                0x00000000000035b4        0xc build-nano_33_iot/libcore.a(SERCOM.cpp.o)
-                0x00000000000035b4                SERCOM::clearFrameErrorUART()
+                0x00000000000035cc        0xc build-nano_33_iot/libcore.a(SERCOM.cpp.o)
+                0x00000000000035cc                SERCOM::clearFrameErrorUART()
  .text._ZN6SERCOM23isDataRegisterEmptyUARTEv
-                0x00000000000035c0        0xa build-nano_33_iot/libcore.a(SERCOM.cpp.o)
-                0x00000000000035c0                SERCOM::isDataRegisterEmptyUART()
+                0x00000000000035d8        0xa build-nano_33_iot/libcore.a(SERCOM.cpp.o)
+                0x00000000000035d8                SERCOM::isDataRegisterEmptyUART()
  .text._ZN6SERCOM12readDataUARTEv
-                0x00000000000035ca        0x8 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
-                0x00000000000035ca                SERCOM::readDataUART()
+                0x00000000000035e2        0x8 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
+                0x00000000000035e2                SERCOM::readDataUART()
  .text._ZN6SERCOM13writeDataUARTEh
-                0x00000000000035d2       0x14 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
-                0x00000000000035d2                SERCOM::writeDataUART(unsigned char)
+                0x00000000000035ea       0x14 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
+                0x00000000000035ea                SERCOM::writeDataUART(unsigned char)
  .text._ZN6SERCOM36enableDataRegisterEmptyInterruptUARTEv
-                0x00000000000035e6        0x8 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
-                0x00000000000035e6                SERCOM::enableDataRegisterEmptyInterruptUART()
+                0x00000000000035fe        0x8 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
+                0x00000000000035fe                SERCOM::enableDataRegisterEmptyInterruptUART()
  .text._ZN6SERCOM37disableDataRegisterEmptyInterruptUARTEv
-                0x00000000000035ee        0x8 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
-                0x00000000000035ee                SERCOM::disableDataRegisterEmptyInterruptUART()
- *fill*         0x00000000000035f6        0x2 
+                0x0000000000003606        0x8 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
+                0x0000000000003606                SERCOM::disableDataRegisterEmptyInterruptUART()
+ *fill*         0x000000000000360e        0x2 
  .text._ZN6SERCOM13initClockNVICEv
-                0x00000000000035f8       0xa8 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
-                0x00000000000035f8                SERCOM::initClockNVIC()
+                0x0000000000003610       0xa8 build-nano_33_iot/libcore.a(SERCOM.cpp.o)
+                0x0000000000003610                SERCOM::initClockNVIC()
  .text._ZN6SERCOM8initUARTE14SercomUartMode20SercomUartSampleRatem
-                0x00000000000036a0       0x6c build-nano_33_iot/libcore.a(SERCOM.cpp.o)
-                0x00000000000036a0                SERCOM::initUART(SercomUartMode, SercomUartSampleRate, unsigned long)
+                0x00000000000036b8       0x6c build-nano_33_iot/libcore.a(SERCOM.cpp.o)
+                0x00000000000036b8                SERCOM::initUART(SercomUartMode, SercomUartSampleRate, unsigned long)
  .text.startup.main
-                0x000000000000370c       0x40 build-nano_33_iot/libcore.a(main.cpp.o)
-                0x000000000000370c                main
+                0x0000000000003724       0x40 build-nano_33_iot/libcore.a(main.cpp.o)
+                0x0000000000003724                main
  .text._ZN4UartcvbEv
-                0x000000000000374c        0x4 build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x000000000000374c                Uart::operator bool()
+                0x0000000000003764        0x4 build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x0000000000003764                Uart::operator bool()
  .text._ZN4Uart5beginEm
-                0x0000000000003750       0x10 build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x0000000000003750                Uart::begin(unsigned long)
+                0x0000000000003768       0x10 build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x0000000000003768                Uart::begin(unsigned long)
  .text._ZN4Uart9availableEv
-                0x0000000000003760        0x6 build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x0000000000003760                Uart::available()
+                0x0000000000003778        0x6 build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x0000000000003778                Uart::available()
  .text._ZN4Uart17availableForWriteEv
-                0x0000000000003766       0x10 build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x0000000000003766                Uart::availableForWrite()
+                0x000000000000377e       0x10 build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x000000000000377e                Uart::availableForWrite()
  .text._ZN4Uart4peekEv
-                0x0000000000003776       0x18 build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x0000000000003776                Uart::peek()
+                0x000000000000378e       0x18 build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x000000000000378e                Uart::peek()
  .text._ZN4Uart3endEv
-                0x000000000000378e       0x24 build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x000000000000378e                Uart::end()
+                0x00000000000037a6       0x24 build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x00000000000037a6                Uart::end()
  .text._ZN4Uart5flushEv
-                0x00000000000037b2       0x16 build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x00000000000037b2                Uart::flush()
+                0x00000000000037ca       0x16 build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x00000000000037ca                Uart::flush()
  .text._ZN7__GuardD2Ev
-                0x00000000000037c8        0xe build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x00000000000037c8                __Guard::~__Guard()
-                0x00000000000037c8                __Guard::~__Guard()
+                0x00000000000037e0        0xe build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x00000000000037e0                __Guard::~__Guard()
+                0x00000000000037e0                __Guard::~__Guard()
  .text._ZN4Uart16extractNbStopBitEt
-                0x00000000000037d6        0xc build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x00000000000037d6                Uart::extractNbStopBit(unsigned short)
+                0x00000000000037ee        0xc build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x00000000000037ee                Uart::extractNbStopBit(unsigned short)
  .text._ZN4Uart15extractCharSizeEt
-                0x00000000000037e2       0x28 build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x00000000000037e2                Uart::extractCharSize(unsigned short)
+                0x00000000000037fa       0x28 build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x00000000000037fa                Uart::extractCharSize(unsigned short)
  .text._ZN4Uart13extractParityEt
-                0x000000000000380a       0x14 build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x000000000000380a                Uart::extractParity(unsigned short)
- *fill*         0x000000000000381e        0x2 
+                0x0000000000003822       0x14 build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x0000000000003822                Uart::extractParity(unsigned short)
+ *fill*         0x0000000000003836        0x2 
  .text._ZN4Uart5beginEmt
-                0x0000000000003820       0xf8 build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x0000000000003820                Uart::begin(unsigned long, unsigned short)
+                0x0000000000003838       0xf8 build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x0000000000003838                Uart::begin(unsigned long, unsigned short)
  .text._ZN7arduino11RingBufferNILi256EEC2Ev
-                0x0000000000003918       0x1e build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x0000000000003918                arduino::RingBufferN<256>::RingBufferN()
-                0x0000000000003918                arduino::RingBufferN<256>::RingBufferN()
- *fill*         0x0000000000003936        0x2 
+                0x0000000000003930       0x1e build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x0000000000003930                arduino::RingBufferN<256>::RingBufferN()
+                0x0000000000003930                arduino::RingBufferN<256>::RingBufferN()
+ *fill*         0x000000000000394e        0x2 
  .text._ZN4UartC2EP6SERCOMhh11SercomRXPad15SercomUartTXPadhh
-                0x0000000000003938       0x88 build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x0000000000003938                Uart::Uart(SERCOM*, unsigned char, unsigned char, SercomRXPad, SercomUartTXPad, unsigned char, unsigned char)
-                0x0000000000003938                Uart::Uart(SERCOM*, unsigned char, unsigned char, SercomRXPad, SercomUartTXPad, unsigned char, unsigned char)
+                0x0000000000003950       0x88 build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x0000000000003950                Uart::Uart(SERCOM*, unsigned char, unsigned char, SercomRXPad, SercomUartTXPad, unsigned char, unsigned char)
+                0x0000000000003950                Uart::Uart(SERCOM*, unsigned char, unsigned char, SercomRXPad, SercomUartTXPad, unsigned char, unsigned char)
  .text._ZN4UartC2EP6SERCOMhh11SercomRXPad15SercomUartTXPad
-                0x00000000000039c0       0x74 build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x00000000000039c0                Uart::Uart(SERCOM*, unsigned char, unsigned char, SercomRXPad, SercomUartTXPad)
-                0x00000000000039c0                Uart::Uart(SERCOM*, unsigned char, unsigned char, SercomRXPad, SercomUartTXPad)
+                0x00000000000039d8       0x74 build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x00000000000039d8                Uart::Uart(SERCOM*, unsigned char, unsigned char, SercomRXPad, SercomUartTXPad)
+                0x00000000000039d8                Uart::Uart(SERCOM*, unsigned char, unsigned char, SercomRXPad, SercomUartTXPad)
  .text._ZN7arduino15SafeRingBufferNILi256EE10store_charEh
-                0x0000000000003a34       0x4a build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x0000000000003a34                arduino::SafeRingBufferN<256>::store_char(unsigned char)
+                0x0000000000003a4c       0x4a build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x0000000000003a4c                arduino::SafeRingBufferN<256>::store_char(unsigned char)
  .text._ZN7arduino15SafeRingBufferNILi256EE9read_charEv
-                0x0000000000003a7e       0x50 build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x0000000000003a7e                arduino::SafeRingBufferN<256>::read_char()
+                0x0000000000003a96       0x50 build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x0000000000003a96                arduino::SafeRingBufferN<256>::read_char()
  .text._ZN4Uart10IrqHandlerEv
-                0x0000000000003ace       0xa4 build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x0000000000003ace                Uart::IrqHandler()
- *fill*         0x0000000000003b72        0x2 
+                0x0000000000003ae6       0xa4 build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x0000000000003ae6                Uart::IrqHandler()
+ *fill*         0x0000000000003b8a        0x2 
  .text._ZN4Uart5writeEh
-                0x0000000000003b74       0x9c build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x0000000000003b74                Uart::write(unsigned char)
+                0x0000000000003b8c       0x9c build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x0000000000003b8c                Uart::write(unsigned char)
  .text._ZN4Uart4readEv
-                0x0000000000003c10       0x34 build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x0000000000003c10                Uart::read()
+                0x0000000000003c28       0x34 build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x0000000000003c28                Uart::read()
  .text._ZN7arduino5Print5writeEPKhj
-                0x0000000000003c44       0x28 build-nano_33_iot/libcore.a(Print.cpp.o)
-                0x0000000000003c44                arduino::Print::write(unsigned char const*, unsigned int)
+                0x0000000000003c5c       0x28 build-nano_33_iot/libcore.a(Print.cpp.o)
+                0x0000000000003c5c                arduino::Print::write(unsigned char const*, unsigned int)
  .text._ZN7arduino5Print5writeEPKc.part.2
-                0x0000000000003c6c       0x1a build-nano_33_iot/libcore.a(Print.cpp.o)
+                0x0000000000003c84       0x1a build-nano_33_iot/libcore.a(Print.cpp.o)
  .text._ZN7arduino5Print5writeEPKc
-                0x0000000000003c86       0x10 build-nano_33_iot/libcore.a(Print.cpp.o)
-                0x0000000000003c86                arduino::Print::write(char const*)
+                0x0000000000003c9e       0x10 build-nano_33_iot/libcore.a(Print.cpp.o)
+                0x0000000000003c9e                arduino::Print::write(char const*)
  .text._ZN7arduino5Print5printEPKc
-                0x0000000000003c96        0x8 build-nano_33_iot/libcore.a(Print.cpp.o)
-                0x0000000000003c96                arduino::Print::print(char const*)
+                0x0000000000003cae        0x8 build-nano_33_iot/libcore.a(Print.cpp.o)
+                0x0000000000003cae                arduino::Print::print(char const*)
  .text._ZN7arduino5Print5printEc
-                0x0000000000003c9e        0xa build-nano_33_iot/libcore.a(Print.cpp.o)
-                0x0000000000003c9e                arduino::Print::print(char)
+                0x0000000000003cb6        0xa build-nano_33_iot/libcore.a(Print.cpp.o)
+                0x0000000000003cb6                arduino::Print::print(char)
  .text._ZN7arduino5Print7printlnEv
-                0x0000000000003ca8       0x10 build-nano_33_iot/libcore.a(Print.cpp.o)
-                0x0000000000003ca8                arduino::Print::println()
+                0x0000000000003cc0       0x10 build-nano_33_iot/libcore.a(Print.cpp.o)
+                0x0000000000003cc0                arduino::Print::println()
  .text._ZN7arduino5Print11printNumberEmh
-                0x0000000000003cb8       0x48 build-nano_33_iot/libcore.a(Print.cpp.o)
-                0x0000000000003cb8                arduino::Print::printNumber(unsigned long, unsigned char)
+                0x0000000000003cd0       0x48 build-nano_33_iot/libcore.a(Print.cpp.o)
+                0x0000000000003cd0                arduino::Print::printNumber(unsigned long, unsigned char)
  .text._ZN7arduino5Print5printEli
-                0x0000000000003d00       0x3e build-nano_33_iot/libcore.a(Print.cpp.o)
-                0x0000000000003d00                arduino::Print::print(long, int)
+                0x0000000000003d18       0x3e build-nano_33_iot/libcore.a(Print.cpp.o)
+                0x0000000000003d18                arduino::Print::print(long, int)
  .text._ZN7arduino5Print5printEii
-                0x0000000000003d3e        0x8 build-nano_33_iot/libcore.a(Print.cpp.o)
-                0x0000000000003d3e                arduino::Print::print(int, int)
+                0x0000000000003d56        0x8 build-nano_33_iot/libcore.a(Print.cpp.o)
+                0x0000000000003d56                arduino::Print::print(int, int)
  .text._ZN7arduino5Print7printlnEii
-                0x0000000000003d46       0x14 build-nano_33_iot/libcore.a(Print.cpp.o)
-                0x0000000000003d46                arduino::Print::println(int, int)
+                0x0000000000003d5e       0x14 build-nano_33_iot/libcore.a(Print.cpp.o)
+                0x0000000000003d5e                arduino::Print::println(int, int)
  .text._ZN26DoubleBufferedEPOutHandlerD2Ev
-                0x0000000000003d5a        0x2 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000003d5a                DoubleBufferedEPOutHandler::~DoubleBufferedEPOutHandler()
-                0x0000000000003d5a                DoubleBufferedEPOutHandler::~DoubleBufferedEPOutHandler()
+                0x0000000000003d72        0x2 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000003d72                DoubleBufferedEPOutHandler::~DoubleBufferedEPOutHandler()
+                0x0000000000003d72                DoubleBufferedEPOutHandler::~DoubleBufferedEPOutHandler()
  .text._ZN26DoubleBufferedEPOutHandlerD0Ev
-                0x0000000000003d5c        0xe build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000003d5c                DoubleBufferedEPOutHandler::~DoubleBufferedEPOutHandler()
- *fill*         0x0000000000003d6a        0x2 
+                0x0000000000003d74        0xe build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000003d74                DoubleBufferedEPOutHandler::~DoubleBufferedEPOutHandler()
+ *fill*         0x0000000000003d82        0x2 
  .text._ZN14USBDeviceClass6initEPEmm.part.7
-                0x0000000000003d6c       0xc4 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000003d84       0xc4 build-nano_33_iot/libcore.a(USBCore.cpp.o)
  .text._ZN7__GuardC2Ev
-                0x0000000000003e30        0xe build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000003e30                __Guard::__Guard()
-                0x0000000000003e30                __Guard::__Guard()
+                0x0000000000003e48        0xe build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000003e48                __Guard::__Guard()
+                0x0000000000003e48                __Guard::__Guard()
  .text._ZNK26DoubleBufferedEPOutHandler10_availableEv
-                0x0000000000003e3e       0x70 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000003e3e                DoubleBufferedEPOutHandler::_available() const
- *fill*         0x0000000000003eae        0x2 
+                0x0000000000003e56       0x70 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000003e56                DoubleBufferedEPOutHandler::_available() const
+ *fill*         0x0000000000003ec6        0x2 
  .text._ZN26DoubleBufferedEPOutHandler7releaseEv
-                0x0000000000003eb0       0x38 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000003eb0                DoubleBufferedEPOutHandler::release()
+                0x0000000000003ec8       0x38 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000003ec8                DoubleBufferedEPOutHandler::release()
  .text._ZN26DoubleBufferedEPOutHandler14handleEndpointEv
-                0x0000000000003ee8       0xe2 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000003ee8                DoubleBufferedEPOutHandler::handleEndpoint()
+                0x0000000000003f00       0xe2 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000003f00                DoubleBufferedEPOutHandler::handleEndpoint()
  .text._ZN14USBDeviceClass14SendInterfacesEPm
-                0x0000000000003fca       0x20 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000003fca                USBDeviceClass::SendInterfaces(unsigned long*)
- *fill*         0x0000000000003fea        0x2 
+                0x0000000000003fe2       0x20 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000003fe2                USBDeviceClass::SendInterfaces(unsigned long*)
+ *fill*         0x0000000000004002        0x2 
  .text._ZN14USBDeviceClass6attachEv
-                0x0000000000003fec       0x34 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000003fec                USBDeviceClass::attach()
+                0x0000000000004004       0x34 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004004                USBDeviceClass::attach()
  .text._ZN14USBDeviceClass10setAddressEm
-                0x0000000000004020       0x48 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000004020                USBDeviceClass::setAddress(unsigned long)
+                0x0000000000004038       0x48 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004038                USBDeviceClass::setAddress(unsigned long)
  .text._ZN14USBDeviceClass25handleClassInterfaceSetupERN7arduino8USBSetupE
-                0x0000000000004068       0x24 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000004068                USBDeviceClass::handleClassInterfaceSetup(arduino::USBSetup&)
+                0x0000000000004080       0x24 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004080                USBDeviceClass::handleClassInterfaceSetup(arduino::USBSetup&)
  .text._ZN14USBDeviceClass6initEPEmm
-                0x000000000000408c      0x10c build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x000000000000408c                USBDeviceClass::initEP(unsigned long, unsigned long)
+                0x00000000000040a4      0x10c build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x00000000000040a4                USBDeviceClass::initEP(unsigned long, unsigned long)
  .text._ZN14USBDeviceClass13initEndpointsEv
-                0x0000000000004198       0x24 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000004198                USBDeviceClass::initEndpoints()
+                0x00000000000041b0       0x24 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x00000000000041b0                USBDeviceClass::initEndpoints()
  .text._ZN14USBDeviceClass5clearEm
-                0x00000000000041bc       0x38 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x00000000000041bc                USBDeviceClass::clear(unsigned long)
+                0x00000000000041d4       0x38 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x00000000000041d4                USBDeviceClass::clear(unsigned long)
  .text._ZN14USBDeviceClass9availableEm
-                0x00000000000041f4       0x2c build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x00000000000041f4                USBDeviceClass::available(unsigned long)
+                0x000000000000420c       0x2c build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x000000000000420c                USBDeviceClass::available(unsigned long)
  .text._ZN14USBDeviceClass5flushEm
-                0x0000000000004220       0x2c build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000004220                USBDeviceClass::flush(unsigned long)
+                0x0000000000004238       0x2c build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004238                USBDeviceClass::flush(unsigned long)
  .text._ZN14USBDeviceClass4recvEmPvm
-                0x000000000000424c       0xc0 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x000000000000424c                USBDeviceClass::recv(unsigned long, void*, unsigned long)
+                0x0000000000004264       0xc0 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004264                USBDeviceClass::recv(unsigned long, void*, unsigned long)
  .text._ZN14USBDeviceClass4recvEm
-                0x000000000000430c       0x1c build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x000000000000430c                USBDeviceClass::recv(unsigned long)
+                0x0000000000004324       0x1c build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004324                USBDeviceClass::recv(unsigned long)
  .text._ZN14USBDeviceClass14armRecvCtrlOUTEm
-                0x0000000000004328       0x5c build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000004328                USBDeviceClass::armRecvCtrlOUT(unsigned long)
+                0x0000000000004340       0x5c build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004340                USBDeviceClass::armRecvCtrlOUT(unsigned long)
  .text._ZN14USBDeviceClass11recvControlEPvm
-                0x0000000000004384       0x28 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000004384                USBDeviceClass::recvControl(void*, unsigned long)
+                0x000000000000439c       0x28 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x000000000000439c                USBDeviceClass::recvControl(void*, unsigned long)
  .text._ZN14USBDeviceClass4sendEmPKvm
-                0x00000000000043ac      0x10c build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x00000000000043ac                USBDeviceClass::send(unsigned long, void const*, unsigned long)
+                0x00000000000043c4      0x10c build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x00000000000043c4                USBDeviceClass::send(unsigned long, void const*, unsigned long)
  .text._ZN14USBDeviceClass7armSendEmPKvm
-                0x00000000000044b8       0x48 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x00000000000044b8                USBDeviceClass::armSend(unsigned long, void const*, unsigned long)
+                0x00000000000044d0       0x48 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x00000000000044d0                USBDeviceClass::armSend(unsigned long, void const*, unsigned long)
  .text._ZN14USBDeviceClass11sendControlEPKvm
-                0x0000000000004500       0x54 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000004500                USBDeviceClass::sendControl(void const*, unsigned long)
+                0x0000000000004518       0x54 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004518                USBDeviceClass::sendControl(void const*, unsigned long)
  .text._ZN14USBDeviceClass20sendStringDescriptorEPKhm
-                0x0000000000004554       0x64 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000004554                USBDeviceClass::sendStringDescriptor(unsigned char const*, unsigned long)
+                0x000000000000456c       0x64 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x000000000000456c                USBDeviceClass::sendStringDescriptor(unsigned char const*, unsigned long)
  .text._ZN14USBDeviceClass17sendConfigurationEm
-                0x00000000000045b8       0x80 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x00000000000045b8                USBDeviceClass::sendConfiguration(unsigned long)
+                0x00000000000045d0       0x80 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x00000000000045d0                USBDeviceClass::sendConfiguration(unsigned long)
  .text._ZN14USBDeviceClass14sendDescriptorERN7arduino8USBSetupE
-                0x0000000000004638       0xd8 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000004638                USBDeviceClass::sendDescriptor(arduino::USBSetup&)
+                0x0000000000004650       0xd8 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004650                USBDeviceClass::sendDescriptor(arduino::USBSetup&)
  .text._ZN14USBDeviceClass7sendZlpEm
-                0x0000000000004710       0x18 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000004710                USBDeviceClass::sendZlp(unsigned long)
+                0x0000000000004728       0x18 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004728                USBDeviceClass::sendZlp(unsigned long)
  .text._ZN14USBDeviceClass19handleStandardSetupERN7arduino8USBSetupE
-                0x0000000000004728       0xf0 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000004728                USBDeviceClass::handleStandardSetup(arduino::USBSetup&)
+                0x0000000000004740       0xf0 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004740                USBDeviceClass::handleStandardSetup(arduino::USBSetup&)
  .text._ZN14USBDeviceClass10ISRHandlerEv
-                0x0000000000004818      0x108 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000004818                USBDeviceClass::ISRHandler()
+                0x0000000000004830      0x108 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004830                USBDeviceClass::ISRHandler()
  .text.UDD_Handler
-                0x0000000000004920       0x10 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000004920                UDD_Handler
+                0x0000000000004938       0x10 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004938                UDD_Handler
  .text._ZN7arduino13PluggableUSB_C2Ev
-                0x0000000000004930       0x10 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000004930                arduino::PluggableUSB_::PluggableUSB_()
-                0x0000000000004930                arduino::PluggableUSB_::PluggableUSB_()
+                0x0000000000004948       0x10 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004948                arduino::PluggableUSB_::PluggableUSB_()
+                0x0000000000004948                arduino::PluggableUSB_::PluggableUSB_()
  .text._Z8epBufferj
-                0x0000000000004940        0xc build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000004940                epBuffer(unsigned int)
+                0x0000000000004958        0xc build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004958                epBuffer(unsigned int)
  .text._ZN7arduino11RingBufferNILi64EE10store_charEh
-                0x000000000000494c       0x1c build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x000000000000494c                arduino::RingBufferN<64>::store_char(unsigned char)
+                0x0000000000004964       0x1c build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004964                arduino::RingBufferN<64>::store_char(unsigned char)
  .text._ZN26DoubleBufferedEPOutHandler5_recvEv
-                0x0000000000004968      0x15e build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000004968                DoubleBufferedEPOutHandler::_recv()
+                0x0000000000004980      0x15e build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004980                DoubleBufferedEPOutHandler::_recv()
  .text._ZN26DoubleBufferedEPOutHandler9availableEv
-                0x0000000000004ac6        0xc build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000004ac6                DoubleBufferedEPOutHandler::available()
+                0x0000000000004ade        0xc build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004ade                DoubleBufferedEPOutHandler::available()
  .text._ZN26DoubleBufferedEPOutHandler4peekEv
-                0x0000000000004ad2       0x1c build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000004ad2                DoubleBufferedEPOutHandler::peek()
+                0x0000000000004aea       0x1c build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004aea                DoubleBufferedEPOutHandler::peek()
  .text._ZN26DoubleBufferedEPOutHandler4recvEPvm
-                0x0000000000004aee       0x60 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000004aee                DoubleBufferedEPOutHandler::recv(void*, unsigned long)
- *fill*         0x0000000000004b4e        0x2 
+                0x0000000000004b06       0x60 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004b06                DoubleBufferedEPOutHandler::recv(void*, unsigned long)
+ *fill*         0x0000000000004b66        0x2 
  .text.startup._GLOBAL__sub_I_usbd
-                0x0000000000004b50       0x10 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004b68       0x10 build-nano_33_iot/libcore.a(USBCore.cpp.o)
  .text._ZN14USBDeviceClass4initEv
-                0x0000000000004b60      0x15c build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000004b60                USBDeviceClass::init()
+                0x0000000000004b78      0x15c build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000004b78                USBDeviceClass::init()
  .text._ZN7Serial_13getDescriptorERN7arduino8USBSetupE
-                0x0000000000004cbc        0x4 build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000004cbc                Serial_::getDescriptor(arduino::USBSetup&)
+                0x0000000000004cd4        0x4 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000004cd4                Serial_::getDescriptor(arduino::USBSetup&)
  .text._ZL5utox8mPc
-                0x0000000000004cc0       0x24 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000004cd8       0x24 build-nano_33_iot/libcore.a(CDC.cpp.o)
  .text._ZN7Serial_12getShortNameEPc
-                0x0000000000004ce4       0x44 build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000004ce4                Serial_::getShortName(char*)
+                0x0000000000004cfc       0x44 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000004cfc                Serial_::getShortName(char*)
  .text._ZThn16_N7Serial_12getShortNameEPc
-                0x0000000000004d28       0x10 build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000004d28                non-virtual thunk to Serial_::getShortName(char*)
+                0x0000000000004d40       0x10 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000004d40                non-virtual thunk to Serial_::getShortName(char*)
  .text._ZN7Serial_5beginEm
-                0x0000000000004d38        0x2 build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000004d38                Serial_::begin(unsigned long)
+                0x0000000000004d50        0x2 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000004d50                Serial_::begin(unsigned long)
  .text._ZN7Serial_5beginEmt
-                0x0000000000004d3a        0x2 build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000004d3a                Serial_::begin(unsigned long, unsigned short)
+                0x0000000000004d52        0x2 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000004d52                Serial_::begin(unsigned long, unsigned short)
  .text._ZN7Serial_17availableForWriteEv
-                0x0000000000004d3c        0x4 build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000004d3c                Serial_::availableForWrite()
+                0x0000000000004d54        0x4 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000004d54                Serial_::availableForWrite()
  .text._ZN7Serial_5writeEh
-                0x0000000000004d40       0x14 build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000004d40                Serial_::write(unsigned char)
+                0x0000000000004d58       0x14 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000004d58                Serial_::write(unsigned char)
  .text._ZN7Serial_12getInterfaceEPh
-                0x0000000000004d54      0x11c build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000004d54                Serial_::getInterface(unsigned char*)
+                0x0000000000004d6c      0x11c build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000004d6c                Serial_::getInterface(unsigned char*)
  .text._ZThn16_N7Serial_12getInterfaceEPh
-                0x0000000000004e70       0x10 build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000004e70                non-virtual thunk to Serial_::getInterface(unsigned char*)
+                0x0000000000004e88       0x10 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000004e88                non-virtual thunk to Serial_::getInterface(unsigned char*)
  .text._ZN7Serial_5setupERN7arduino8USBSetupE
-                0x0000000000004e80       0x98 build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000004e80                Serial_::setup(arduino::USBSetup&)
+                0x0000000000004e98       0x98 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000004e98                Serial_::setup(arduino::USBSetup&)
  .text._ZThn16_N7Serial_5setupERN7arduino8USBSetupE
-                0x0000000000004f18       0x10 build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000004f18                non-virtual thunk to Serial_::setup(arduino::USBSetup&)
+                0x0000000000004f30       0x10 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000004f30                non-virtual thunk to Serial_::setup(arduino::USBSetup&)
  .text._ZN7Serial_3endEv
-                0x0000000000004f28       0x14 build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000004f28                Serial_::end()
+                0x0000000000004f40       0x14 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000004f40                Serial_::end()
  .text._ZN7Serial_9availableEv
-                0x0000000000004f3c       0x20 build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000004f3c                Serial_::available()
+                0x0000000000004f54       0x20 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000004f54                Serial_::available()
  .text._ZN7Serial_5flushEv
-                0x0000000000004f5c        0xe build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000004f5c                Serial_::flush()
+                0x0000000000004f74        0xe build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000004f74                Serial_::flush()
  .text._ZN7Serial_5clearEv
-                0x0000000000004f6a        0xe build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000004f6a                Serial_::clear()
+                0x0000000000004f82        0xe build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000004f82                Serial_::clear()
  .text._ZN7Serial_5writeEPKhj
-                0x0000000000004f78       0x1e build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000004f78                Serial_::write(unsigned char const*, unsigned int)
- *fill*         0x0000000000004f96        0x2 
+                0x0000000000004f90       0x1e build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000004f90                Serial_::write(unsigned char const*, unsigned int)
+ *fill*         0x0000000000004fae        0x2 
  .text._ZN7Serial_4peekEv
-                0x0000000000004f98       0x1c build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000004f98                Serial_::peek()
+                0x0000000000004fb0       0x1c build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000004fb0                Serial_::peek()
  .text._ZN7Serial_4readEv
-                0x0000000000004fb4       0x24 build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000004fb4                Serial_::read()
+                0x0000000000004fcc       0x24 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000004fcc                Serial_::read()
  .text._ZN7Serial_cvbEv
-                0x0000000000004fd8       0x28 build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000004fd8                Serial_::operator bool()
+                0x0000000000004ff0       0x28 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000004ff0                Serial_::operator bool()
  .text._ZThn16_N7Serial_13getDescriptorERN7arduino8USBSetupE
-                0x0000000000005000        0x4 build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000005000                non-virtual thunk to Serial_::getDescriptor(arduino::USBSetup&)
+                0x0000000000005018        0x4 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000005018                non-virtual thunk to Serial_::getDescriptor(arduino::USBSetup&)
  .text._ZN7Serial_14handleEndpointEi
-                0x0000000000005004        0x2 build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000005004                Serial_::handleEndpoint(int)
- *fill*         0x0000000000005006        0x2 
+                0x000000000000501c        0x2 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x000000000000501c                Serial_::handleEndpoint(int)
+ *fill*         0x000000000000501e        0x2 
  .text._ZN7Serial_C2ER14USBDeviceClass
-                0x0000000000005008       0x50 build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000005008                Serial_::Serial_(USBDeviceClass&)
-                0x0000000000005008                Serial_::Serial_(USBDeviceClass&)
+                0x0000000000005020       0x50 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000005020                Serial_::Serial_(USBDeviceClass&)
+                0x0000000000005020                Serial_::Serial_(USBDeviceClass&)
  .text._ZN7Serial_15enableInterruptEv
-                0x0000000000005058       0x30 build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000005058                Serial_::enableInterrupt()
+                0x0000000000005070       0x30 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000005070                Serial_::enableInterrupt()
  .text.startup._GLOBAL__sub_I__ZN7Serial_12getInterfaceEPh
-                0x0000000000005088       0x14 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x00000000000050a0       0x14 build-nano_33_iot/libcore.a(CDC.cpp.o)
  .text._ZN3ros16normalizeSecNSecERmS0_
-                0x000000000000509c       0x28 build-nano_33_iot/libcore.a(time.cpp.o)
-                0x000000000000509c                ros::normalizeSecNSec(unsigned long&, unsigned long&)
- .text.init     0x00000000000050c4       0xf0 build-nano_33_iot/libcore.a(wiring.c.o)
-                0x00000000000050c4                init
- .text.__empty  0x00000000000051b4        0x2 build-nano_33_iot/libcore.a(hooks.c.o)
-                0x00000000000051b4                yield
- .text.__false  0x00000000000051b6        0x4 build-nano_33_iot/libcore.a(hooks.c.o)
-                0x00000000000051b6                sysTickHook
- *fill*         0x00000000000051ba        0x2 
+                0x00000000000050b4       0x28 build-nano_33_iot/libcore.a(time.cpp.o)
+                0x00000000000050b4                ros::normalizeSecNSec(unsigned long&, unsigned long&)
+ .text.init     0x00000000000050dc       0xf0 build-nano_33_iot/libcore.a(wiring.c.o)
+                0x00000000000050dc                init
+ .text.__empty  0x00000000000051cc        0x2 build-nano_33_iot/libcore.a(hooks.c.o)
+                0x00000000000051cc                yield
+ .text.__false  0x00000000000051ce        0x4 build-nano_33_iot/libcore.a(hooks.c.o)
+                0x00000000000051ce                sysTickHook
+ *fill*         0x00000000000051d2        0x2 
  .text.analogReference
-                0x00000000000051bc       0x64 build-nano_33_iot/libcore.a(wiring_analog.c.o)
-                0x00000000000051bc                analogReference
+                0x00000000000051d4       0x64 build-nano_33_iot/libcore.a(wiring_analog.c.o)
+                0x00000000000051d4                analogReference
  .text.SystemInit
-                0x0000000000005220      0x194 build-nano_33_iot/libcore.a(startup.c.o)
-                0x0000000000005220                SystemInit
- .text._Znwj    0x00000000000053b4        0x8 build-nano_33_iot/libcore.a(new.cpp.o)
-                0x00000000000053b4                operator new(unsigned int)
- .text._ZdlPv   0x00000000000053bc        0x8 build-nano_33_iot/libcore.a(new.cpp.o)
-                0x00000000000053bc                operator delete(void*)
+                0x0000000000005238      0x194 build-nano_33_iot/libcore.a(startup.c.o)
+                0x0000000000005238                SystemInit
+ .text._Znwj    0x00000000000053cc        0x8 build-nano_33_iot/libcore.a(new.cpp.o)
+                0x00000000000053cc                operator new(unsigned int)
+ .text._ZdlPv   0x00000000000053d4        0x8 build-nano_33_iot/libcore.a(new.cpp.o)
+                0x00000000000053d4                operator delete(void*)
  .text._ZN7arduino13PluggableUSB_12getInterfaceEPh
-                0x00000000000053c4       0x28 build-nano_33_iot/libcore.a(PluggableUSB.cpp.o)
-                0x00000000000053c4                arduino::PluggableUSB_::getInterface(unsigned char*)
+                0x00000000000053dc       0x28 build-nano_33_iot/libcore.a(PluggableUSB.cpp.o)
+                0x00000000000053dc                arduino::PluggableUSB_::getInterface(unsigned char*)
  .text._ZN7arduino13PluggableUSB_13getDescriptorERNS_8USBSetupE
-                0x00000000000053ec       0x20 build-nano_33_iot/libcore.a(PluggableUSB.cpp.o)
-                0x00000000000053ec                arduino::PluggableUSB_::getDescriptor(arduino::USBSetup&)
+                0x0000000000005404       0x20 build-nano_33_iot/libcore.a(PluggableUSB.cpp.o)
+                0x0000000000005404                arduino::PluggableUSB_::getDescriptor(arduino::USBSetup&)
  .text._ZN7arduino13PluggableUSB_12getShortNameEPc
-                0x000000000000540c       0x1e build-nano_33_iot/libcore.a(PluggableUSB.cpp.o)
-                0x000000000000540c                arduino::PluggableUSB_::getShortName(char*)
+                0x0000000000005424       0x1e build-nano_33_iot/libcore.a(PluggableUSB.cpp.o)
+                0x0000000000005424                arduino::PluggableUSB_::getShortName(char*)
  .text._ZN7arduino13PluggableUSB_5setupERNS_8USBSetupE
-                0x000000000000542a       0x20 build-nano_33_iot/libcore.a(PluggableUSB.cpp.o)
-                0x000000000000542a                arduino::PluggableUSB_::setup(arduino::USBSetup&)
+                0x0000000000005442       0x20 build-nano_33_iot/libcore.a(PluggableUSB.cpp.o)
+                0x0000000000005442                arduino::PluggableUSB_::setup(arduino::USBSetup&)
  .text._ZN7arduino13PluggableUSB_4plugEPNS_18PluggableUSBModuleE
-                0x000000000000544a       0x5c build-nano_33_iot/libcore.a(PluggableUSB.cpp.o)
-                0x000000000000544a                arduino::PluggableUSB_::plug(arduino::PluggableUSBModule*)
- *fill*         0x00000000000054a6        0x2 
+                0x0000000000005462       0x5c build-nano_33_iot/libcore.a(PluggableUSB.cpp.o)
+                0x0000000000005462                arduino::PluggableUSB_::plug(arduino::PluggableUSBModule*)
+ *fill*         0x00000000000054be        0x2 
  .text._Z12PluggableUSBv
-                0x00000000000054a8       0x24 build-nano_33_iot/libcore.a(PluggableUSB.cpp.o)
-                0x00000000000054a8                PluggableUSB()
- .text._ZdlPvj  0x00000000000054cc        0x8 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libstdc++_nano.a(del_ops.o)
-                0x00000000000054cc                operator delete(void*, unsigned int)
- .text          0x00000000000054d4       0x14 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(_thumb1_case_uqi.o)
-                0x00000000000054d4                __gnu_thumb1_case_uqi
- .text          0x00000000000054e8      0x114 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(_udivsi3.o)
-                0x00000000000054e8                __udivsi3
-                0x00000000000054e8                __aeabi_uidiv
-                0x00000000000055f4                __aeabi_uidivmod
- .text          0x00000000000055fc        0x4 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(_dvmd_tls.o)
-                0x00000000000055fc                __aeabi_ldiv0
-                0x00000000000055fc                __aeabi_idiv0
+                0x00000000000054c0       0x24 build-nano_33_iot/libcore.a(PluggableUSB.cpp.o)
+                0x00000000000054c0                PluggableUSB()
+ .text._ZdlPvj  0x00000000000054e4        0x8 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libstdc++_nano.a(del_ops.o)
+                0x00000000000054e4                operator delete(void*, unsigned int)
+ .text          0x00000000000054ec       0x14 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(_thumb1_case_uqi.o)
+                0x00000000000054ec                __gnu_thumb1_case_uqi
+ .text          0x0000000000005500      0x114 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(_udivsi3.o)
+                0x0000000000005500                __udivsi3
+                0x0000000000005500                __aeabi_uidiv
+                0x000000000000560c                __aeabi_uidivmod
+ .text          0x0000000000005614        0x4 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(_dvmd_tls.o)
+                0x0000000000005614                __aeabi_ldiv0
+                0x0000000000005614                __aeabi_idiv0
  .text.__libc_init_array
-                0x0000000000005600       0x48 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-init.o)
-                0x0000000000005600                __libc_init_array
- .text.malloc   0x0000000000005648       0x14 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-malloc.o)
-                0x0000000000005648                malloc
- .text.free     0x000000000000565c       0x14 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-malloc.o)
-                0x000000000000565c                free
- .text.memcpy   0x0000000000005670       0x12 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-memcpy-stub.o)
-                0x0000000000005670                memcpy
- .text.memset   0x0000000000005682       0x10 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-memset.o)
-                0x0000000000005682                memset
- *fill*         0x0000000000005692        0x2 
- .text._free_r  0x0000000000005694       0x94 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-nano-freer.o)
-                0x0000000000005694                _free_r
+                0x0000000000005618       0x48 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-init.o)
+                0x0000000000005618                __libc_init_array
+ .text.malloc   0x0000000000005660       0x14 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-malloc.o)
+                0x0000000000005660                malloc
+ .text.free     0x0000000000005674       0x14 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-malloc.o)
+                0x0000000000005674                free
+ .text.memcpy   0x0000000000005688       0x12 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-memcpy-stub.o)
+                0x0000000000005688                memcpy
+ .text.memset   0x000000000000569a       0x10 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-memset.o)
+                0x000000000000569a                memset
+ *fill*         0x00000000000056aa        0x2 
+ .text._free_r  0x00000000000056ac       0x94 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-nano-freer.o)
+                0x00000000000056ac                _free_r
  .text._malloc_r
-                0x0000000000005728       0xbc /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-nano-mallocr.o)
-                0x0000000000005728                _malloc_r
- .text.realloc  0x00000000000057e4       0x14 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-realloc.o)
-                0x00000000000057e4                realloc
- .text._sbrk_r  0x00000000000057f8       0x24 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-sbrkr.o)
-                0x00000000000057f8                _sbrk_r
- .text          0x000000000000581c        0xe /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-strlen.o)
-                0x000000000000581c                strlen
+                0x0000000000005740       0xbc /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-nano-mallocr.o)
+                0x0000000000005740                _malloc_r
+ .text.realloc  0x00000000000057fc       0x14 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-realloc.o)
+                0x00000000000057fc                realloc
+ .text._sbrk_r  0x0000000000005810       0x24 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-sbrkr.o)
+                0x0000000000005810                _sbrk_r
+ .text          0x0000000000005834        0xe /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-strlen.o)
+                0x0000000000005834                strlen
  .text.__malloc_lock
-                0x000000000000582a        0x2 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-mlock.o)
-                0x000000000000582a                __malloc_lock
+                0x0000000000005842        0x2 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-mlock.o)
+                0x0000000000005842                __malloc_lock
  .text.__malloc_unlock
-                0x000000000000582c        0x2 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-mlock.o)
-                0x000000000000582c                __malloc_unlock
+                0x0000000000005844        0x2 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-mlock.o)
+                0x0000000000005844                __malloc_unlock
  .text._realloc_r
-                0x000000000000582e       0x4c /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-nano-reallocr.o)
-                0x000000000000582e                _realloc_r
+                0x0000000000005846       0x4c /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-nano-reallocr.o)
+                0x0000000000005846                _realloc_r
  .text._malloc_usable_size_r
-                0x000000000000587a       0x10 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-nano-msizer.o)
-                0x000000000000587a                _malloc_usable_size_r
- *fill*         0x000000000000588a        0x2 
- .text._sbrk    0x000000000000588c       0x1c /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libnosys.a(sbrk.o)
-                0x000000000000588c                _sbrk
+                0x0000000000005892       0x10 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-nano-msizer.o)
+                0x0000000000005892                _malloc_usable_size_r
+ *fill*         0x00000000000058a2        0x2 
+ .text._sbrk    0x00000000000058a4       0x1c /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libnosys.a(sbrk.o)
+                0x00000000000058a4                _sbrk
  *(.init)
- .init          0x00000000000058a8        0x4 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crti.o
-                0x00000000000058a8                _init
- .init          0x00000000000058ac        0x8 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtn.o
+ .init          0x00000000000058c0        0x4 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crti.o
+                0x00000000000058c0                _init
+ .init          0x00000000000058c4        0x8 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtn.o
  *(.fini)
- .fini          0x00000000000058b4        0x4 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crti.o
-                0x00000000000058b4                _fini
- .fini          0x00000000000058b8        0x8 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtn.o
+ .fini          0x00000000000058cc        0x4 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crti.o
+                0x00000000000058cc                _fini
+ .fini          0x00000000000058d0        0x8 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtn.o
  *crtbegin.o(.ctors)
  *crtbegin?.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o *crtend?.o) .ctors)
@@ -1404,117 +1377,117 @@ LOAD /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin
  *(.dtors)
  *(.rodata*)
  .rodata._ZTVN8std_msgs4TimeE
-                0x00000000000058c0       0x18 build-nano_33_iot/encoder.ino.o
-                0x00000000000058c0                vtable for std_msgs::Time
- .rodata._ZTVN14rosserial_msgs9TopicInfoE
                 0x00000000000058d8       0x18 build-nano_33_iot/encoder.ino.o
-                0x00000000000058d8                vtable for rosserial_msgs::TopicInfo
- .rodata._ZTVN14rosserial_msgs3LogE
+                0x00000000000058d8                vtable for std_msgs::Time
+ .rodata._ZTVN14rosserial_msgs9TopicInfoE
                 0x00000000000058f0       0x18 build-nano_33_iot/encoder.ino.o
-                0x00000000000058f0                vtable for rosserial_msgs::Log
- .rodata._ZTVN14rosserial_msgs20RequestParamResponseE
+                0x00000000000058f0                vtable for rosserial_msgs::TopicInfo
+ .rodata._ZTVN14rosserial_msgs3LogE
                 0x0000000000005908       0x18 build-nano_33_iot/encoder.ino.o
-                0x0000000000005908                vtable for rosserial_msgs::RequestParamResponse
- .rodata._ZTVN8std_msgs6HeaderE
+                0x0000000000005908                vtable for rosserial_msgs::Log
+ .rodata._ZTVN14rosserial_msgs20RequestParamResponseE
                 0x0000000000005920       0x18 build-nano_33_iot/encoder.ino.o
-                0x0000000000005920                vtable for std_msgs::Header
- .rodata._ZTVN17wheel_tokyo_weili7encoderE
+                0x0000000000005920                vtable for rosserial_msgs::RequestParamResponse
+ .rodata._ZTVN8std_msgs6HeaderE
                 0x0000000000005938       0x18 build-nano_33_iot/encoder.ino.o
-                0x0000000000005938                vtable for wheel_tokyo_weili::encoder
+                0x0000000000005938                vtable for std_msgs::Header
+ .rodata._ZTVN17wheel_tokyo_weili7encoderE
+                0x0000000000005950       0x18 build-nano_33_iot/encoder.ino.o
+                0x0000000000005950                vtable for wheel_tokyo_weili::encoder
  .rodata._ZTVN3ros11NodeHandle_I15ArduinoHardwareLi25ELi25ELi512ELi512EEE
-                0x0000000000005950       0x14 build-nano_33_iot/encoder.ino.o
-                0x0000000000005950                vtable for ros::NodeHandle_<ArduinoHardware, 25, 25, 512, 512>
+                0x0000000000005968       0x14 build-nano_33_iot/encoder.ino.o
+                0x0000000000005968                vtable for ros::NodeHandle_<ArduinoHardware, 25, 25, 512, 512>
  .rodata._GLOBAL__sub_I_nh.str1.1
-                0x0000000000005964        0x0 build-nano_33_iot/encoder.ino.o
+                0x000000000000597c        0x0 build-nano_33_iot/encoder.ino.o
                                           0x9 (size before relaxing)
  .rodata._ZN14rosserial_msgs20RequestParamResponse6getMD5Ev.str1.1
-                0x0000000000005964       0x21 build-nano_33_iot/encoder.ino.o
+                0x000000000000597c       0x21 build-nano_33_iot/encoder.ino.o
  .rodata._ZN14rosserial_msgs3Log6getMD5Ev.str1.1
-                0x0000000000005985       0x21 build-nano_33_iot/encoder.ino.o
+                0x000000000000599d       0x21 build-nano_33_iot/encoder.ino.o
  .rodata._ZN14rosserial_msgs3Log7getTypeEv.str1.1
-                0x00000000000059a6       0x13 build-nano_33_iot/encoder.ino.o
+                0x00000000000059be       0x13 build-nano_33_iot/encoder.ino.o
  .rodata._ZN14rosserial_msgs9TopicInfo6getMD5Ev.str1.1
-                0x00000000000059b9       0x21 build-nano_33_iot/encoder.ino.o
+                0x00000000000059d1       0x21 build-nano_33_iot/encoder.ino.o
  .rodata._ZN14rosserial_msgs9TopicInfo7getTypeEv.str1.1
-                0x00000000000059da       0x19 build-nano_33_iot/encoder.ino.o
+                0x00000000000059f2       0x19 build-nano_33_iot/encoder.ino.o
  .rodata._ZN14rosserial_msgsL12REQUESTPARAME
-                0x00000000000059f3       0x1c build-nano_33_iot/encoder.ino.o
+                0x0000000000005a0b       0x1c build-nano_33_iot/encoder.ino.o
  .rodata._ZN17wheel_tokyo_weili7encoder6getMD5Ev.str1.1
-                0x0000000000005a0f       0x21 build-nano_33_iot/encoder.ino.o
+                0x0000000000005a27       0x21 build-nano_33_iot/encoder.ino.o
  .rodata._ZN17wheel_tokyo_weili7encoder7getTypeEv.str1.1
-                0x0000000000005a30       0x1a build-nano_33_iot/encoder.ino.o
+                0x0000000000005a48       0x1a build-nano_33_iot/encoder.ino.o
  .rodata._ZN3ros11NodeHandle_I15ArduinoHardwareLi25ELi25ELi512ELi512EE15negotiateTopicsEv.str1.1
-                0x0000000000005a4a       0x1a build-nano_33_iot/encoder.ino.o
+                0x0000000000005a62       0x1a build-nano_33_iot/encoder.ino.o
                                           0x1 (size before relaxing)
  .rodata._ZN3ros11NodeHandle_I15ArduinoHardwareLi25ELi25ELi512ELi512EE7publishEiPKNS_3MsgE.str1.1
-                0x0000000000005a4a       0x39 build-nano_33_iot/encoder.ino.o
+                0x0000000000005a62       0x39 build-nano_33_iot/encoder.ino.o
  .rodata._ZN8std_msgs4Time6getMD5Ev.str1.1
-                0x0000000000005a83       0x21 build-nano_33_iot/encoder.ino.o
+                0x0000000000005a9b       0x21 build-nano_33_iot/encoder.ino.o
  .rodata._ZN8std_msgs4Time7getTypeEv.str1.1
-                0x0000000000005aa4        0xe build-nano_33_iot/encoder.ino.o
+                0x0000000000005abc        0xe build-nano_33_iot/encoder.ino.o
  .rodata._ZN8std_msgs6Header6getMD5Ev.str1.1
-                0x0000000000005ab2       0x21 build-nano_33_iot/encoder.ino.o
+                0x0000000000005aca       0x21 build-nano_33_iot/encoder.ino.o
  .rodata._ZN8std_msgs6Header7getTypeEv.str1.1
-                0x0000000000005ad3       0x10 build-nano_33_iot/encoder.ino.o
+                0x0000000000005aeb       0x10 build-nano_33_iot/encoder.ino.o
  .rodata.loop.str1.1
-                0x0000000000005ae3        0x2 build-nano_33_iot/encoder.ino.o
- *fill*         0x0000000000005ae5        0x3 
+                0x0000000000005afb        0x2 build-nano_33_iot/encoder.ino.o
+ *fill*         0x0000000000005afd        0x3 
  .rodata.g_APinDescription
-                0x0000000000005ae8      0x318 build-nano_33_iot/libcore.a(variant.cpp.o)
-                0x0000000000005ae8                g_APinDescription
+                0x0000000000005b00      0x318 build-nano_33_iot/libcore.a(variant.cpp.o)
+                0x0000000000005b00                g_APinDescription
  .rodata._ZTV4Uart
-                0x0000000000005e00       0x34 build-nano_33_iot/libcore.a(Uart.cpp.o)
-                0x0000000000005e00                vtable for Uart
+                0x0000000000005e18       0x34 build-nano_33_iot/libcore.a(Uart.cpp.o)
+                0x0000000000005e18                vtable for Uart
  .rodata._ZN7arduino5Print7printlnEv.str1.1
-                0x0000000000005e34        0x3 build-nano_33_iot/libcore.a(Print.cpp.o)
- *fill*         0x0000000000005e37        0x1 
+                0x0000000000005e4c        0x3 build-nano_33_iot/libcore.a(Print.cpp.o)
+ *fill*         0x0000000000005e4f        0x1 
  .rodata._ZTV26DoubleBufferedEPOutHandler
-                0x0000000000005e38       0x24 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000000005e38                vtable for DoubleBufferedEPOutHandler
+                0x0000000000005e50       0x24 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000005e50                vtable for DoubleBufferedEPOutHandler
  .rodata._ZL14STRING_PRODUCT
-                0x0000000000005e5c       0x14 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000005e74       0x14 build-nano_33_iot/libcore.a(USBCore.cpp.o)
  .rodata._ZL15STRING_LANGUAGE
-                0x0000000000005e70        0x4 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000005e88        0x4 build-nano_33_iot/libcore.a(USBCore.cpp.o)
  .rodata._ZL19STRING_MANUFACTURER
-                0x0000000000005e74        0xc build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000000005e8c        0xc build-nano_33_iot/libcore.a(USBCore.cpp.o)
  .rodata._ZL21USB_DeviceDescriptorB
-                0x0000000000005e80       0x12 build-nano_33_iot/libcore.a(USBCore.cpp.o)
- *fill*         0x0000000000005e92        0x2 
+                0x0000000000005e98       0x12 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+ *fill*         0x0000000000005eaa        0x2 
  .rodata._ZTV7Serial_
-                0x0000000000005e94       0x60 build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x0000000000005e94                vtable for Serial_
+                0x0000000000005eac       0x60 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x0000000000005eac                vtable for Serial_
  *(.eh_frame*)
- .eh_frame      0x0000000000005ef4        0x0 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
- .eh_frame      0x0000000000005ef4        0x4 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtend.o
+ .eh_frame      0x0000000000005f0c        0x0 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
+ .eh_frame      0x0000000000005f0c        0x4 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtend.o
 
-.glue_7         0x0000000000005ef8        0x0
- .glue_7        0x0000000000005ef8        0x0 linker stubs
+.glue_7         0x0000000000005f10        0x0
+ .glue_7        0x0000000000005f10        0x0 linker stubs
 
-.glue_7t        0x0000000000005ef8        0x0
- .glue_7t       0x0000000000005ef8        0x0 linker stubs
+.glue_7t        0x0000000000005f10        0x0
+ .glue_7t       0x0000000000005f10        0x0 linker stubs
 
-.vfp11_veneer   0x0000000000005ef8        0x0
- .vfp11_veneer  0x0000000000005ef8        0x0 linker stubs
+.vfp11_veneer   0x0000000000005f10        0x0
+ .vfp11_veneer  0x0000000000005f10        0x0 linker stubs
 
-.v4_bx          0x0000000000005ef8        0x0
- .v4_bx         0x0000000000005ef8        0x0 linker stubs
+.v4_bx          0x0000000000005f10        0x0
+ .v4_bx         0x0000000000005f10        0x0 linker stubs
 
-.iplt           0x0000000000005ef8        0x0
- .iplt          0x0000000000005ef8        0x0 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
+.iplt           0x0000000000005f10        0x0
+ .iplt          0x0000000000005f10        0x0 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
 
-.rel.dyn        0x0000000000005ef8        0x0
- .rel.iplt      0x0000000000005ef8        0x0 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
+.rel.dyn        0x0000000000005f10        0x0
+ .rel.iplt      0x0000000000005f10        0x0 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0000000000005ef8                __exidx_start = .
+                0x0000000000005f10                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x0000000000005ef8                __exidx_end = .
-                0x0000000000005ef8                __etext = .
+                0x0000000000005f10                __exidx_end = .
+                0x0000000000005f10                __etext = .
 
-.data           0x0000000020000000       0x98 load address 0x0000000000005ef8
+.data           0x0000000020000000       0x98 load address 0x0000000000005f10
                 0x0000000020000000                __data_start__ = .
  *(vtable)
  *(.data*)
@@ -1562,122 +1535,122 @@ LOAD /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin
                 0x0000000020000098                . = ALIGN (0x4)
                 0x0000000020000098                __data_end__ = .
 
-.igot.plt       0x0000000020000098        0x0 load address 0x0000000000005f90
+.igot.plt       0x0000000020000098        0x0 load address 0x0000000000005fa8
  .igot.plt      0x0000000020000098        0x0 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
 
-.bss            0x0000000020000098     0x1370 load address 0x0000000000005f90
+.bss            0x0000000020000098     0x137c load address 0x0000000000005fa8
                 0x0000000020000098                . = ALIGN (0x4)
                 0x0000000020000098                __bss_start__ = .
  *(.bss*)
  .bss           0x0000000020000098       0x1c /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
- .bss.msg       0x00000000200000b4       0x1c build-nano_33_iot/encoder.ino.o
+ .bss.msg       0x00000000200000b4       0x28 build-nano_33_iot/encoder.ino.o
                 0x00000000200000b4                msg
- .bss.nh        0x00000000200000d0      0x534 build-nano_33_iot/encoder.ino.o
-                0x00000000200000d0                nh
- .bss.pos       0x0000000020000604       0x10 build-nano_33_iot/encoder.ino.o
-                0x0000000020000604                pos
- .bss.posi      0x0000000020000614       0x10 build-nano_33_iot/encoder.ino.o
-                0x0000000020000614                posi
+ .bss.nh        0x00000000200000dc      0x534 build-nano_33_iot/encoder.ino.o
+                0x00000000200000dc                nh
+ .bss.pos       0x0000000020000610       0x10 build-nano_33_iot/encoder.ino.o
+                0x0000000020000610                pos
+ .bss.posi      0x0000000020000620       0x10 build-nano_33_iot/encoder.ino.o
+                0x0000000020000620                posi
  .bss.previousMillis
-                0x0000000020000624        0x4 build-nano_33_iot/encoder.ino.o
-                0x0000000020000624                previousMillis
- .bss.pub       0x0000000020000628       0x14 build-nano_33_iot/encoder.ino.o
-                0x0000000020000628                pub
- .bss.Serial1   0x000000002000063c      0x244 build-nano_33_iot/libcore.a(variant.cpp.o)
-                0x000000002000063c                Serial1
- .bss.Serial2   0x0000000020000880      0x244 build-nano_33_iot/libcore.a(variant.cpp.o)
-                0x0000000020000880                Serial2
+                0x0000000020000630        0x4 build-nano_33_iot/encoder.ino.o
+                0x0000000020000630                previousMillis
+ .bss.pub       0x0000000020000634       0x14 build-nano_33_iot/encoder.ino.o
+                0x0000000020000634                pub
+ .bss.Serial1   0x0000000020000648      0x244 build-nano_33_iot/libcore.a(variant.cpp.o)
+                0x0000000020000648                Serial1
+ .bss.Serial2   0x000000002000088c      0x244 build-nano_33_iot/libcore.a(variant.cpp.o)
+                0x000000002000088c                Serial2
  .bss.SerialHCI
-                0x0000000020000ac4      0x244 build-nano_33_iot/libcore.a(variant.cpp.o)
-                0x0000000020000ac4                SerialHCI
- .bss.sercom0   0x0000000020000d08        0x8 build-nano_33_iot/libcore.a(variant.cpp.o)
-                0x0000000020000d08                sercom0
- .bss.sercom1   0x0000000020000d10        0x8 build-nano_33_iot/libcore.a(variant.cpp.o)
-                0x0000000020000d10                sercom1
- .bss.sercom2   0x0000000020000d18        0x8 build-nano_33_iot/libcore.a(variant.cpp.o)
-                0x0000000020000d18                sercom2
- .bss.sercom3   0x0000000020000d20        0x8 build-nano_33_iot/libcore.a(variant.cpp.o)
-                0x0000000020000d20                sercom3
- .bss.sercom4   0x0000000020000d28        0x8 build-nano_33_iot/libcore.a(variant.cpp.o)
-                0x0000000020000d28                sercom4
- .bss.sercom5   0x0000000020000d30        0x8 build-nano_33_iot/libcore.a(variant.cpp.o)
-                0x0000000020000d30                sercom5
+                0x0000000020000ad0      0x244 build-nano_33_iot/libcore.a(variant.cpp.o)
+                0x0000000020000ad0                SerialHCI
+ .bss.sercom0   0x0000000020000d14        0x8 build-nano_33_iot/libcore.a(variant.cpp.o)
+                0x0000000020000d14                sercom0
+ .bss.sercom1   0x0000000020000d1c        0x8 build-nano_33_iot/libcore.a(variant.cpp.o)
+                0x0000000020000d1c                sercom1
+ .bss.sercom2   0x0000000020000d24        0x8 build-nano_33_iot/libcore.a(variant.cpp.o)
+                0x0000000020000d24                sercom2
+ .bss.sercom3   0x0000000020000d2c        0x8 build-nano_33_iot/libcore.a(variant.cpp.o)
+                0x0000000020000d2c                sercom3
+ .bss.sercom4   0x0000000020000d34        0x8 build-nano_33_iot/libcore.a(variant.cpp.o)
+                0x0000000020000d34                sercom4
+ .bss.sercom5   0x0000000020000d3c        0x8 build-nano_33_iot/libcore.a(variant.cpp.o)
+                0x0000000020000d3c                sercom5
  .bss.ISRcallback
-                0x0000000020000d38       0x44 build-nano_33_iot/libcore.a(WInterrupts.c.o)
- .bss.ISRlist   0x0000000020000d7c       0x44 build-nano_33_iot/libcore.a(WInterrupts.c.o)
+                0x0000000020000d44       0x44 build-nano_33_iot/libcore.a(WInterrupts.c.o)
+ .bss.ISRlist   0x0000000020000d88       0x44 build-nano_33_iot/libcore.a(WInterrupts.c.o)
  .bss.enabled.13006
-                0x0000000020000dc0        0x4 build-nano_33_iot/libcore.a(WInterrupts.c.o)
- .bss.nints     0x0000000020000dc4        0x4 build-nano_33_iot/libcore.a(WInterrupts.c.o)
+                0x0000000020000dcc        0x4 build-nano_33_iot/libcore.a(WInterrupts.c.o)
+ .bss.nints     0x0000000020000dd0        0x4 build-nano_33_iot/libcore.a(WInterrupts.c.o)
  .bss._ulTickCount
-                0x0000000020000dc8        0x4 build-nano_33_iot/libcore.a(delay.c.o)
- .bss.usb_isr   0x0000000020000dcc        0x4 build-nano_33_iot/libcore.a(cortex_handlers.c.o)
+                0x0000000020000dd4        0x4 build-nano_33_iot/libcore.a(delay.c.o)
+ .bss.usb_isr   0x0000000020000dd8        0x4 build-nano_33_iot/libcore.a(cortex_handlers.c.o)
  .bss.EndPoints
-                0x0000000020000dd0       0x28 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000020000dd0                EndPoints
+                0x0000000020000ddc       0x28 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000020000ddc                EndPoints
  .bss.USBDevice
-                0x0000000020000df8        0x1 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x0000000020000df8                USBDevice
- *fill*         0x0000000020000df9        0x3 
+                0x0000000020000e04        0x1 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000020000e04                USBDevice
+ *fill*         0x0000000020000e05        0x3 
  .bss._ZL10epHandlers
-                0x0000000020000dfc       0x1c build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000020000e08       0x1c build-nano_33_iot/libcore.a(USBCore.cpp.o)
  .bss._ZL14isEndpointHalt
-                0x0000000020000e18        0x1 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000020000e24        0x1 build-nano_33_iot/libcore.a(USBCore.cpp.o)
  .bss._ZL20LastTransmitTimedOut
-                0x0000000020000e19        0x7 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000020000e25        0x7 build-nano_33_iot/libcore.a(USBCore.cpp.o)
  .bss._ZL21isRemoteWakeUpEnabled
-                0x0000000020000e20        0x1 build-nano_33_iot/libcore.a(USBCore.cpp.o)
- *fill*         0x0000000020000e21        0x3 
+                0x0000000020000e2c        0x1 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+ *fill*         0x0000000020000e2d        0x3 
  .bss._ZL22udd_ep_in_cache_buffer
-                0x0000000020000e24      0x1c0 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x0000000020000e30      0x1c0 build-nano_33_iot/libcore.a(USBCore.cpp.o)
  .bss._ZL23udd_ep_out_cache_buffer
-                0x0000000020000fe4      0x1c0 build-nano_33_iot/libcore.a(USBCore.cpp.o)
- .bss._dry_run  0x00000000200011a4        0x1 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x00000000200011a4                _dry_run
+                0x0000000020000ff0      0x1c0 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+ .bss._dry_run  0x00000000200011b0        0x1 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x00000000200011b0                _dry_run
  .bss._pack_buffer
-                0x00000000200011a5      0x100 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x00000000200011a5                _pack_buffer
+                0x00000000200011b1      0x100 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x00000000200011b1                _pack_buffer
  .bss._pack_message
-                0x00000000200012a5        0x1 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x00000000200012a5                _pack_message
+                0x00000000200012b1        0x1 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x00000000200012b1                _pack_message
  .bss._pack_size
-                0x00000000200012a6        0x2 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x00000000200012a6                _pack_size
+                0x00000000200012b2        0x2 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x00000000200012b2                _pack_size
  .bss._usbConfiguration
-                0x00000000200012a8        0x4 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x00000000200012a8                _usbConfiguration
+                0x00000000200012b4        0x4 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x00000000200012b4                _usbConfiguration
  .bss._usbSetInterface
-                0x00000000200012ac        0x4 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x00000000200012ac                _usbSetInterface
- .bss.usbd      0x00000000200012b0      0x104 build-nano_33_iot/libcore.a(USBCore.cpp.o)
-                0x00000000200012b0                usbd
+                0x00000000200012b8        0x4 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x00000000200012b8                _usbSetInterface
+ .bss.usbd      0x00000000200012bc      0x104 build-nano_33_iot/libcore.a(USBCore.cpp.o)
+                0x00000000200012bc                usbd
  .bss.SerialUSB
-                0x00000000200013b4       0x34 build-nano_33_iot/libcore.a(CDC.cpp.o)
-                0x00000000200013b4                SerialUSB
+                0x00000000200013c0       0x34 build-nano_33_iot/libcore.a(CDC.cpp.o)
+                0x00000000200013c0                SerialUSB
  .bss._ZGVZ12PluggableUSBvE3obj
-                0x00000000200013e8        0x4 build-nano_33_iot/libcore.a(PluggableUSB.cpp.o)
+                0x00000000200013f4        0x4 build-nano_33_iot/libcore.a(PluggableUSB.cpp.o)
  .bss._ZZ12PluggableUSBvE3obj
-                0x00000000200013ec        0xc build-nano_33_iot/libcore.a(PluggableUSB.cpp.o)
+                0x00000000200013f8        0xc build-nano_33_iot/libcore.a(PluggableUSB.cpp.o)
  .bss.__malloc_free_list
-                0x00000000200013f8        0x4 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-nano-mallocr.o)
-                0x00000000200013f8                __malloc_free_list
+                0x0000000020001404        0x4 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-nano-mallocr.o)
+                0x0000000020001404                __malloc_free_list
  .bss.__malloc_sbrk_start
-                0x00000000200013fc        0x4 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-nano-mallocr.o)
-                0x00000000200013fc                __malloc_sbrk_start
+                0x0000000020001408        0x4 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-nano-mallocr.o)
+                0x0000000020001408                __malloc_sbrk_start
  .bss.heap_end.4102
-                0x0000000020001400        0x4 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libnosys.a(sbrk.o)
+                0x000000002000140c        0x4 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libnosys.a(sbrk.o)
  *(COMMON)
- COMMON         0x0000000020001404        0x4 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-reent.o)
-                0x0000000020001404                errno
-                0x0000000020001408                . = ALIGN (0x4)
-                0x0000000020001408                __bss_end__ = .
+ COMMON         0x0000000020001410        0x4 /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-reent.o)
+                0x0000000020001410                errno
+                0x0000000020001414                . = ALIGN (0x4)
+                0x0000000020001414                __bss_end__ = .
 
-.heap           0x0000000020001408        0x0
-                0x0000000020001408                __end__ = .
-                0x0000000020001408                PROVIDE (end, .)
+.heap           0x0000000020001414        0x0
+                0x0000000020001414                __end__ = .
+                0x0000000020001414                PROVIDE (end, .)
  *(.heap*)
-                0x0000000020001408                __HeapLimit = .
+                0x0000000020001414                __HeapLimit = .
 
-.stack_dummy    0x0000000020001408        0x0
+.stack_dummy    0x0000000020001414        0x0
  *(.stack*)
                 0x0000000020008000                __StackTop = (ORIGIN (RAM) + LENGTH (RAM))
                 0x0000000020008000                __StackLimit = (__StackTop - SIZEOF (.stack_dummy))
@@ -2075,7 +2048,6 @@ __aeabi_cdcmple                                   /home/ical/.arduino15/packages
 __aeabi_cdrcmple                                  /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(_arm_cmpdf2.o)
 __aeabi_d2iz                                      /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(fixdfsi.o)
                                                   /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(_fixunsdfsi.o)
-                                                  build-nano_33_iot/libcore.a(duration.cpp.o)
 __aeabi_d2uiz                                     /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(_fixunsdfsi.o)
                                                   build-nano_33_iot/libcore.a(Print.cpp.o)
 __aeabi_dadd                                      /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(adddf3.o)
@@ -2094,13 +2066,10 @@ __aeabi_dcmpun                                    /home/ical/.arduino15/packages
 __aeabi_ddiv                                      /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(divdf3.o)
                                                   build-nano_33_iot/libcore.a(Print.cpp.o)
 __aeabi_dmul                                      /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(muldf3.o)
-                                                  build-nano_33_iot/libcore.a(duration.cpp.o)
                                                   build-nano_33_iot/libcore.a(Print.cpp.o)
 __aeabi_dsub                                      /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(subdf3.o)
                                                   /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(_fixunsdfsi.o)
                                                   build-nano_33_iot/libcore.a(Print.cpp.o)
-__aeabi_i2d                                       /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(floatsidf.o)
-                                                  build-nano_33_iot/libcore.a(duration.cpp.o)
 __aeabi_idiv                                      /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(_divsi3.o)
                                                   build-nano_33_iot/libcore.a(time.cpp.o)
                                                   build-nano_33_iot/libcore.a(USBCore.cpp.o)
@@ -2140,7 +2109,6 @@ __clzdi2                                          /home/ical/.arduino15/packages
 __clzsi2                                          /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(_clzsi2.o)
                                                   /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(_clzdi2.o)
                                                   /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(floatunsidf.o)
-                                                  /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(floatsidf.o)
                                                   /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(subdf3.o)
                                                   /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(muldf3.o)
                                                   /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/libgcc.a(divdf3.o)
@@ -2356,7 +2324,6 @@ memset                                            /home/ical/.arduino15/packages
                                                   build-nano_33_iot/libcore.a(USBCore.cpp.o)
                                                   build-nano_33_iot/libcore.a(Uart.cpp.o)
                                                   build-nano_33_iot/libcore.a(WInterrupts.c.o)
-                                                  build-nano_33_iot/encoder.ino.o
                                                   /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/crt0.o
 micros                                            build-nano_33_iot/libcore.a(delay.c.o)
 millis                                            build-nano_33_iot/libcore.a(delay.c.o)
@@ -2399,9 +2366,6 @@ readEncoder3()                                    build-nano_33_iot/encoder.ino.
 realloc                                           /home/ical/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-realloc.o)
                                                   build-nano_33_iot/encoder.ino.o
 resetExternalChip                                 build-nano_33_iot/libcore.a(delay.c.o)
-ros::Duration::operator*=(double)                 build-nano_33_iot/libcore.a(duration.cpp.o)
-ros::Duration::operator+=(ros::Duration const&)   build-nano_33_iot/libcore.a(duration.cpp.o)
-ros::Duration::operator-=(ros::Duration const&)   build-nano_33_iot/libcore.a(duration.cpp.o)
 ros::NodeHandle_<ArduinoHardware, 25, 25, 512, 512>::connected() build-nano_33_iot/encoder.ino.o
 ros::NodeHandle_<ArduinoHardware, 25, 25, 512, 512>::negotiateTopics() build-nano_33_iot/encoder.ino.o
 ros::NodeHandle_<ArduinoHardware, 25, 25, 512, 512>::publish(int, ros::Msg const*) build-nano_33_iot/encoder.ino.o
@@ -2410,12 +2374,9 @@ ros::NodeHandle_<ArduinoHardware, 25, 25, 512, 512>::spinOnce() build-nano_33_io
 ros::NodeHandle_<ArduinoHardware, 25, 25, 512, 512>::syncTime(unsigned char*) build-nano_33_iot/encoder.ino.o
 ros::Time::fromNSec(long)                         build-nano_33_iot/libcore.a(time.cpp.o)
 ros::Time::operator+=(ros::Duration const&)       build-nano_33_iot/libcore.a(time.cpp.o)
-ros::Time::operator-(ros::Time const&) const      build-nano_33_iot/libcore.a(time.cpp.o)
 ros::Time::operator-=(ros::Duration const&)       build-nano_33_iot/libcore.a(time.cpp.o)
 ros::normalizeSecNSec(unsigned long&, unsigned long&) build-nano_33_iot/libcore.a(time.cpp.o)
                                                   build-nano_33_iot/encoder.ino.o
-ros::normalizeSecNSecSigned(long&, long&)         build-nano_33_iot/libcore.a(duration.cpp.o)
-                                                  build-nano_33_iot/libcore.a(time.cpp.o)
 rosserial_msgs::Log::deserialize(unsigned char*)  build-nano_33_iot/encoder.ino.o
 rosserial_msgs::Log::getMD5()                     build-nano_33_iot/encoder.ino.o
 rosserial_msgs::Log::getType()                    build-nano_33_iot/encoder.ino.o

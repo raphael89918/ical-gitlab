@@ -4,5 +4,6 @@ add_executable(keyCtrl_node src/keyCtrl/keyCtrl.cpp)
 
 add_executable(motorCtrl_node src/motorCtrl/motorCtrl.cpp)
 
-
 add_executable(joystick_node src/joystick/joystick.cpp)
+
+add_executable(encoderCounter_node src/encoderCounter/encoderCounter.cpp)

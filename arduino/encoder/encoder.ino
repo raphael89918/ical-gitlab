@@ -9,7 +9,7 @@ ros::Publisher pub("/encoder", &msg);
 const int ENCODERS = 4; // the number of encoders
 const int ENCA[ENCODERS] = { 2, 9, 11, A1}; // set pin
 const int ENCB[ENCODERS] = { 3, 10, 13, A5}; // set pin
-arduino/encoder/encoder.ino
+
 void readEncoder0();
 void readEncoder1();
 void readEncoder2();
@@ -51,7 +51,7 @@ void loop() {
 
         for(uint8_t i=0;i<4;i++)
         {
-            msg.value[i] = pos[i];
+            msg.wheel_value[i] = pos[i];
         }
 
         pub.publish(&msg);

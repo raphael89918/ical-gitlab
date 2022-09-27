@@ -15,8 +15,12 @@ motorCtrl_lib
 ${catkin_LIBRARIES}
 )
 
-
-
 target_link_libraries(joystick_node
+${catkin_LIBRARIES}
+)
+
+target_link_libraries(encoderCounter_node
+mecanum_wheel_lib
+encoderCounter_lib
 ${catkin_LIBRARIES}
 )
