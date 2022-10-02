@@ -25,7 +25,7 @@ namespace wheel_tokyo_weili
     {
     }
 
-    virtual int serialize(unsigned char *outbuffer) const
+    virtual int serialize(unsigned char *outbuffer) const override
     {
       int offset = 0;
       offset += this->header.serialize(outbuffer + offset);
@@ -53,7 +53,7 @@ namespace wheel_tokyo_weili
       return offset;
     }
 
-    virtual int deserialize(unsigned char *inbuffer)
+    virtual int deserialize(unsigned char *inbuffer) override
     {
       int offset = 0;
       offset += this->header.deserialize(inbuffer + offset);
@@ -83,8 +83,8 @@ namespace wheel_tokyo_weili
      return offset;
     }
 
-    const char * getType(){ return "wheel_tokyo_weili/encoder"; };
-    const char * getMD5(){ return "1e632ad379c69ee5b9c43eef1ba6388d"; };
+    virtual const char * getType() override { return "wheel_tokyo_weili/encoder"; };
+    virtual const char * getMD5() override { return "a45c6596bc958aaf9bcea86d06c447fd"; };
 
   };
 

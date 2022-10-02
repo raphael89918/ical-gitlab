@@ -1,3 +1,5 @@
+#define USE_USBCON
+
 #include <ros.h>
 
 #include <Arduino.h>
