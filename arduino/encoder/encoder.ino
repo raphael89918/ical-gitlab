@@ -1,5 +1,7 @@
-#include <Arduino.h>
 #include <ros.h>
+
+#include <Arduino.h>
+
 #include "wheel_tokyo_weili/encoder.h"
 
 ros::NodeHandle nh;
@@ -16,6 +18,7 @@ void readEncoder2();
 void readEncoder3();
 
 void setup() {
+    //Serial.begin(57600);
     nh.getHardware()->setBaud(9600);
     nh.initNode();
     nh.advertise(pub);
@@ -51,19 +54,19 @@ void loop() {
 
         for(uint8_t i=0;i<4;i++)
         {
-            msg.wheel_value[i] = pos[i];
+            msg.wheel_value[i] = posi[i];
         }
 
         pub.publish(&msg);
         nh.spinOnce();
 
-        Serial.print(pos[0]);
+      /*  Serial.print(pos[0]);
         Serial.print("\t");
         Serial.print(pos[1]);
         Serial.print("\t");
         Serial.print(pos[2]);
         Serial.print("\t");
-        Serial.println(pos[3]);
+        Serial.println(pos[3]);*/
     }
 }
 

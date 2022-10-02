@@ -8,7 +8,7 @@ BOARD_TAG    = mega
 BOARD_SUB	 = atmega2560
 
 MONITOR_PORT = /dev/ttyACM0
-MNITOR_BAUDRATE = 9600
+MNITOR_BAUDRATE = 57600
 ARDUINO_SKETCHBOOK := $(realpath ../libraries)
 CXXFLAGS_STD = -std=gnu++14
 

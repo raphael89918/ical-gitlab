@@ -4,7 +4,7 @@ mecanum_wheel::mecanum_wheel(float wheel_K, float wheel_R, float wheel_RATIO)
 {
     this->wheel_k = wheel_K;
     this->wheel_r = wheel_R;
-    this->wheel_ratio = wheel_RATIO; 
+    this->wheel_ratio = wheel_RATIO;
 }
 
 float* mecanum_wheel::wheel_to_robot(float wheel_fl, float wheel_fr, float wheel_bl, float wheel_br)
@@ -20,10 +20,10 @@ float* mecanum_wheel::robot_to_wheel(float linear_x, float linear_y, float angul
 {
     //轉換成四個輪子的值
     wheel_movement_vector[fl] = (linear_x - linear_y - wheel_k * angular_z) * wheel_ratio;
-    wheel_movement_vector[fr] = (linear_x + linear_y - wheel_k * angular_z) * wheel_ratio;
-    wheel_movement_vector[bl] = (linear_x - linear_y + wheel_k * angular_z) * wheel_ratio;
-    wheel_movement_vector[br] = (linear_x + linear_y + wheel_k * angular_z) * wheel_ratio;
-    
+    wheel_movement_vector[bl] = (linear_x + linear_y - wheel_k * angular_z) * wheel_ratio;
+    wheel_movement_vector[br] = (linear_x - linear_y + wheel_k * angular_z) * wheel_ratio;
+    wheel_movement_vector[fr] = (linear_x + linear_y + wheel_k * angular_z) * wheel_ratio;
+
     //轉換成輪子的速度rps(弧度/s)
     wheel_movement_vector[fl] = wheel_movement_vector[fl]/(2.0 * wheel_r * wheel_pi);
     wheel_movement_vector[fr] = wheel_movement_vector[fr]/(2.0 * wheel_r * wheel_pi);

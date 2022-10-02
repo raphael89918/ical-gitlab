@@ -7,6 +7,8 @@ MotorController motor_controller(nh);
 
 void setup()
 {
+    Serial.begin(57600);
+    nh.getHardware()->setBaud(57600);
     nh.initNode();
     nh.subscribe(motor_controller.m_sub);
 

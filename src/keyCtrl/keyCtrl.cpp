@@ -20,40 +20,40 @@ int main(int argc, char* argv[])
         // Find speeds
             switch (toupper(kbin)) {
             case 'W':
-                msg.linear.x = 0.2;
+                msg.linear.x = 0.5;
                 msg.linear.y = 0;
                 msg.angular.z = 0;
                 break;
 
             case 'D':
                 msg.linear.x = 0;
-                msg.linear.y = -0.2;
+                msg.linear.y = -0.5;
                 msg.angular.z = 0;
                 break;
 
             case 'S':
-                msg.linear.x = -0.2;
+                msg.linear.x = -0.5;
                 msg.linear.y = 0;
                 msg.angular.z = 0;
                 break;
 
             case 'A':
                 msg.linear.x = 0;
-                msg.linear.y = 0.2;
+                msg.linear.y = 0.5;
                 msg.angular.z = 0;
                 break;
 
             case 'Q':
                 msg.linear.x = 0;
                 msg.linear.y = 0;
-                msg.angular.z = 0.2;
+                msg.angular.z = 1;
                 break;
 
 
             case 'E':
                 msg.linear.x = 0;
                 msg.linear.y = 0;
-                msg.angular.z = -0.2;
+                msg.angular.z = 1;
                 break;
 
             default:

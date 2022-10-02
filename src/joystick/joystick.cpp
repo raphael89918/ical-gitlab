@@ -22,9 +22,9 @@ private:
 Teleop::Teleop()
 {
     n.param<int>("axis_linear_x",axis_lin_x,1);
-    n.param<int>("axis_linear_y",axis_lin_y,0);//test
+    n.param<int>("axis_linear_y",axis_lin_y,2);//test
     //n.param<int>("axis_angular",axis_ang,3);
-    n.param<int>("axis_angular",axis_ang,2);
+    n.param<int>("axis_angular",axis_ang,4);
     n.param<double>("vel_linear",vlinear,0.5);
     n.param<double>("vel_angular",vangular,1);
     n.param<int>("button",ton,5);
