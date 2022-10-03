@@ -2,10 +2,10 @@
 
 Encoder::Encoder(const ros::NodeHandle &nh):nh(nh)
 {
-    ROS_INFO("Encoder constructed");    
+    ROS_INFO("Encoder constructed");
 }
 
-void Encoder::start()
+void Encoder::init()
 {
     pub = nh.advertise<wheel_tokyo_weili::encoder>("/wheel_distance",1);
     sub = nh.subscribe("/encoder", 1, &Encoder::callback, this);
@@ -17,6 +17,10 @@ void Encoder::callback(const wheel_tokyo_weili::encoder &wheel_msg)
     fr = wheel_msg.wheel_value[1];
     bl = wheel_msg.wheel_value[2];
     br = wheel_msg.wheel_value[3];
+    for(int i =0;i<3;i++)
+    {
+        distance_msg.wheel_value[i] = wheel_msg.wheel_value[i];
+    }
 }
 
 void Encoder::transform_to_msg(float *dis)
@@ -25,4 +29,9 @@ void Encoder::transform_to_msg(float *dis)
     {
         distance_msg.robot_distance[i] = dis[i];
     }
+}
+
+void Encoder::encoder_publish()
+{
+    pub.publish(distance_msg);
 }

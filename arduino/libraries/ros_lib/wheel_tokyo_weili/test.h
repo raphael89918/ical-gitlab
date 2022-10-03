@@ -20,7 +20,7 @@ namespace wheel_tokyo_weili
     {
     }
 
-    virtual int serialize(unsigned char *outbuffer) const override
+    virtual int serialize(unsigned char *outbuffer) const
     {
       int offset = 0;
       union {
@@ -33,7 +33,7 @@ namespace wheel_tokyo_weili
       return offset;
     }
 
-    virtual int deserialize(unsigned char *inbuffer) override
+    virtual int deserialize(unsigned char *inbuffer)
     {
       int offset = 0;
       union {
@@ -47,8 +47,8 @@ namespace wheel_tokyo_weili
      return offset;
     }
 
-    virtual const char * getType() override { return "wheel_tokyo_weili/test"; };
-    virtual const char * getMD5() override { return "53f660718d381cdd11604ea1445a3cc7"; };
+    const char * getType(){ return "wheel_tokyo_weili/test"; };
+    const char * getMD5(){ return "53f660718d381cdd11604ea1445a3cc7"; };
 
   };
 
