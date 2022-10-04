@@ -1,2 +1,2 @@
-stty -F /dev/ttyACM1 raw 9600
-cat /dev/ttyACM1
+stty -F /dev/ttyACM0 raw 57600
+cat /dev/ttyACM0

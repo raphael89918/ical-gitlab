@@ -17,8 +17,8 @@ void callback(const wheel_tokyo_weili::wheel_planner &p_msg);
 ros::Subscriber<wheel_tokyo_weili::wheel_planner> sub("/wheel/planner", &callback);
 
 const int ENCODERS = 4; // the number of encoders
-const int ENCA[ENCODERS] = { 2, 9, 11, A1}; // set pin
-const int ENCB[ENCODERS] = { 3, 10, 13, A5}; // set pin
+const int ENCA[ENCODERS] = { 9, 11, 2, A1}; // set pin
+const int ENCB[ENCODERS] = { 10, 13, 3, A5}; // set pin
 
 void readEncoder0();
 void readEncoder1();
@@ -35,8 +35,6 @@ void setup() {
     nh.advertise(pub);
     nh.subscribe(sub);
 
-    pos[ENCODERS] = {};
-
     pinMode(ENCA[0],INPUT);
     pinMode(ENCB[0],INPUT);
     pinMode(ENCA[1],INPUT);
@@ -47,8 +45,8 @@ void setup() {
     pinMode(ENCB[3],INPUT);
 
     attachInterrupt(ENCB[0],readEncoder0,RISING);
-    attachInterrupt(ENCB[1],readEncoder1,RISING);
-    attachInterrupt(ENCA[2],readEncoder2,RISING);
+    attachInterrupt(ENCA[1],readEncoder1,RISING);
+    attachInterrupt(ENCB[2],readEncoder2,RISING);
     attachInterrupt(ENCA[3],readEncoder3,RISING);
 }
 
@@ -59,20 +57,20 @@ void loop() {
     if (currentMillis - previousMillis > interval)
     {
         previousMillis = currentMillis;
-        pos[0] = posi[0];//因為電路板是做反的 fl
-        pos[1] = posi[1];//因為電路板是做反的 bl
-        pos[2] = posi[2];//fr
-        pos[3] = posi[3];//br
+        pos[0] = posi[0];
+        pos[1] = posi[1];
+        pos[2] = posi[2];
+        pos[3] = posi[3];
 
         for(uint8_t i=0;i<4;i++)
         {
-            e_msg.wheel_value[i] = posi[i];
+            e_msg.wheel_value[i] = pos[i];
         }
 
         pub.publish(&e_msg);
         nh.spinOnce();
-
-      /*  Serial.print(pos[0]);
+/*
+        Serial.print(pos[0]);
         Serial.print("\t");
         Serial.print(pos[1]);
         Serial.print("\t");
@@ -93,7 +91,7 @@ void readEncoder0(){
     }
 }
 void readEncoder1(){
-    volatile boolean b = digitalRead(ENCA[1]);
+    volatile boolean b = digitalRead(ENCB[1]);
     if(b > 0){
         posi[1]++;
     }
@@ -102,7 +100,7 @@ void readEncoder1(){
     }
 }
 void readEncoder2(){
-    volatile boolean b = digitalRead(ENCB[2]);
+    volatile boolean b = digitalRead(ENCA[2]);
     if(b > 0){
         posi[2]++;
     }
@@ -125,6 +123,7 @@ void callback(const wheel_tokyo_weili::wheel_planner &p_msg)
     if(p_msg.encoder_reset == true)
     {
         pos[ENCODERS] = {};
+        posi[ENCODERS] = {};
     }
 }
 

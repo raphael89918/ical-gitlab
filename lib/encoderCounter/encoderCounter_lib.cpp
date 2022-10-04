@@ -17,7 +17,7 @@ void Encoder::callback(const wheel_tokyo_weili::encoder &wheel_msg)
     fr = wheel_msg.wheel_value[1];
     bl = wheel_msg.wheel_value[2];
     br = wheel_msg.wheel_value[3];
-    for(int i =0;i<3;i++)
+    for(int i =0;i<4;i++)
     {
         distance_msg.wheel_value[i] = wheel_msg.wheel_value[i];
     }
