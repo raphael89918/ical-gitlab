@@ -5,7 +5,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include "ros/msg.h"
-#include "std_msgs/Header.h"
 
 namespace wheel_tokyo_weili
 {
@@ -13,13 +12,10 @@ namespace wheel_tokyo_weili
   class encoder : public ros::Msg
   {
     public:
-      typedef std_msgs::Header _header_type;
-      _header_type header;
       int32_t wheel_value[4];
       float robot_distance[3];
 
     encoder():
-      header(),
       wheel_value(),
       robot_distance()
     {
@@ -28,7 +24,6 @@ namespace wheel_tokyo_weili
     virtual int serialize(unsigned char *outbuffer) const
     {
       int offset = 0;
-      offset += this->header.serialize(outbuffer + offset);
       for( uint32_t i = 0; i < 4; i++){
       union {
         int32_t real;
@@ -59,7 +54,6 @@ namespace wheel_tokyo_weili
     virtual int deserialize(unsigned char *inbuffer)
     {
       int offset = 0;
-      offset += this->header.deserialize(inbuffer + offset);
       for( uint32_t i = 0; i < 4; i++){
       union {
         int32_t real;
@@ -90,7 +84,7 @@ namespace wheel_tokyo_weili
     }
 
     const char * getType(){ return "wheel_tokyo_weili/encoder"; };
-    const char * getMD5(){ return "f8faa90e9a0dc74c97d5d4472bf2ac10"; };
+    const char * getMD5(){ return "9590e44fe5f661b927bb4f0a55564b43"; };
 
   };
 

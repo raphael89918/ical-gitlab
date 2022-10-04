@@ -11,8 +11,10 @@
 ros::NodeHandle nh;
 wheel_tokyo_weili::encoder e_msg;
 ros::Publisher pub("/encoder", &e_msg);
-wheel_tokyo_weili::wheel_planner p_msg
-ros::Subscriber sub("/encoder/interrupt", &p_msg);
+wheel_tokyo_weili::wheel_planner p_msg;
+
+void callback(const wheel_tokyo_weili::wheel_planner &p_msg);
+ros::Subscriber<wheel_tokyo_weili::wheel_planner> sub("/wheel/planner", &callback);
 
 const int ENCODERS = 4; // the number of encoders
 const int ENCA[ENCODERS] = { 2, 9, 11, A1}; // set pin
@@ -65,7 +67,7 @@ void loop() {
             e_msg.wheel_value[i] = posi[i];
         }
 
-        pub.publish(&msg);
+        pub.publish(&e_msg);
         nh.spinOnce();
 
       /*  Serial.print(pos[0]);
@@ -115,3 +117,12 @@ void readEncoder3(){
         posi[3]--;
     }
 }
+
+void callback(const wheel_tokyo_weili::wheel_planner &p_msg)
+{
+    if(p_msg.encoder_reset == true)
+    {
+        pos[ENCODERS] = {};
+    }
+}
+

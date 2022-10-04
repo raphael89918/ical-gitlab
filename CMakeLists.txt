@@ -72,6 +72,7 @@ add_message_files(
     test.msg
     motor.msg
     encoder.msg
+    wheel_planner.msg
     )
 
 ## Generate services in the 'srv' folder
