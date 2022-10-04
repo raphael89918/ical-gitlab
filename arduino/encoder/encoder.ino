@@ -25,12 +25,17 @@ void readEncoder1();
 void readEncoder2();
 void readEncoder3();
 
+int pos[ENCODERS] = {};
+volatile int posi[ENCODERS] = {};
+
 void setup() {
     //Serial.begin(57600);
     nh.getHardware()->setBaud(57600);
     nh.initNode();
     nh.advertise(pub);
     nh.subscribe(sub);
+
+    pos[ENCODERS] = {};
 
     pinMode(ENCA[0],INPUT);
     pinMode(ENCB[0],INPUT);
@@ -49,9 +54,6 @@ void setup() {
 
 int interval = 100;
 int previousMillis = 0;
-int pos[ENCODERS] = {};
-volatile int posi[ENCODERS] = {};
-
 void loop() {
     int currentMillis = millis();
     if (currentMillis - previousMillis > interval)
