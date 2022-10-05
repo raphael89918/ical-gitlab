@@ -7,7 +7,7 @@ Encoder::Encoder(const ros::NodeHandle &nh):nh(nh)
 
 void Encoder::init()
 {
-    pub = nh.advertise<wheel_tokyo_weili::encoder>("/wheel_distance",1);
+    pub = nh.advertise<wheel_tokyo_weili::encoder>("/wheel/distance",1);
     sub = nh.subscribe("/encoder", 1, &Encoder::callback, this);
 }
 

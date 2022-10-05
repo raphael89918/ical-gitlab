@@ -24,3 +24,8 @@ mecanum_wheel_lib
 encoderCounter_lib
 ${catkin_LIBRARIES}
 )
+
+target_link_libraries(wheel_planner_node
+wheel_planner_lib
+${catkin_LIBRARIES}
+)

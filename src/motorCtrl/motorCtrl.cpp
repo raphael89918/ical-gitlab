@@ -5,7 +5,6 @@ int main (int argc, char **argv)
 {
     ros::init(argc, argv, "motorCtrl_node");
     ros::NodeHandle nh;
-    ros::Rate loop_rate(30);
 
     mecanum_wheel mecanum_wheel(0.21, 0.035, 1);
     motorCtrl motorCtrl(nh);
