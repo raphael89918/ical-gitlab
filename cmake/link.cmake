@@ -1,6 +1,5 @@
 target_link_libraries(test_node
-test_lib
-${OpenCV_LIBS}
+conio
 ${catkin_LIBRARIES}
 )
 

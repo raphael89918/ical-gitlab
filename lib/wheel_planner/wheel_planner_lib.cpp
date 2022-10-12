@@ -1,9 +1,9 @@
 #include "wheel_planner/wheel_planner.hpp"
-
+#include <iostream>
 wheel_planner::wheel_planner(const ros::NodeHandle &encoder_nh, const ros::NodeHandle &planner_nh, const ros::NodeHandle &wheelCtrl_nh)
-    :   planner_nh(planner_nh), encoder_nh(encoder_nh), wheelCtrl_nh(wheelCtrl_nh)
+    : planner_nh(planner_nh), encoder_nh(encoder_nh), wheelCtrl_nh(wheelCtrl_nh)
 {
-    
+
     ROS_INFO("wheel_planner constructed");
 }
 
@@ -11,15 +11,14 @@ void wheel_planner::init_pubsub()
 {
     pub = wheelCtrl_nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
     encoder_sub = encoder_nh.subscribe("/wheel/distance", 1, &wheel_planner::encoder_callback, this);
-    planner_sub = planner_nh.subscribe("/wheel/planner", 1 ,&wheel_planner::planner_callback, this);
-    
+    planner_sub = planner_nh.subscribe("/wheel/planner", 1, &wheel_planner::planner_callback, this);
 }
 
 void wheel_planner::encoder_callback(const wheel_tokyo_weili::encoder &msg)
 {
-    this->encRobot_x = msg.robot_distance[0];
-    this->encRobot_y = msg.robot_distance[1];
-    this->encRobot_z = msg.robot_distance[2];
+    this->encRobot_x = msg.robot_distance[0] * 21.2;
+    this->encRobot_y = msg.robot_distance[1] * 20.03;
+    this->encRobot_z = msg.robot_distance[2] * 7;
 }
 
 void wheel_planner::planner_callback(const wheel_tokyo_weili::wheel_planner &msg)
@@ -35,11 +34,11 @@ void wheel_planner::planner_callback(const wheel_tokyo_weili::wheel_planner &msg
 
 void wheel_planner::ctrl_method()
 {
-    if(dis_x=!0||dis_y!=0||dis_z!=0)
+    if (dis_x = !0 || dis_y != 0 || dis_z != 0)
     {
         distance_processed();
     }
-    if(vel_x=!0||vel_y!=0||vel_z!=0)
+    if (vel_x = !0 || vel_y != 0 || vel_z != 0)
     {
         velocity_processed();
     }
@@ -49,58 +48,61 @@ void wheel_planner::distance_processed()
 {
     ros::Rate loop_rate(10);
     ros::spinOnce();
-    if(dis_x>0)
-    {
-        msg.linear.x = 0.4;
-        msg.linear.y = 0;
-        msg.angular.z = 0;
-    }
-    else if(dis_x<0)
-    {
-        msg.linear.x = -0.4;
-        msg.linear.y = 0;
-        msg.angular.z = 0;
-    }
-    while(fabs(encRobot_x) > fabs(dis_x))
-    {
-        pub.publish(msg);
-        ros::spinOnce();
-        loop_rate.sleep();
-    }
     
-    if(dis_y>0)
+    while (fabs(encRobot_x) < fabs(dis_x))
     {
-        msg.linear.x = 0;
-        msg.linear.y = 0.4;
-        msg.angular.z = 0;
-    }
-    else if(dis_y<0)
-    {
-        msg.linear.x = 0;
-        msg.linear.y = -0.4;
-        msg.angular.z = 0;
-    }
-    while(fabs(encRobot_y) > fabs(dis_y))
-    {
+        
+        if (dis_x > 0)
+        {
+            msg.linear.x = 0.5;
+            msg.linear.y = 0;
+            msg.angular.z = 0;
+            
+        }
+        if (dis_x < 0)
+        {
+            msg.linear.x = -0.5;
+            msg.linear.y = 0;
+            msg.angular.z = 0;
+        }
         pub.publish(msg);
         ros::spinOnce();
         loop_rate.sleep();
     }
 
-    if(dis_z>0)
+    while (fabs(encRobot_y) < fabs(dis_y))
     {
-        msg.linear.x = 0;
-        msg.linear.y = 0;
-        msg.angular.z = 1;
+        if (dis_y > 0)
+        {
+            msg.linear.x = 0;
+            msg.linear.y = 0.5;
+            msg.angular.z = 0;
+        }
+        if (dis_y < 0)
+        {
+            msg.linear.x = 0;
+            msg.linear.y = -0.5;
+            msg.angular.z = 0;
+        }
+        pub.publish(msg);
+        ros::spinOnce();
+        loop_rate.sleep();
     }
-    else if(dis_z<0)
+
+    while (fabs(encRobot_z) < fabs(dis_z))
     {
-        msg.linear.x = 0;
-        msg.linear.y = 0;
-        msg.angular.z = 1;
-    }
-    while(fabs(encRobot_z) > fabs(dis_z))
-    {
+        if (dis_z > 0)
+        {
+            msg.linear.x = 0;
+            msg.linear.y = 0;
+            msg.angular.z = 1;
+        }
+        if (dis_z < 0)
+        {
+            msg.linear.x = 0;
+            msg.linear.y = 0;
+            msg.angular.z = -1;
+        }
         pub.publish(msg);
         ros::spinOnce();
         loop_rate.sleep();
@@ -110,7 +112,7 @@ void wheel_planner::distance_processed()
 void wheel_planner::velocity_processed()
 {
     ros::Rate loop_rate(10);
-    while(vel_x!=0||vel_y!=0||vel_z!=0)
+    while (vel_x != 0 || vel_y != 0 || vel_z != 0)
     {
         msg.linear.x = vel_x;
         msg.linear.y = vel_y;

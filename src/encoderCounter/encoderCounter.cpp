@@ -16,8 +16,8 @@ int main(int argc, char **argv)
         ros::Rate loop_rate(10);
         ros::spinOnce();
         Encoder.transform_to_msg(mecanum_wheel.wheel_to_robot(Encoder.fl,Encoder.fr,Encoder.bl,Encoder.br));
-        Encoder.encoder_publish();
 
+        Encoder.encoder_publish();
         loop_rate.sleep();
     }
 }

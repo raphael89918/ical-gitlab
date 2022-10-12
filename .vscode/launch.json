@@ -1,12 +1,15 @@
 {
+    // 使用 IntelliSense 以得知可用的屬性。
+    // 暫留以檢視現有屬性的描述。
+    // 如需詳細資訊，請瀏覽: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
             "name": "ROS: Launch",
             "type": "ros",
             "request": "launch",
-            "target": "${workspaceFolder}/src/encoderCounter/encoderCounter.cpp", // <<< Configure path to your launch file
-            "preLaunchTask": "make_debug", // <<< This is the task that will run before debugging starts
+            "target": "/home/ical/tokyo_2022/src/wheel_tokyo_weili/launch/test_wheel_planner.launch"
         }
+
     ]
 }

@@ -1,20 +1,18 @@
 #define USE_USBCON
 
 #include <ros.h>
-
 #include <Arduino.h>
-
 #include "wheel_tokyo_weili/encoder.h"
-
 #include "wheel_tokyo_weili/wheel_planner.h"
 
 ros::NodeHandle nh;
 wheel_tokyo_weili::encoder e_msg;
+
 ros::Publisher pub("/encoder", &e_msg);
 wheel_tokyo_weili::wheel_planner p_msg;
 
 void callback(const wheel_tokyo_weili::wheel_planner &p_msg);
-ros::Subscriber<wheel_tokyo_weili::wheel_planner> sub("/wheel/planner", &callback);
+ros::Subscriber<wheel_tokyo_weili::wheel_planner>sub("/wheel/planner", &callback);
 
 const int ENCODERS = 4; // the number of encoders
 const int ENCA[ENCODERS] = { 9, 11, 2, A1}; // set pin
@@ -66,17 +64,12 @@ void loop() {
         {
             e_msg.wheel_value[i] = pos[i];
         }
-
+        for(uint8_t i=0;i<3;i++)
+        {
+            e_msg.robot_distance[i] = 0;
+        }
         pub.publish(&e_msg);
         nh.spinOnce();
-/*
-        Serial.print(pos[0]);
-        Serial.print("\t");
-        Serial.print(pos[1]);
-        Serial.print("\t");
-        Serial.print(pos[2]);
-        Serial.print("\t");
-        Serial.println(pos[3]);*/
     }
 }
 
@@ -122,8 +115,12 @@ void callback(const wheel_tokyo_weili::wheel_planner &p_msg)
 {
     if(p_msg.encoder_reset == true)
     {
-        pos[ENCODERS] = {};
-        posi[ENCODERS] = {};
+        for(int i=0;i<4;i++)
+        {
+            pos[i] = 0;
+            posi[i] = 0;
+        }
+
     }
 }
 

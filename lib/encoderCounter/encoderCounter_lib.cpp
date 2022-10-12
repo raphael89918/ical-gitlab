@@ -9,6 +9,9 @@ void Encoder::init()
 {
     pub = nh.advertise<wheel_tokyo_weili::encoder>("/wheel/distance",1);
     sub = nh.subscribe("/encoder", 1, &Encoder::callback, this);
+    distance_msg.robot_distance[0] = 0;
+    distance_msg.robot_distance[1] = 0;
+    distance_msg.robot_distance[2] = 0;
 }
 
 void Encoder::callback(const wheel_tokyo_weili::encoder &wheel_msg)

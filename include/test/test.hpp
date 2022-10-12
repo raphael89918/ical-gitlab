@@ -1,18 +1,13 @@
-#ifndef _TEST_H_
-#define _TEST_H_
-
 #include "ros/ros.h"
 #include "std_msgs/Bool.h"
 #include <cstdlib>
-#include <vector>
-#include <opencv4/opencv2/opencv.hpp>
+#include "wheel_planner/wheel_planner.hpp"
 
 class Test
 {
 public:
     Test();
     ~Test();
-
     void print(std::string str);
 
 private:
@@ -21,4 +16,3 @@ private:
     int c;
 };
 
-#endif

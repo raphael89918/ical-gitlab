@@ -9,6 +9,7 @@ int main(int argc, char **argv)
     
     wheel_planner wheel_planner(encoder_nh, planner_nh, wheelCtrl_nh);
     wheel_planner.init_pubsub();
+    
     while(ros::ok())
     {
         ros::Rate loop_rate(10);
