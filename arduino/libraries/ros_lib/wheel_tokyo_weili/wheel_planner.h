@@ -22,10 +22,10 @@ namespace wheel_tokyo_weili
       _distance_z_type distance_z;
       typedef float _velocity_x_type;
       _velocity_x_type velocity_x;
-      typedef float _velockty_y_type;
-      _velockty_y_type velockty_y;
-      typedef float _velockty_z_type;
-      _velockty_z_type velockty_z;
+      typedef float _velocity_y_type;
+      _velocity_y_type velocity_y;
+      typedef float _velocity_z_type;
+      _velocity_z_type velocity_z;
 
     wheel_planner():
       encoder_reset(0),
@@ -33,8 +33,8 @@ namespace wheel_tokyo_weili
       distance_y(0),
       distance_z(0),
       velocity_x(0),
-      velockty_y(0),
-      velockty_z(0)
+      velocity_y(0),
+      velocity_z(0)
     {
     }
 
@@ -91,23 +91,23 @@ namespace wheel_tokyo_weili
       union {
         float real;
         uint32_t base;
-      } u_velockty_y;
-      u_velockty_y.real = this->velockty_y;
-      *(outbuffer + offset + 0) = (u_velockty_y.base >> (8 * 0)) & 0xFF;
-      *(outbuffer + offset + 1) = (u_velockty_y.base >> (8 * 1)) & 0xFF;
-      *(outbuffer + offset + 2) = (u_velockty_y.base >> (8 * 2)) & 0xFF;
-      *(outbuffer + offset + 3) = (u_velockty_y.base >> (8 * 3)) & 0xFF;
-      offset += sizeof(this->velockty_y);
+      } u_velocity_y;
+      u_velocity_y.real = this->velocity_y;
+      *(outbuffer + offset + 0) = (u_velocity_y.base >> (8 * 0)) & 0xFF;
+      *(outbuffer + offset + 1) = (u_velocity_y.base >> (8 * 1)) & 0xFF;
+      *(outbuffer + offset + 2) = (u_velocity_y.base >> (8 * 2)) & 0xFF;
+      *(outbuffer + offset + 3) = (u_velocity_y.base >> (8 * 3)) & 0xFF;
+      offset += sizeof(this->velocity_y);
       union {
         float real;
         uint32_t base;
-      } u_velockty_z;
-      u_velockty_z.real = this->velockty_z;
-      *(outbuffer + offset + 0) = (u_velockty_z.base >> (8 * 0)) & 0xFF;
-      *(outbuffer + offset + 1) = (u_velockty_z.base >> (8 * 1)) & 0xFF;
-      *(outbuffer + offset + 2) = (u_velockty_z.base >> (8 * 2)) & 0xFF;
-      *(outbuffer + offset + 3) = (u_velockty_z.base >> (8 * 3)) & 0xFF;
-      offset += sizeof(this->velockty_z);
+      } u_velocity_z;
+      u_velocity_z.real = this->velocity_z;
+      *(outbuffer + offset + 0) = (u_velocity_z.base >> (8 * 0)) & 0xFF;
+      *(outbuffer + offset + 1) = (u_velocity_z.base >> (8 * 1)) & 0xFF;
+      *(outbuffer + offset + 2) = (u_velocity_z.base >> (8 * 2)) & 0xFF;
+      *(outbuffer + offset + 3) = (u_velocity_z.base >> (8 * 3)) & 0xFF;
+      offset += sizeof(this->velocity_z);
       return offset;
     }
 
@@ -169,30 +169,30 @@ namespace wheel_tokyo_weili
       union {
         float real;
         uint32_t base;
-      } u_velockty_y;
-      u_velockty_y.base = 0;
-      u_velockty_y.base |= ((uint32_t) (*(inbuffer + offset + 0))) << (8 * 0);
-      u_velockty_y.base |= ((uint32_t) (*(inbuffer + offset + 1))) << (8 * 1);
-      u_velockty_y.base |= ((uint32_t) (*(inbuffer + offset + 2))) << (8 * 2);
-      u_velockty_y.base |= ((uint32_t) (*(inbuffer + offset + 3))) << (8 * 3);
-      this->velockty_y = u_velockty_y.real;
-      offset += sizeof(this->velockty_y);
+      } u_velocity_y;
+      u_velocity_y.base = 0;
+      u_velocity_y.base |= ((uint32_t) (*(inbuffer + offset + 0))) << (8 * 0);
+      u_velocity_y.base |= ((uint32_t) (*(inbuffer + offset + 1))) << (8 * 1);
+      u_velocity_y.base |= ((uint32_t) (*(inbuffer + offset + 2))) << (8 * 2);
+      u_velocity_y.base |= ((uint32_t) (*(inbuffer + offset + 3))) << (8 * 3);
+      this->velocity_y = u_velocity_y.real;
+      offset += sizeof(this->velocity_y);
       union {
         float real;
         uint32_t base;
-      } u_velockty_z;
-      u_velockty_z.base = 0;
-      u_velockty_z.base |= ((uint32_t) (*(inbuffer + offset + 0))) << (8 * 0);
-      u_velockty_z.base |= ((uint32_t) (*(inbuffer + offset + 1))) << (8 * 1);
-      u_velockty_z.base |= ((uint32_t) (*(inbuffer + offset + 2))) << (8 * 2);
-      u_velockty_z.base |= ((uint32_t) (*(inbuffer + offset + 3))) << (8 * 3);
-      this->velockty_z = u_velockty_z.real;
-      offset += sizeof(this->velockty_z);
+      } u_velocity_z;
+      u_velocity_z.base = 0;
+      u_velocity_z.base |= ((uint32_t) (*(inbuffer + offset + 0))) << (8 * 0);
+      u_velocity_z.base |= ((uint32_t) (*(inbuffer + offset + 1))) << (8 * 1);
+      u_velocity_z.base |= ((uint32_t) (*(inbuffer + offset + 2))) << (8 * 2);
+      u_velocity_z.base |= ((uint32_t) (*(inbuffer + offset + 3))) << (8 * 3);
+      this->velocity_z = u_velocity_z.real;
+      offset += sizeof(this->velocity_z);
      return offset;
     }
 
     const char * getType(){ return "wheel_tokyo_weili/wheel_planner"; };
-    const char * getMD5(){ return "9e1d096169b9544e9a2da0f3fde9f677"; };
+    const char * getMD5(){ return "6373531774ccfef7fde5dc168cc6f19f"; };
 
   };
 
