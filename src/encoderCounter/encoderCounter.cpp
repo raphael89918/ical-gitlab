@@ -5,7 +5,6 @@ int main(int argc, char **argv)
 {
     ros::init(argc, argv, "encoderCounter_node");
     ros::NodeHandle nh;
-    ros::Rate loop_rate(30);
 
     Encoder Encoder(nh);
     mecanum_wheel mecanum_wheel(0.21, 0.035, 1);

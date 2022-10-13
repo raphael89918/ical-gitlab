@@ -20,7 +20,7 @@ int main(int argc, char **argv)
             switch (toupper(kbin))
             {
             case 'W':
-                msg.distance_x = 50;
+                msg.distance_x = 30;
                 msg.distance_y = 0;
                 msg.distance_z = 0;
                 break;
@@ -51,6 +51,9 @@ int main(int argc, char **argv)
                 break;
             case 'R':
                 msg.encoder_reset = true;
+                msg.distance_x = 0;
+                msg.distance_y = 0;
+                msg.distance_z = 0;
                 break;
             }
             pub.publish(msg);

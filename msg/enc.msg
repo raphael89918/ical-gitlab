@@ -1,1 +1,0 @@
-int32[4] wheel_value

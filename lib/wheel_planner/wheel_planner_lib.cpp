@@ -16,9 +16,10 @@ void wheel_planner::init_pubsub()
 
 void wheel_planner::encoder_callback(const wheel_tokyo_weili::encoder &msg)
 {
-    this->encRobot_x = msg.robot_distance[0] * 21.2;
-    this->encRobot_y = msg.robot_distance[1] * 20.03;
-    this->encRobot_z = msg.robot_distance[2] * 7;
+    this->encRobot_x = msg.robot_distance[0] / 21.2;
+    this->encRobot_y = msg.robot_distance[1] / 20.03;
+    this->encRobot_z = msg.robot_distance[2] / 7;
+    //std::cout << "encRobot" << encRobot_x << std::endl;
 }
 
 void wheel_planner::planner_callback(const wheel_tokyo_weili::wheel_planner &msg)
@@ -30,36 +31,35 @@ void wheel_planner::planner_callback(const wheel_tokyo_weili::wheel_planner &msg
     this->vel_x = msg.velocity_x;
     this->vel_y = msg.velockty_y;
     this->vel_z = msg.velockty_z;
+
+    std::cout << dis_x << std::endl;
 }
 
 void wheel_planner::ctrl_method()
 {
-    if (dis_x = !0 || dis_y != 0 || dis_z != 0)
+    if(dis_x != 0)
     {
-        distance_processed();
-    }
-    if (vel_x = !0 || vel_y != 0 || vel_z != 0)
-    {
-        velocity_processed();
+        distance_processed_x();
     }
 }
 
-void wheel_planner::distance_processed()
+void wheel_planner::distance_processed_x()
 {
-    ros::Rate loop_rate(10);
+    ros::Rate loop_rate(100);
     ros::spinOnce();
-    
-    while (fabs(encRobot_x) < fabs(dis_x))
+    float temp_x = dis_x;
+    while (fabs(encRobot_x) < fabs(temp_x))
     {
-        
-        if (dis_x > 0)
+        std::cout << "temp_x" << temp_x << std::endl;
+        std::cout << "encRobt_x" << encRobot_x << std::endl;
+        if (temp_x > 0)
         {
             msg.linear.x = 0.5;
             msg.linear.y = 0;
             msg.angular.z = 0;
             
         }
-        if (dis_x < 0)
+        if (temp_x < 0)
         {
             msg.linear.x = -0.5;
             msg.linear.y = 0;
@@ -69,44 +69,11 @@ void wheel_planner::distance_processed()
         ros::spinOnce();
         loop_rate.sleep();
     }
-
-    while (fabs(encRobot_y) < fabs(dis_y))
-    {
-        if (dis_y > 0)
-        {
-            msg.linear.x = 0;
-            msg.linear.y = 0.5;
-            msg.angular.z = 0;
-        }
-        if (dis_y < 0)
-        {
-            msg.linear.x = 0;
-            msg.linear.y = -0.5;
-            msg.angular.z = 0;
-        }
-        pub.publish(msg);
-        ros::spinOnce();
-        loop_rate.sleep();
-    }
-
-    while (fabs(encRobot_z) < fabs(dis_z))
-    {
-        if (dis_z > 0)
-        {
-            msg.linear.x = 0;
-            msg.linear.y = 0;
-            msg.angular.z = 1;
-        }
-        if (dis_z < 0)
-        {
-            msg.linear.x = 0;
-            msg.linear.y = 0;
-            msg.angular.z = -1;
-        }
-        pub.publish(msg);
-        ros::spinOnce();
-        loop_rate.sleep();
-    }
+    dis_x = 0;
+    msg.linear.x = 0;
+    msg.linear.y = 0;
+    msg.angular.z = 0;
+    pub.publish(msg);
 }
 
 void wheel_planner::velocity_processed()

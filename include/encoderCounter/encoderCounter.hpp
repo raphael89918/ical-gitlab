@@ -16,7 +16,8 @@ public:
 
     float fl, fr, bl, br;
     float Encoder_robot[3];
-    void transform_to_msg(float *dis);
+    void transform_to_msg(float dis[]);
+
     ros::Publisher pub;
 
     void encoder_publish();

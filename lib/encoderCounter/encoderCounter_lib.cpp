@@ -26,7 +26,7 @@ void Encoder::callback(const wheel_tokyo_weili::encoder &wheel_msg)
     }
 }
 
-void Encoder::transform_to_msg(float *dis)
+void Encoder::transform_to_msg(float dis[])
 {
     for(int i=0;i<3;i++)
     {

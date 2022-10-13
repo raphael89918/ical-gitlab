@@ -15,7 +15,11 @@ private:
     geometry_msgs::Twist msg;
     void encoder_callback(const wheel_tokyo_weili::encoder &msg);
     void planner_callback(const wheel_tokyo_weili::wheel_planner &msg);
-    void distance_processed();
+    
+    void distance_processed_x();
+    void distance_processed_y();
+    void distance_processed_z();
+
     void velocity_processed();
 
     float encRobot_x, encRobot_y, encRobot_z;
