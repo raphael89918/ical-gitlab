@@ -25,7 +25,7 @@ private:
     float encRobot_x, encRobot_y, encRobot_z;
     float dis_x, dis_y, dis_z;
     float vel_x, vel_y, vel_z;
-
+    float temp_x, temp_y, temp_z;
 public:
     wheel_planner(const ros::NodeHandle &encoder_nh, const ros::NodeHandle &planner_nh, const ros::NodeHandle &wheelCtrl_nh);
     void init_pubsub();

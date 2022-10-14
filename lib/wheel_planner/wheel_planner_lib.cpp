@@ -29,17 +29,29 @@ void wheel_planner::planner_callback(const wheel_tokyo_weili::wheel_planner &msg
     this->dis_z = msg.distance_z;
 
     this->vel_x = msg.velocity_x;
-    this->vel_y = msg.velockty_y;
-    this->vel_z = msg.velockty_z;
+    this->vel_y = msg.velocity_y;
+    this->vel_z = msg.velocity_z;
 
-    std::cout << dis_x << std::endl;
+    //std::cout << dis_x << std::endl;
 }
 
 void wheel_planner::ctrl_method()
 {
-    if(dis_x != 0)
+    temp_x = dis_x;
+    temp_y = dis_y;
+    temp_z = dis_z;
+    
+    if(temp_x != 0)
     {
         distance_processed_x();
+    }
+    if(temp_y != 0)
+    {
+        distance_processed_y();
+    }
+    if(temp_z != 0)
+    {
+        distance_processed_z();
     }
 }
 
@@ -47,11 +59,10 @@ void wheel_planner::distance_processed_x()
 {
     ros::Rate loop_rate(100);
     ros::spinOnce();
-    float temp_x = dis_x;
     while (fabs(encRobot_x) < fabs(temp_x))
     {
-        std::cout << "temp_x" << temp_x << std::endl;
-        std::cout << "encRobt_x" << encRobot_x << std::endl;
+        // std::cout << "temp_x" << temp_x << std::endl;
+        // std::cout << "encRobt_x" << encRobot_x << std::endl;
         if (temp_x > 0)
         {
             msg.linear.x = 0.5;
@@ -70,6 +81,76 @@ void wheel_planner::distance_processed_x()
         loop_rate.sleep();
     }
     dis_x = 0;
+    msg.linear.x = 0;
+    msg.linear.y = 0;
+    msg.angular.z = 0;
+    pub.publish(msg);
+    ros::spinOnce();
+    temp_z = encRobot_z;
+    distance_processed_z();
+}
+
+void wheel_planner::distance_processed_y()
+{
+    ros::Rate loop_rate(100);
+    ros::spinOnce();
+    while (fabs(encRobot_y) < fabs(temp_y))
+    {
+        // std::cout << "temp_y" << temp_y << std::endl;
+        // std::cout << "encRobt_y" << encRobot_y << std::endl;
+        if (temp_y > 0)
+        {
+            msg.linear.x = 0;
+            msg.linear.y = 0.5;
+            msg.angular.z = 0;
+            
+        }
+        if (temp_y < 0)
+        {
+            msg.linear.x = 0;
+            msg.linear.y = -0.5;
+            msg.angular.z = 0;
+        }
+        pub.publish(msg);
+        ros::spinOnce();
+        loop_rate.sleep();
+    }
+    dis_y = 0;
+    msg.linear.x = 0;
+    msg.linear.y = 0;
+    msg.angular.z = 0;
+    pub.publish(msg);
+    ros::spinOnce();
+    temp_z = encRobot_z;
+    distance_processed_z();
+}
+
+void wheel_planner::distance_processed_z()
+{
+    ros::Rate loop_rate(100);
+    ros::spinOnce();
+    while (fabs(encRobot_z) < fabs(temp_z))
+    {
+        // std::cout << "temp_y" << temp_y << std::endl;
+        // std::cout << "encRobt_y" << encRobot_y << std::endl;
+        if (temp_z > 0)
+        {
+            msg.linear.x = 0;
+            msg.linear.y = 0;
+            msg.angular.z = 1;
+            
+        }
+        if (temp_z < 0)
+        {
+            msg.linear.x = 0;
+            msg.linear.y = 0;
+            msg.angular.z = -1;
+        }
+        pub.publish(msg);
+        ros::spinOnce();
+        loop_rate.sleep();
+    }
+    dis_z = 0;
     msg.linear.x = 0;
     msg.linear.y = 0;
     msg.angular.z = 0;
