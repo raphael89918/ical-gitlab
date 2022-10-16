@@ -14,10 +14,10 @@ void setup()
 
     motor_controller.set_motor_driver(MD01, 4);
 
-    motor_controller.set_pin(FL, 8,9,10);
-    motor_controller.set_pin(FR, 42,44,46);
+    motor_controller.set_pin(FL, 40,42,46);
+    motor_controller.set_pin(FR, 43,45,47);
     motor_controller.set_pin(BL, 11,12,13);
-    motor_controller.set_pin(BR, 43,45,47);
+    motor_controller.set_pin(BR, 8,9,10);
 
     motor_controller.subscribe();
 
