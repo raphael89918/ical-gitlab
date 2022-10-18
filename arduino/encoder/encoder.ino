@@ -12,7 +12,7 @@ ros::Publisher pub("/encoder", &e_msg);
 wheel_tokyo_weili::wheel_planner p_msg;
 
 void callback(const wheel_tokyo_weili::wheel_planner &p_msg);
-ros::Subscriber<wheel_tokyo_weili::wheel_planner>sub("/wheel/planner", &callback);
+ros::Subscriber<wheel_tokyo_weili::wheel_planner>sub("/planner/encoder", &callback);
 
 const int ENCODERS = 4; // the number of encoders
 const int ENCA[ENCODERS] = { 9, 11, 2, A1}; // set pin

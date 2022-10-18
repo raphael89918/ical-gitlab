@@ -1,5 +1,6 @@
 # wheel_tokyo_weili
 使用wheel_planner.msg進行控制機器人
+topic名稱 /wheel/planner
 
 distance_x y z(單位:公分)
 決定機器人的移動方向跟移動距離
