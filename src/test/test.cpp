@@ -25,27 +25,27 @@ int main(int argc, char **argv)
                 msg.distance_z = 0;
                 break;
             case 'D':
-                msg.distance_y = 50;
+                msg.distance_y = 30;
                 msg.distance_x = 0;
                 msg.distance_z = 0;
                 break;
             case 'S':
-                msg.distance_x = -50;
+                msg.distance_x = -30;
                 msg.distance_y = 0;
                 msg.distance_z = 0;
                 break;
             case 'A':
-                msg.distance_y = -50;
+                msg.distance_y = -30;
                 msg.distance_x = 0;
                 msg.distance_z = 0;
                 break;
             case 'Q':
-                msg.distance_z = -50;
+                msg.distance_z = -90;
                 msg.distance_y = 0;
                 msg.distance_x = 0;
                 break;
             case 'E':
-                msg.distance_z = 50;
+                msg.distance_z = 90;
                 msg.distance_y = 0;
                 msg.distance_x = 0;
                 break;

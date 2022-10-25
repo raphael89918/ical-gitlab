@@ -15,8 +15,8 @@ void callback(const wheel_tokyo_weili::wheel_planner &p_msg);
 ros::Subscriber<wheel_tokyo_weili::wheel_planner>sub("/planner/encoder", &callback);
 
 const int ENCODERS = 4; // the number of encoders
-const int ENCA[ENCODERS] = { 9, 11, 2, A1}; // set pin
-const int ENCB[ENCODERS] = { 10, 13, 3, A5}; // set pin
+const int ENCA[ENCODERS] = { 11, A1, 2, 9}; // set pin
+const int ENCB[ENCODERS] = { 13, A5, 3, 10}; // set pin
 
 void readEncoder0();
 void readEncoder1();

@@ -4,6 +4,7 @@
 #include "geometry_msgs/Twist.h"
 #include "gpio/Laser.h"
 #include "ros/callback_queue.h"
+#include "wheel_tokyo_weili/waitforidle.h"
 
 class wheel_planner
 {
@@ -18,8 +19,10 @@ private:
     ros::Subscriber planner_sub;
     ros::Subscriber laser_sub;
 
+    ros::Publisher wait_pub;
     ros::Publisher pub;
     ros::Publisher enc_pub;
+    wheel_tokyo_weili::waitforidle wait_msg;
     geometry_msgs::Twist msg;
     wheel_tokyo_weili::wheel_planner enc_msg;
 
@@ -36,6 +39,7 @@ private:
 
     void init_encoder();
     void stop_robot();
+    void wait_robot();
 
     float encRobot_x, encRobot_y, encRobot_z;
     float dis_x, dis_y, dis_z;

@@ -9,10 +9,10 @@ mecanum_wheel::mecanum_wheel(float wheel_K, float wheel_R, float wheel_RATIO)
 
 float* mecanum_wheel::wheel_to_robot(float wheel_fl, float wheel_fr, float wheel_bl, float wheel_br)
 {
-    robot_movement_vector[linear_x] = (wheel_fl + wheel_br + wheel_fr + wheel_bl)/4;
-    robot_movement_vector[linear_y] = (-wheel_fr + wheel_fl + wheel_br - wheel_bl)/4;
-    robot_movement_vector[angular_z] = (wheel_bl + wheel_fl - wheel_br - wheel_fr)/4;
-    
+    robot_movement_vector[linear_x] = -(wheel_fl + wheel_br + wheel_fr + wheel_bl)/4;
+    robot_movement_vector[linear_y] = -(-wheel_fr + wheel_fl + wheel_br - wheel_bl)/4;
+    robot_movement_vector[angular_z] = -(wheel_bl + wheel_fl - wheel_br - wheel_fr)/4;
+
     return robot_movement_vector;
 }
 
@@ -33,7 +33,7 @@ float* mecanum_wheel::robot_to_wheel(float linear_x, float linear_y, float angul
     //轉換成rpm
     wheel_movement_vector[fl] = wheel_movement_vector[fl] * 60;
     wheel_movement_vector[fr] = wheel_movement_vector[fr] * 60;
-    wheel_movement_vector[bl] = wheel_movement_vector[bl] * 60;
+    wheel_movement_vector[bl] = wheel_movement_vector[bl] * 60 * 1.1;
     wheel_movement_vector[br] = wheel_movement_vector[br] * 60;
 
     return wheel_movement_vector;

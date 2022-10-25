@@ -74,6 +74,7 @@ add_message_files(
     motor.msg
     encoder.msg
     wheel_planner.msg
+    waitforidle.msg
     )
 
 ## Generate services in the 'srv' folder
