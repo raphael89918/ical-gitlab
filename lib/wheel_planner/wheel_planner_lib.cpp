@@ -98,7 +98,7 @@ void wheel_planner::ctrl_method()
     {
         go_to_far(far_left, far_right);
     }
-    wait_msg.waitforidle = false;
+    wait_msg.waitforidle = true;
     pub.publish(wait_msg);
 }
 
@@ -121,9 +121,7 @@ void wheel_planner::distance_processed_x()
             msg.linear.y = 0;
             msg.angular.z = 0;
         }
-
-        // std::cout << "temp_x" << temp_x << std::endl;
-        // std::cout << "encRobt_x" << encRobot_x << std::endl;
+        continue_robot();
         pub.publish(msg);
         state.callOne();
         loop_rate.sleep();
@@ -154,6 +152,7 @@ void wheel_planner::distance_processed_y()
             msg.linear.y = 0.4;
             msg.angular.z = 0;
         }
+        continue_robot();
         pub.publish(msg);
         state.callOne();
         loop_rate.sleep();
@@ -184,6 +183,7 @@ void wheel_planner::distance_processed_z()
             msg.linear.y = 0;
             msg.angular.z = 1;
         }
+        continue_robot();
         pub.publish(msg);
         state.callOne();
         loop_rate.sleep();
@@ -205,7 +205,7 @@ void wheel_planner::velocity_processed()
         state.callOne();
         loop_rate.sleep();
     }
-
+    continue_robot();
     stop_robot();
 }
 
@@ -235,6 +235,7 @@ void wheel_planner::go_to_far(bool left, bool right)
         while(laser_dl <= 50) // need to test
         {
             state.callOne();
+            continue_robot();
             pub.publish(msg);
             loop_rate.sleep();
         }
@@ -249,6 +250,7 @@ void wheel_planner::go_to_far(bool left, bool right)
         while(laser_dr <= 50) // neet to test
         {
             state.callOne();
+            continue_robot();
             pub.publish(msg);
             loop_rate.sleep();
         }
@@ -260,5 +262,11 @@ void wheel_planner::wait_robot()
 {
     ros::Duration(0.5).sleep();
     wait_msg.waitforidle = true;
+    pub.publish(wait_msg);
+}
+
+void wheel_planner::continue_robot()
+{
+    wait_msg.waitforidle = false;
     pub.publish(wait_msg);
 }

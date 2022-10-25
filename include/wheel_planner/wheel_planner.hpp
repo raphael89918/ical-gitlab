@@ -40,6 +40,7 @@ private:
     void init_encoder();
     void stop_robot();
     void wait_robot();
+    void continue_robot();
 
     float encRobot_x, encRobot_y, encRobot_z;
     float dis_x, dis_y, dis_z;
