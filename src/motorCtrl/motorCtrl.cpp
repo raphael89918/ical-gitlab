@@ -12,7 +12,7 @@ int main (int argc, char **argv)
     motorCtrl.start();
     while(ros::ok())
     {
-        ros::Rate loop_rate(10);
+        ros::Rate loop_rate(100);
         ros::spinOnce();
         motorCtrl.transform_to_pwm(mecanum_wheel.robot_to_wheel(motorCtrl.vel_x, motorCtrl.vel_y, motorCtrl.vel_th));
         motorCtrl.m_pub.publish(motorCtrl.m_msg);

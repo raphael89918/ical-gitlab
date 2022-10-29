@@ -12,7 +12,7 @@ int main(int argc, char **argv)
     Encoder.init();
     while(ros::ok())
     {
-        ros::Rate loop_rate(10);
+        ros::Rate loop_rate(100);
         ros::spinOnce();
         Encoder.transform_to_msg(mecanum_wheel.wheel_to_robot(Encoder.fl,Encoder.fr,Encoder.bl,Encoder.br));
 

@@ -16,6 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
     image_transport
     sensor_msgs
     gpio
+    dynamixel_control
     )
 
 ## System dependencies are found with CMake's conventions

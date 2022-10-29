@@ -4,7 +4,6 @@
 wheel_planner::wheel_planner(const ros::NodeHandle &encoder_nh, const ros::NodeHandle &planner_nh, const ros::NodeHandle &wheelCtrl_nh, const ros::NodeHandle &laser_nh)
     : planner_nh(planner_nh), encoder_nh(encoder_nh), wheelCtrl_nh(wheelCtrl_nh), laser_nh(laser_nh)
 {
-
     ROS_INFO("wheel_planner constructed");
 }
 
@@ -17,6 +16,7 @@ void wheel_planner::init_pubsub()
     wait_pub = wheelCtrl_nh.advertise<wheel_tokyo_weili::waitforidle>("/wheel/waitforidle", 1);
     pub = wheelCtrl_nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
     enc_pub = wheelCtrl_nh.advertise<wheel_tokyo_weili::wheel_planner>("/planner/encoder",1);
+    dyna_pub = wheelCtrl_nh.advertise<dynamixel_control::wheel_laser>("/dynamixel/wheel_laser",1);
     encoder_sub = encoder_nh.subscribe("/wheel/distance", 1, &wheel_planner::encoder_callback, this);
     planner_sub = planner_nh.subscribe("/wheel/planner", 1, &wheel_planner::planner_callback, this);
     laser_sub = laser_nh.subscribe("/laser", 1, &wheel_planner::laser_callback, this);
@@ -36,7 +36,7 @@ void wheel_planner::init_pubsub()
     laser_ur = 0;
     laser_dl = 0;
     laser_dr = 0;
-    wait_msg.waitforidle = 0;
+    wait_msg.wait = false;
 }
 
 void wheel_planner::encoder_callback(const wheel_tokyo_weili::encoder &msg)
@@ -44,7 +44,7 @@ void wheel_planner::encoder_callback(const wheel_tokyo_weili::encoder &msg)
     this->encRobot_x = msg.robot_distance[0] / 21.2;
     this->encRobot_y = msg.robot_distance[1] / 20.03;
     this->encRobot_z = msg.robot_distance[2] / 7;
-    std::cout << "encoder_callback" << std::endl;
+    // std::cout << "encoder_callback" << std::endl;
 }
 
 void wheel_planner::planner_callback(const wheel_tokyo_weili::wheel_planner &msg)
@@ -60,7 +60,7 @@ void wheel_planner::planner_callback(const wheel_tokyo_weili::wheel_planner &msg
     this->far_left = msg.far_left;
     this->far_right = msg.far_right;
 
-    std::cout << "planner_callback" << std::endl;
+    // std::cout << "planner_callback" << std::endl;
 }
 
 void wheel_planner::laser_callback(const gpio::Laser &msg)
@@ -73,7 +73,7 @@ void wheel_planner::laser_callback(const gpio::Laser &msg)
 
 void wheel_planner::ctrl_method()
 {
-    std::cout << "ctrl_method" << std::endl;
+    // std::cout << "ctrl_method" << std::endl;
     init_encoder();
     state.callOne();
     plan.callOne();
@@ -96,10 +96,18 @@ void wheel_planner::ctrl_method()
 
     if(far_left == true || far_right == true)
     {
+        dyna_msg.ctrl = true;
+        dyna_pub.publish(dyna_msg);
+        ros::Duration(0.5).sleep();
         go_to_far(far_left, far_right);
+        far_left = false;
+        far_right = false;
+        dyna_msg.ctrl = false;
+        dyna_pub.publish(dyna_msg);
+        ros::Duration(0.5).sleep();
     }
-    wait_msg.waitforidle = true;
-    pub.publish(wait_msg);
+    wait_msg.wait = true;
+    wait_pub.publish(wait_msg);
 }
 
 void wheel_planner::distance_processed_x()
@@ -132,7 +140,7 @@ void wheel_planner::distance_processed_x()
 
 void wheel_planner::distance_processed_y()
 {
-    std::cout << "distance_processed_y" << std::endl;
+    // std::cout << "distance_processed_y" << std::endl;
     ros::Rate loop_rate(100);
     state.callOne();
     while (fabs(encRobot_y) < fabs(temp_y))
@@ -142,14 +150,13 @@ void wheel_planner::distance_processed_y()
         if (temp_y > 0)
         {
             msg.linear.x = 0;
-            msg.linear.y = -0.4;
+            msg.linear.y = 0.4;
             msg.angular.z = 0;
-
         }
         if (temp_y < 0)
         {
             msg.linear.x = 0;
-            msg.linear.y = 0.4;
+            msg.linear.y = -0.4;
             msg.angular.z = 0;
         }
         continue_robot();
@@ -163,7 +170,7 @@ void wheel_planner::distance_processed_y()
 
 void wheel_planner::distance_processed_z()
 {
-    std::cout << "distance_processed_z" << std::endl;
+    // std::cout << "distance_processed_z" << std::endl;
     ros::Rate loop_rate(100);
     state.callOne();
     while (fabs(encRobot_z) < fabs(temp_z))
@@ -194,7 +201,7 @@ void wheel_planner::distance_processed_z()
 
 void wheel_planner::velocity_processed()
 {
-    std::cout << "velocity_processed" << std::endl;
+    // std::cout << "velocity_processed" << std::endl;
     ros::Rate loop_rate(100);
     while (vel_x != 0 || vel_y != 0 || vel_z != 0)
     {
@@ -226,13 +233,14 @@ void wheel_planner::stop_robot()
 
 void wheel_planner::go_to_far(bool left, bool right)
 {
+    
     if(left == true && right != true)
     {
         msg.linear.x = 0;
-        msg.linear.y = -0.5;
+        msg.linear.y = -0.3;
         msg.angular.z = 0;
         ros::Rate loop_rate(100);
-        while(laser_dl <= 50) // need to test
+        while(laser_dl <= 100)
         {
             state.callOne();
             continue_robot();
@@ -240,14 +248,16 @@ void wheel_planner::go_to_far(bool left, bool right)
             loop_rate.sleep();
         }
         stop_robot();
+        left = false;
+        right = false;
     }
     if(left != true && right == true)
     {
         msg.linear.x = 0;
-        msg.linear.y = 0.5;
+        msg.linear.y = 0.3;
         msg.angular.z = 0;
         ros::Rate loop_rate(100);
-        while(laser_dr <= 50) // neet to test
+        while(laser_dr <= 100)
         {
             state.callOne();
             continue_robot();
@@ -255,18 +265,20 @@ void wheel_planner::go_to_far(bool left, bool right)
             loop_rate.sleep();
         }
         stop_robot();
+        left = false;
+        right = false;
     }
 }
 
 void wheel_planner::wait_robot()
 {
     ros::Duration(0.5).sleep();
-    wait_msg.waitforidle = true;
-    pub.publish(wait_msg);
+    wait_msg.wait = true;
+    wait_pub.publish(wait_msg);
 }
 
 void wheel_planner::continue_robot()
 {
-    wait_msg.waitforidle = false;
-    pub.publish(wait_msg);
+    wait_msg.wait = false;
+    wait_pub.publish(wait_msg);
 }

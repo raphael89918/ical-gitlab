@@ -8,7 +8,7 @@ int main(int argc, char **argv)
     ros::NodeHandle planner_nh;
     ros::NodeHandle wheelCtrl_nh;
     ros::NodeHandle laser_nh;
-
+    ros::NodeHandle wait_nh;
     wheel_planner wheel_planner(encoder_nh, planner_nh, wheelCtrl_nh, laser_nh);
 
     wheel_planner.init_pubsub();

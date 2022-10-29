@@ -23,7 +23,7 @@ void motorCtrl::start()
 void motorCtrl::callback(const geometry_msgs::Twist &msg)
 {
     vel_x = msg.linear.x;
-    vel_y = msg.linear.y;
+    vel_y = -msg.linear.y;
     vel_th = msg.angular.z;
 }
 

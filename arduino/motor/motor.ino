@@ -24,7 +24,7 @@ void setup()
     motor_controller.stop();
 }
 
-int interval = 100;
+int interval = 10;
 int previousMillis = 0;
 
 void loop()

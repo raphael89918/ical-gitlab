@@ -49,6 +49,14 @@ int main(int argc, char **argv)
                 msg.distance_y = 0;
                 msg.distance_x = 0;
                 break;
+            case 'O':
+                msg.far_left = true;
+                msg.far_right = false;
+                break;
+            case 'P':
+                msg.far_left = false;
+                msg.far_right = true;
+                break;
             case 'R':
                 msg.encoder_reset = true;
                 msg.distance_x = 0;
@@ -58,6 +66,8 @@ int main(int argc, char **argv)
             }
             pub.publish(msg);
             loop_rate.sleep();
+            msg.far_left = false;
+            msg.far_right = false;
         }
     }
     return 0;
