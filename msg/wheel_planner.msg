@@ -10,3 +10,4 @@ float32 velocity_z
 
 bool far_left
 bool far_right
+bool far_front

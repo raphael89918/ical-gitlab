@@ -1,4 +1,4 @@
-target_link_libraries(test_node
+target_link_libraries(test_control_node
 conio
 ${catkin_LIBRARIES}
 )

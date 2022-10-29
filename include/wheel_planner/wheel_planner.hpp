@@ -6,6 +6,7 @@
 #include "ros/callback_queue.h"
 #include "wheel_tokyo_weili/waitforidle.h"
 #include "dynamixel_control/wheel_laser.h"
+#include "wheel_tokyo_weili/motor.h"
 
 class wheel_planner
 {
@@ -24,10 +25,12 @@ private:
     ros::Publisher pub;
     ros::Publisher enc_pub;
     ros::Publisher dyna_pub;
+    ros::Publisher arduino_motor_pub;
     wheel_tokyo_weili::waitforidle wait_msg;
     geometry_msgs::Twist msg;
     wheel_tokyo_weili::wheel_planner enc_msg;
     dynamixel_control::wheel_laser dyna_msg;
+    wheel_tokyo_weili::motor arduino_motor_msg;
 
     void encoder_callback(const wheel_tokyo_weili::encoder &msg);
     void planner_callback(const wheel_tokyo_weili::wheel_planner &msg);
@@ -38,7 +41,7 @@ private:
     void distance_processed_z();
 
     void velocity_processed();
-    void go_to_far(bool left, bool right);
+    void go_to_far(bool left, bool right, bool front);
 
     void init_encoder();
     void stop_robot();
@@ -50,7 +53,7 @@ private:
     float vel_x, vel_y, vel_z;
     float temp_x, temp_y, temp_z;
     int laser_ul, laser_ur, laser_dl, laser_dr;
-    bool far_left, far_right;
+    bool far_left, far_right, far_front;
     bool wai, conti;
 public:
     wheel_planner(const ros::NodeHandle &encoder_nh, const ros::NodeHandle &planner_nh, const ros::NodeHandle &wheelCtrl_nh, const ros::NodeHandle &laser_nh);

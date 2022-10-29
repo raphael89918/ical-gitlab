@@ -1,4 +1,4 @@
-add_executable(test_node src/test/test.cpp)
+add_executable(test_control_node src/test/test.cpp)
 
 add_executable(keyCtrl_node src/keyCtrl/keyCtrl.cpp)
 

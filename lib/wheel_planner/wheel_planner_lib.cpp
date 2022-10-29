@@ -17,6 +17,8 @@ void wheel_planner::init_pubsub()
     pub = wheelCtrl_nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
     enc_pub = wheelCtrl_nh.advertise<wheel_tokyo_weili::wheel_planner>("/planner/encoder",1);
     dyna_pub = wheelCtrl_nh.advertise<dynamixel_control::wheel_laser>("/dynamixel/wheel_laser",1);
+    arduino_motor_pub = wheelCtrl_nh.advertise<wheel_tokyo_weili::motor>("/wheel/motor", 1);
+    
     encoder_sub = encoder_nh.subscribe("/wheel/distance", 1, &wheel_planner::encoder_callback, this);
     planner_sub = planner_nh.subscribe("/wheel/planner", 1, &wheel_planner::planner_callback, this);
     laser_sub = laser_nh.subscribe("/laser", 1, &wheel_planner::laser_callback, this);
@@ -59,8 +61,7 @@ void wheel_planner::planner_callback(const wheel_tokyo_weili::wheel_planner &msg
 
     this->far_left = msg.far_left;
     this->far_right = msg.far_right;
-
-    // std::cout << "planner_callback" << std::endl;
+    this->far_front = msg.far_front;
 }
 
 void wheel_planner::laser_callback(const gpio::Laser &msg)
@@ -94,12 +95,12 @@ void wheel_planner::ctrl_method()
         distance_processed_z();
     }
 
-    if(far_left == true || far_right == true)
+    if(far_left == true || far_right == true || far_front == true)
     {
         dyna_msg.ctrl = true;
         dyna_pub.publish(dyna_msg);
         ros::Duration(0.5).sleep();
-        go_to_far(far_left, far_right);
+        go_to_far(far_left, far_right, far_front);
         far_left = false;
         far_right = false;
         dyna_msg.ctrl = false;
@@ -145,8 +146,6 @@ void wheel_planner::distance_processed_y()
     state.callOne();
     while (fabs(encRobot_y) < fabs(temp_y))
     {
-        // std::cout << "temp_y" << temp_y << std::endl;
-        // std::cout << "encRobt_y" << encRobot_y << std::endl;
         if (temp_y > 0)
         {
             msg.linear.x = 0;
@@ -175,8 +174,6 @@ void wheel_planner::distance_processed_z()
     state.callOne();
     while (fabs(encRobot_z) < fabs(temp_z))
     {
-        // std::cout << "temp_y" << temp_y << std::endl;
-        // std::cout << "encRobt_y" << encRobot_y << std::endl;
         if (temp_z > 0)
         {
             msg.linear.x = 0;
@@ -231,7 +228,7 @@ void wheel_planner::stop_robot()
     wait_robot();
 }
 
-void wheel_planner::go_to_far(bool left, bool right)
+void wheel_planner::go_to_far(bool left, bool right, bool front)
 {
     
     if(left == true && right != true)
@@ -267,6 +264,60 @@ void wheel_planner::go_to_far(bool left, bool right)
         stop_robot();
         left = false;
         right = false;
+    }
+    if(front == true)
+    {
+        msg.linear.x = 0.3;
+        msg.linear.y = 0;
+        msg.angular.z = 0;
+        ros::Rate loop_rate(100);
+        while(laser_ul <= 100 || laser_ur <= 100)
+        {
+            state.callOne();
+            continue_robot();
+            pub.publish(msg);
+            loop_rate.sleep();
+        }
+        stop_robot();
+        front = false;
+        if(laser_ul > 100)
+        {
+            arduino_motor_msg.BL_DIR = true;
+            arduino_motor_msg.FL_DIR = true;
+            arduino_motor_msg.BR_DIR = false;
+            arduino_motor_msg.FR_DIR = false;
+            arduino_motor_msg.FL = 60;
+            arduino_motor_msg.BL = 60;
+            arduino_motor_msg.FR = 0;
+            arduino_motor_msg.BR = 0;
+            while(laser_ul <= 100)
+            {
+                state.callOne();
+                continue_robot();
+                arduino_motor_pub.publish(arduino_motor_msg);
+                loop_rate.sleep();
+            }
+            stop_robot();
+        }
+        if(laser_ur > 100)
+        {
+            arduino_motor_msg.BL_DIR = false;
+            arduino_motor_msg.FL_DIR = false;
+            arduino_motor_msg.BR_DIR = true;
+            arduino_motor_msg.FR_DIR = true;
+            arduino_motor_msg.FL = 0;
+            arduino_motor_msg.BL = 0;
+            arduino_motor_msg.FR = 60;
+            arduino_motor_msg.BR = 60;
+            while(laser_ur <= 100)
+            {
+                state.callOne();
+                continue_robot();
+                arduino_motor_pub.publish(arduino_motor_msg);
+                loop_rate.sleep();
+            }
+            stop_robot();
+        }
     }
 }
 
