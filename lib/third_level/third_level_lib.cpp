@@ -61,6 +61,6 @@ void third_level::msg_init()
     wheel_msg.far_right = false;
     wheel_msg.velocity_x = 0;
     wheel_msg.velocity_y = 0;
-    twheel_msg.velocity_z = 0;
+    wheel_msg.velocity_z = 0;
     wheel_pub.publish(wheel_msg);
 }

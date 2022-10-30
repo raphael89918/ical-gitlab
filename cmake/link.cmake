@@ -28,3 +28,8 @@ target_link_libraries(wheel_planner_node
 wheel_planner_lib
 ${catkin_LIBRARIES}
 )
+
+target_link_libraries(wheel_correct_node
+conio
+${catkin_LIBRARIES}
+)
