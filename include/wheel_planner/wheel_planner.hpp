@@ -55,6 +55,7 @@ private:
     int laser_ul, laser_ur, laser_dl, laser_dr;
     bool far_left, far_right, far_front;
     bool wai, conti;
+    bool wheel_correct;
 public:
     wheel_planner(const ros::NodeHandle &encoder_nh, const ros::NodeHandle &planner_nh, const ros::NodeHandle &wheelCtrl_nh, const ros::NodeHandle &laser_nh);
     void init_pubsub();

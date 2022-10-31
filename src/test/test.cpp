@@ -63,10 +63,16 @@ int main(int argc, char **argv)
                 msg.distance_y = 0;
                 msg.distance_z = 0;
                 break;
+            default:
+                msg.distance_x = 0;
+                msg.distance_y = 0;
+                msg.distance_z = 0;
+                break;
             }
             pub.publish(msg);
             loop_rate.sleep();
             msg.far_left = false;
+            msg.far_right = false;
             msg.far_right = false;
         }
     }

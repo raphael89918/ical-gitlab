@@ -5,8 +5,13 @@ int main (int argc, char **argv)
 {
     ros::init(argc, argv, "motorCtrl_node");
     ros::NodeHandle nh;
-
-    mecanum_wheel mecanum_wheel(0.21, 0.035, 1);
+    
+    float r_fl, r_fr, r_bl, r_br;
+    nh.getParam("/wheel_ratio_fl", r_fl);
+    nh.getParam("/wheel_ratio_fl", r_fr);
+    nh.getParam("/wheel_ratio_fl", r_bl);
+    nh.getParam("/wheel_ratio_fl", r_br);
+    mecanum_wheel mecanum_wheel(0.21, 0.035, r_fl, r_fr, r_bl, r_br);
     motorCtrl motorCtrl(nh);
 
     motorCtrl.start();

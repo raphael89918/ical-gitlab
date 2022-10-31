@@ -34,6 +34,7 @@ void wheel_planner::init_pubsub()
     vel_z = 0;
     far_left = false;
     far_right = false;
+    far_front = false;
     laser_ul = 0;
     laser_ur = 0;
     laser_dl = 0;
@@ -46,7 +47,13 @@ void wheel_planner::encoder_callback(const wheel_tokyo_weili::encoder &msg)
     this->encRobot_x = msg.robot_distance[0] / 21.2;
     this->encRobot_y = msg.robot_distance[1] / 20.03;
     this->encRobot_z = msg.robot_distance[2] / 7;
-    // std::cout << "encoder_callback" << std::endl;
+    if(wheel_correct==true)
+    {
+        std::cout << "fl " << msg.wheel_value[0] <<
+        " fr " << msg.wheel_value[1] <<
+        " bl " << msg.wheel_value[2] <<
+        " br " << msg.wheel_value[3] << std::endl;
+    }
 }
 
 void wheel_planner::planner_callback(const wheel_tokyo_weili::wheel_planner &msg)
@@ -132,10 +139,12 @@ void wheel_planner::distance_processed_x()
         }
         continue_robot();
         pub.publish(msg);
+        wheel_correct = true;
         state.callOne();
         loop_rate.sleep();
     }
     dis_x = 0;
+    wheel_correct = false;
     stop_robot();
 }
 
@@ -216,6 +225,7 @@ void wheel_planner::velocity_processed()
 void wheel_planner::init_encoder()
 {
     enc_msg.encoder_reset = true;
+    state.callOne();
     enc_pub.publish(enc_msg);
 }
 
@@ -230,7 +240,7 @@ void wheel_planner::stop_robot()
 
 void wheel_planner::go_to_far(bool left, bool right, bool front)
 {
-    
+    std::cout << (int)left << (int)right << "test"<<(int)front <<std::endl;
     if(left == true && right != true)
     {
         msg.linear.x = 0;
@@ -267,6 +277,7 @@ void wheel_planner::go_to_far(bool left, bool right, bool front)
     }
     if(front == true)
     {
+                std::cout << "test123" << std::endl;
         msg.linear.x = 0.3;
         msg.linear.y = 0;
         msg.angular.z = 0;

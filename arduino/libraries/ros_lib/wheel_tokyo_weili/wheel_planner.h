@@ -30,6 +30,8 @@ namespace wheel_tokyo_weili
       _far_left_type far_left;
       typedef bool _far_right_type;
       _far_right_type far_right;
+      typedef bool _far_front_type;
+      _far_front_type far_front;
 
     wheel_planner():
       encoder_reset(0),
@@ -40,7 +42,8 @@ namespace wheel_tokyo_weili
       velocity_y(0),
       velocity_z(0),
       far_left(0),
-      far_right(0)
+      far_right(0),
+      far_front(0)
     {
     }
 
@@ -128,6 +131,13 @@ namespace wheel_tokyo_weili
       u_far_right.real = this->far_right;
       *(outbuffer + offset + 0) = (u_far_right.base >> (8 * 0)) & 0xFF;
       offset += sizeof(this->far_right);
+      union {
+        bool real;
+        uint8_t base;
+      } u_far_front;
+      u_far_front.real = this->far_front;
+      *(outbuffer + offset + 0) = (u_far_front.base >> (8 * 0)) & 0xFF;
+      offset += sizeof(this->far_front);
       return offset;
     }
 
@@ -224,11 +234,19 @@ namespace wheel_tokyo_weili
       u_far_right.base |= ((uint8_t) (*(inbuffer + offset + 0))) << (8 * 0);
       this->far_right = u_far_right.real;
       offset += sizeof(this->far_right);
+      union {
+        bool real;
+        uint8_t base;
+      } u_far_front;
+      u_far_front.base = 0;
+      u_far_front.base |= ((uint8_t) (*(inbuffer + offset + 0))) << (8 * 0);
+      this->far_front = u_far_front.real;
+      offset += sizeof(this->far_front);
      return offset;
     }
 
     const char * getType(){ return "wheel_tokyo_weili/wheel_planner"; };
-    const char * getMD5(){ return "ef9aff16362583cb3924236113227991"; };
+    const char * getMD5(){ return "77923c5df40e0774e0d9d555faca733d"; };
 
   };
 
