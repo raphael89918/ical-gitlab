@@ -33,3 +33,8 @@ target_link_libraries(wheel_correct_node
 conio
 ${catkin_LIBRARIES}
 )
+
+target_link_libraries(third_level_node
+third_level_lib
+${catkin_LIBRARIES}
+)

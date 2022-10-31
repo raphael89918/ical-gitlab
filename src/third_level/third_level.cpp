@@ -7,7 +7,6 @@ int main(int argc, char **argv)
     third_level third_level(nh);
     third_level.init_pubsub();
 
-    uint8_t front, left, right;
     third_level.robot_far(left);
     third_level.robot_far(front);
     third_level.robot_far(right);

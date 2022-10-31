@@ -1,6 +1,6 @@
 #include "third_level/third_level.hpp"
 
-third_level::third_level(const ros::NodeHandle &nh) : nh(nh)
+third_level::third_level(const ros::NodeHandle &nh) : nh(nh), direction(0)
 {
     ROS_INFO("third_level constructed");
 }
@@ -22,21 +22,24 @@ void third_level::robot_move(uint8_t direction, int distance)
     
 }
 
-void third_level::robot_far(uint8_t direction)
+void third_level::robot_far(uint8_t dir)
 {
-    uint8_t right, left, front;
-    if(direction == left)
+    direction = dir;
+    switch(direction)
     {
-        this->wheel_msg.far_left = true;
+        case left:
+            this->wheel_msg.far_left = true;
+            break;
+
+        case right:
+            this->wheel_msg.far_right = true;
+            break;
+        
+        case front:
+            this->wheel_msg.far_front = true;
+            break;
     }
-    if(direction == right)
-    {
-        this->wheel_msg.far_right = true;
-    }
-    if(direction == front)
-    {
-        this->wheel_msg.far_front = true;
-    }
+
     wheel_pub.publish(wheel_msg);
     robot_wait();
     msg_init();
