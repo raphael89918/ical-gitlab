@@ -114,6 +114,11 @@ void wheel_planner::ctrl_method()
         dyna_pub.publish(dyna_msg);
         ros::Duration(0.5).sleep();
     }
+
+    if(vel_x!=0||vel_y!=0||vel_z!=0)
+    {
+        velocity_processed();
+    }
     wait_msg.wait = true;
     wait_pub.publish(wait_msg);
 }
