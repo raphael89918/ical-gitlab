@@ -1,11 +1,10 @@
 <launch>
 
-    <node name="wheel_correct_node" pkg="wheel_tokyo_weili" type="wheel_correct_node"/>
 
     <node name="motorCtrl_node" pkg="wheel_tokyo_weili" type="motorCtrl_node" output="screen"/>
 
     <node name="encoderCounter_node" pkg="wheel_tokyo_weili" type="encoderCounter_node" output="screen"/>
-    
+
     <node name="wheel_planner_node" pkg="wheel_tokyo_weili" type="wheel_planner_node" output="screen"/>
 
 <!-- Launch 2 Arduino boards -->
