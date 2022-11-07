@@ -18,7 +18,7 @@ void wheel_planner::init_pubsub()
     enc_pub = wheelCtrl_nh.advertise<wheel_tokyo_weili::wheel_planner>("/planner/encoder",1);
     dyna_pub = wheelCtrl_nh.advertise<dynamixel_control::wheel_laser>("/dynamixel/wheel_laser",1);
     arduino_motor_pub = wheelCtrl_nh.advertise<wheel_tokyo_weili::motor>("/wheel/motor", 1);
-    
+
     encoder_sub = encoder_nh.subscribe("/wheel/distance", 1, &wheel_planner::encoder_callback, this);
     planner_sub = planner_nh.subscribe("/wheel/planner", 1, &wheel_planner::planner_callback, this);
     laser_sub = laser_nh.subscribe("/laser", 1, &wheel_planner::laser_callback, this);
@@ -47,13 +47,6 @@ void wheel_planner::encoder_callback(const wheel_tokyo_weili::encoder &msg)
     this->encRobot_x = msg.robot_distance[0] / 21.2;
     this->encRobot_y = msg.robot_distance[1] / 20.03;
     this->encRobot_z = msg.robot_distance[2] / 7;
-    if(wheel_correct==true)
-    {
-        std::cout << "fl " << msg.wheel_value[0] <<
-        " fr " << msg.wheel_value[1] <<
-        " bl " << msg.wheel_value[2] <<
-        " br " << msg.wheel_value[3] << std::endl;
-    }
 }
 
 void wheel_planner::planner_callback(const wheel_tokyo_weili::wheel_planner &msg)
