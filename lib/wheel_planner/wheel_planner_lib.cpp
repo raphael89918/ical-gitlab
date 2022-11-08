@@ -15,8 +15,8 @@ void wheel_planner::init_pubsub()
 
     wait_pub = wheelCtrl_nh.advertise<wheel_tokyo_weili::waitforidle>("/wheel/waitforidle", 1);
     pub = wheelCtrl_nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
-    enc_pub = wheelCtrl_nh.advertise<wheel_tokyo_weili::wheel_planner>("/planner/encoder",1);
-    dyna_pub = wheelCtrl_nh.advertise<dynamixel_control::wheel_laser>("/dynamixel/wheel_laser",1);
+    enc_pub = wheelCtrl_nh.advertise<wheel_tokyo_weili::wheel_planner>("/planner/encoder", 1);
+    dyna_pub = wheelCtrl_nh.advertise<dynamixel_control::wheel_laser>("/dynamixel/wheel_laser", 1);
     arduino_motor_pub = wheelCtrl_nh.advertise<wheel_tokyo_weili::motor>("/wheel/motor", 1);
 
     encoder_sub = encoder_nh.subscribe("/wheel/distance", 1, &wheel_planner::encoder_callback, this);
@@ -82,20 +82,20 @@ void wheel_planner::ctrl_method()
     temp_y = dis_y;
     temp_z = dis_z;
 
-    if(temp_x != 0)
+    if (temp_x != 0)
     {
         distance_processed_x();
     }
-    if(temp_y != 0)
+    if (temp_y != 0)
     {
         distance_processed_y();
     }
-    if(temp_z != 0)
+    if (temp_z != 0)
     {
         distance_processed_z();
     }
 
-    if(far_left == true || far_right == true || far_front == true)
+    if (far_left == true || far_right == true || far_front == true)
     {
         dyna_msg.ctrl = true;
         dyna_pub.publish(dyna_msg);
@@ -108,7 +108,7 @@ void wheel_planner::ctrl_method()
         ros::Duration(0.5).sleep();
     }
 
-    if(vel_x!=0||vel_y!=0||vel_z!=0)
+    if (vel_x != 0 || vel_y != 0 || vel_z != 0)
     {
         velocity_processed();
     }
@@ -186,7 +186,6 @@ void wheel_planner::distance_processed_z()
             msg.linear.x = 0;
             msg.linear.y = 0;
             msg.angular.z = -1;
-
         }
         if (temp_z < 0)
         {
@@ -207,15 +206,14 @@ void wheel_planner::velocity_processed()
 {
     // std::cout << "velocity_processed" << std::endl;
     ros::Rate loop_rate(100);
-    while (vel_x != 0 || vel_y != 0 || vel_z != 0)
-    {
-        msg.linear.x = vel_x;
-        msg.linear.y = vel_y;
-        msg.angular.z = vel_z;
-        pub.publish(msg);
-        state.callOne();
-        loop_rate.sleep();
-    }
+
+    msg.linear.x = vel_x;
+    msg.linear.y = vel_y;
+    msg.angular.z = vel_z;
+    pub.publish(msg);
+    plan.callOne();
+    loop_rate.sleep();
+
     continue_robot();
     stop_robot();
 }
@@ -238,14 +236,14 @@ void wheel_planner::stop_robot()
 
 void wheel_planner::go_to_far(bool left, bool right, bool front)
 {
-    std::cout << (int)left << (int)right << "test"<<(int)front <<std::endl;
-    if(left == true && right != true)
+    std::cout << (int)left << (int)right << "test" << (int)front << std::endl;
+    if (left == true && right != true)
     {
         msg.linear.x = 0;
         msg.linear.y = -0.3;
         msg.angular.z = 0;
         ros::Rate loop_rate(100);
-        while(laser_dl <= 100)
+        while (laser_dl <= 100)
         {
             state.callOne();
             continue_robot();
@@ -256,13 +254,13 @@ void wheel_planner::go_to_far(bool left, bool right, bool front)
         left = false;
         right = false;
     }
-    if(left != true && right == true)
+    if (left != true && right == true)
     {
         msg.linear.x = 0;
         msg.linear.y = 0.3;
         msg.angular.z = 0;
         ros::Rate loop_rate(100);
-        while(laser_dr <= 100)
+        while (laser_dr <= 100)
         {
             state.callOne();
             continue_robot();
@@ -273,14 +271,14 @@ void wheel_planner::go_to_far(bool left, bool right, bool front)
         left = false;
         right = false;
     }
-    if(front == true)
+    if (front == true)
     {
-                std::cout << "test123" << std::endl;
+        std::cout << "test123" << std::endl;
         msg.linear.x = 0.3;
         msg.linear.y = 0;
         msg.angular.z = 0;
         ros::Rate loop_rate(100);
-        while(laser_ul <= 100 || laser_ur <= 100)
+        while (laser_ul <= 100 || laser_ur <= 100)
         {
             state.callOne();
             continue_robot();
@@ -289,7 +287,7 @@ void wheel_planner::go_to_far(bool left, bool right, bool front)
         }
         stop_robot();
         front = false;
-        if(laser_ul > 100)
+        if (laser_ul > 100)
         {
             arduino_motor_msg.BL_DIR = true;
             arduino_motor_msg.FL_DIR = true;
@@ -299,7 +297,7 @@ void wheel_planner::go_to_far(bool left, bool right, bool front)
             arduino_motor_msg.BL = 60;
             arduino_motor_msg.FR = 0;
             arduino_motor_msg.BR = 0;
-            while(laser_ul <= 100)
+            while (laser_ul <= 100)
             {
                 state.callOne();
                 continue_robot();
@@ -308,7 +306,7 @@ void wheel_planner::go_to_far(bool left, bool right, bool front)
             }
             stop_robot();
         }
-        if(laser_ur > 100)
+        if (laser_ur > 100)
         {
             arduino_motor_msg.BL_DIR = false;
             arduino_motor_msg.FL_DIR = false;
@@ -318,7 +316,7 @@ void wheel_planner::go_to_far(bool left, bool right, bool front)
             arduino_motor_msg.BL = 0;
             arduino_motor_msg.FR = 60;
             arduino_motor_msg.BR = 60;
-            while(laser_ur <= 100)
+            while (laser_ur <= 100)
             {
                 state.callOne();
                 continue_robot();
