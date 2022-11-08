@@ -2,6 +2,10 @@
 
 #    <node name="test_control_node" pkg="wheel_tokyo_weili" type="test_control_node"/>
 
+    <param name ="/wheel_ratio_fl"  value="1"/>
+    <param name ="/wheel_ratio_fr"  value="1"/>
+    <param name ="/wheel_ratio_bl"  value="1"/>
+    <param name ="/wheel_ratio_br"  value="1"/>
     <node name="motorCtrl_node" pkg="wheel_tokyo_weili" type="motorCtrl_node" output="screen"/>
 
     <node name="encoderCounter_node" pkg="wheel_tokyo_weili" type="encoderCounter_node" output="screen"/>
