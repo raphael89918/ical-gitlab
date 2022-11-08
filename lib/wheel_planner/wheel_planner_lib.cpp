@@ -206,13 +206,15 @@ void wheel_planner::velocity_processed()
 {
     // std::cout << "velocity_processed" << std::endl;
     ros::Rate loop_rate(100);
-
-    msg.linear.x = vel_x;
-    msg.linear.y = vel_y;
-    msg.angular.z = vel_z;
-    pub.publish(msg);
-    plan.callOne();
-    loop_rate.sleep();
+    while (vel_x != 0 || vel_y != 0 || vel_z != 0)
+    {
+        msg.linear.x = vel_x;
+        msg.linear.y = vel_y;
+        msg.angular.z = vel_z;
+        pub.publish(msg);
+        plan.callOne();
+        loop_rate.sleep();
+    }
 
     continue_robot();
     stop_robot();
