@@ -1,5 +1,6 @@
 #include "third_level/third_level.hpp"
 
+
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "third_level_node");
@@ -13,4 +14,8 @@ int main(int argc, char **argv)
     third_level.robot_far(front);
     third_level.robot_far(left);
     third_level.robot_move(front, 40);
+    
+    third_level.trace_target();
+
+    third_level.robot_move(front, 50);
 }

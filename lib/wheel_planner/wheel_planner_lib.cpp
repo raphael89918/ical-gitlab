@@ -103,9 +103,10 @@ void wheel_planner::ctrl_method()
         go_to_far(far_left, far_right, far_front);
         far_left = false;
         far_right = false;
+        far_front = false;
         dyna_msg.ctrl = false;
         dyna_pub.publish(dyna_msg);
-        ros::Duration(0.5).sleep();
+        ros::Duration(2).sleep();
     }
 
     if (vel_x != 0 || vel_y != 0 || vel_z != 0)
@@ -238,7 +239,6 @@ void wheel_planner::stop_robot()
 
 void wheel_planner::go_to_far(bool left, bool right, bool front)
 {
-    std::cout << (int)left << (int)right << "test" << (int)front << std::endl;
     if (left == true && right != true)
     {
         msg.linear.x = 0;
@@ -275,7 +275,6 @@ void wheel_planner::go_to_far(bool left, bool right, bool front)
     }
     if (front == true)
     {
-        std::cout << "test123" << std::endl;
         msg.linear.x = 0.3;
         msg.linear.y = 0;
         msg.angular.z = 0;
