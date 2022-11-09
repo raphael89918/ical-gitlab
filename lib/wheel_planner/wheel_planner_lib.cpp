@@ -84,22 +84,29 @@ void wheel_planner::ctrl_method()
 
     if (temp_x != 0)
     {
+        continue_robot();
         distance_processed_x();
+        wait_robot();
     }
     if (temp_y != 0)
     {
+        continue_robot();
         distance_processed_y();
+        wait_robot();
     }
     if (temp_z != 0)
     {
+        continue_robot();
         distance_processed_z();
+        wait_robot();
     }
 
     if (far_left == true || far_right == true || far_front == true)
     {
+        continue_robot();
         dyna_msg.ctrl = true;
         dyna_pub.publish(dyna_msg);
-        ros::Duration(0.5).sleep();
+        ros::Duration(2).sleep();
         go_to_far(far_left, far_right, far_front);
         far_left = false;
         far_right = false;
@@ -107,11 +114,14 @@ void wheel_planner::ctrl_method()
         dyna_msg.ctrl = false;
         dyna_pub.publish(dyna_msg);
         ros::Duration(2).sleep();
+        wait_robot();
     }
 
     if (vel_x != 0 || vel_y != 0 || vel_z != 0)
     {
+        continue_robot();
         velocity_processed();
+        wait_robot();
     }
     wait_msg.wait = true;
     wait_pub.publish(wait_msg);
@@ -136,14 +146,11 @@ void wheel_planner::distance_processed_x()
             msg.linear.y = 0;
             msg.angular.z = 0;
         }
-        continue_robot();
         pub.publish(msg);
-        wheel_correct = true;
         state.callOne();
         loop_rate.sleep();
     }
     dis_x = 0;
-    wheel_correct = false;
     stop_robot();
 }
 
@@ -166,7 +173,6 @@ void wheel_planner::distance_processed_y()
             msg.linear.y = -0.4;
             msg.angular.z = 0;
         }
-        continue_robot();
         pub.publish(msg);
         state.callOne();
         loop_rate.sleep();
@@ -194,7 +200,6 @@ void wheel_planner::distance_processed_z()
             msg.linear.y = 0;
             msg.angular.z = 1;
         }
-        continue_robot();
         pub.publish(msg);
         state.callOne();
         loop_rate.sleep();
@@ -217,7 +222,6 @@ void wheel_planner::velocity_processed()
         loop_rate.sleep();
     }
 
-    continue_robot();
     stop_robot();
 }
 
@@ -234,12 +238,11 @@ void wheel_planner::stop_robot()
     msg.linear.y = 0;
     msg.angular.z = 0;
     pub.publish(msg);
-    wait_robot();
 }
 
 void wheel_planner::go_to_far(bool left, bool right, bool front)
 {
-    if (left == true && right != true)
+    if (left == true)
     {
         msg.linear.x = 0;
         msg.linear.y = -0.3;
@@ -248,15 +251,12 @@ void wheel_planner::go_to_far(bool left, bool right, bool front)
         while (laser_dl <= 100)
         {
             state.callOne();
-            continue_robot();
             pub.publish(msg);
             loop_rate.sleep();
         }
         stop_robot();
-        left = false;
-        right = false;
     }
-    if (left != true && right == true)
+    if (right == true)
     {
         msg.linear.x = 0;
         msg.linear.y = 0.3;
@@ -265,13 +265,10 @@ void wheel_planner::go_to_far(bool left, bool right, bool front)
         while (laser_dr <= 100)
         {
             state.callOne();
-            continue_robot();
             pub.publish(msg);
             loop_rate.sleep();
         }
         stop_robot();
-        left = false;
-        right = false;
     }
     if (front == true)
     {
@@ -279,59 +276,18 @@ void wheel_planner::go_to_far(bool left, bool right, bool front)
         msg.linear.y = 0;
         msg.angular.z = 0;
         ros::Rate loop_rate(100);
-        while (laser_ul <= 100 || laser_ur <= 100)
+        while (laser_ul >= 100 || laser_ur >= 100)
         {
             state.callOne();
-            continue_robot();
             pub.publish(msg);
             loop_rate.sleep();
         }
         stop_robot();
-        front = false;
-        if (laser_ul > 100)
-        {
-            arduino_motor_msg.BL_DIR = true;
-            arduino_motor_msg.FL_DIR = true;
-            arduino_motor_msg.BR_DIR = false;
-            arduino_motor_msg.FR_DIR = false;
-            arduino_motor_msg.FL = 60;
-            arduino_motor_msg.BL = 60;
-            arduino_motor_msg.FR = 0;
-            arduino_motor_msg.BR = 0;
-            while (laser_ul <= 100)
-            {
-                state.callOne();
-                continue_robot();
-                arduino_motor_pub.publish(arduino_motor_msg);
-                loop_rate.sleep();
-            }
-            stop_robot();
-        }
-        if (laser_ur > 100)
-        {
-            arduino_motor_msg.BL_DIR = false;
-            arduino_motor_msg.FL_DIR = false;
-            arduino_motor_msg.BR_DIR = true;
-            arduino_motor_msg.FR_DIR = true;
-            arduino_motor_msg.FL = 0;
-            arduino_motor_msg.BL = 0;
-            arduino_motor_msg.FR = 60;
-            arduino_motor_msg.BR = 60;
-            while (laser_ur <= 100)
-            {
-                state.callOne();
-                continue_robot();
-                arduino_motor_pub.publish(arduino_motor_msg);
-                loop_rate.sleep();
-            }
-            stop_robot();
-        }
     }
 }
 
 void wheel_planner::wait_robot()
 {
-    ros::Duration(0.5).sleep();
     wait_msg.wait = true;
     wait_pub.publish(wait_msg);
 }

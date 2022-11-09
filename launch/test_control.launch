@@ -1,0 +1,3 @@
+<launch>
+    <node name="test_control_node" pkg="wheel_tokyo_weili" type="test_control_node" output="screen"/>
+</launch>

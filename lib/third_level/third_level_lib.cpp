@@ -13,6 +13,7 @@ void third_level::init_pubsub()
     wait_sub = nh.subscribe("/wheel/waitforidle", 1, &third_level::wait_callback, this);
     color_sub = nh.subscribe("/ground_color", 1, &third_level::ground_color_callback, this);
     msg_init();
+    waitforidle = false;
 }
 
 void third_level::wait_callback(const wheel_tokyo_weili::waitforidle &msg)
@@ -39,6 +40,7 @@ void third_level::robot_far(uint8_t dir)
     }
 
     wheel_pub.publish(wheel_msg);
+    ros::Duration(0.1).sleep();
     robot_wait();
     msg_init();
 }
@@ -49,8 +51,9 @@ void third_level::robot_wait()
     while(this->waitforidle == false)
     {
         ros::spinOnce();
-        ros::Duration(0.01).sleep();
+        ros::Duration(0.05).sleep();
     }
+    ros::Duration(1).sleep();
 }
 void third_level::msg_init()
 {
@@ -86,16 +89,20 @@ void third_level::trace_target()
         {
             wheel_msg.velocity_y = -0.4;
             ros::spinOnce();
+            wheel_pub.publish(wheel_msg);
             ros::Duration(0.01).sleep();
         }
         if(target<xcenter)
         {
             wheel_msg.velocity_y = 0.4;
             ros::spinOnce();
+            wheel_pub.publish(wheel_msg);
             ros::Duration(0.01).sleep();
         }
     }
+    ros::Duration(0.05).sleep();
     robot_wait();
+    msg_init();
 }
 
 void third_level::robot_move(uint8_t direction, int distance)
@@ -116,6 +123,7 @@ void third_level::robot_move(uint8_t direction, int distance)
     }
 
     wheel_pub.publish(wheel_msg);
+    ros::Duration(0.05).sleep();
     robot_wait();
     msg_init();
 }
