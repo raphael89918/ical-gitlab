@@ -11,7 +11,7 @@ void third_level::init_pubsub()
 {
     wheel_pub = nh.advertise<wheel_tokyo_weili::wheel_planner>("/wheel/planner", 1);
     wait_sub = nh.subscribe("/wheel/waitforidle", 1, &third_level::wait_callback, this);
-    color_sub = nh.subscribe("/ground_color", 1, &third_level::ground_color_callback, this);
+    // color_sub = nh.subscribe("/ground_color", 1, &third_level::ground_color_callback, this);
     msg_init();
     waitforidle = false;
 }
@@ -68,42 +68,42 @@ void third_level::msg_init()
     wheel_msg.velocity_z = 0;
     wheel_pub.publish(wheel_msg);
 }
-void third_level::ground_color_callback(const ground_color::GroundColor &color_msg)
-{
-    ROS_INFO("===================");
-    ROS_INFO("I heard Red x: %d, y:%d", color_msg.rect[GROUND_RED].x_center, color_msg.rect[GROUND_RED].y_center);
-    ROS_INFO("I heard Green x: %d, y:%d", color_msg.rect[GROUND_GREEN].x_center, color_msg.rect[GROUND_GREEN].y_center);
-    ROS_INFO("I heard Blue x: %d, y:%d", color_msg.rect[GROUND_BLUE].x_center, color_msg.rect[GROUND_BLUE].y_center);
-    ROS_INFO("I heard Combined Black x: %d, y:%d", color_msg.rect[COMBINED_BLACK].x_center, color_msg.rect[COMBINED_BLACK].y_center);
-    ROS_INFO("I heard Combined Blue x: %d, y:%d", color_msg.rect[CONBINED_BLUE].x_center, color_msg.rect[CONBINED_BLUE].y_center);
-    target = color_msg.rect[CONBINED_BLUE].x_center;
-}
+// void third_level::ground_color_callback(const ground_color::GroundColor &color_msg)
+// {
+//     ROS_INFO("===================");
+//     ROS_INFO("I heard Red x: %d, y:%d", color_msg.rect[GROUND_RED].x_center, color_msg.rect[GROUND_RED].y_center);
+//     ROS_INFO("I heard Green x: %d, y:%d", color_msg.rect[GROUND_GREEN].x_center, color_msg.rect[GROUND_GREEN].y_center);
+//     ROS_INFO("I heard Blue x: %d, y:%d", color_msg.rect[GROUND_BLUE].x_center, color_msg.rect[GROUND_BLUE].y_center);
+//     ROS_INFO("I heard Combined Black x: %d, y:%d", color_msg.rect[COMBINED_BLACK].x_center, color_msg.rect[COMBINED_BLACK].y_center);
+//     ROS_INFO("I heard Combined Blue x: %d, y:%d", color_msg.rect[CONBINED_BLUE].x_center, color_msg.rect[CONBINED_BLUE].y_center);
+//     target = color_msg.rect[CONBINED_BLUE].x_center;
+// }
 
 
-void third_level::trace_target()
-{
-    ros::spinOnce();
-    while(abs(xcenter-target)>100)
-    {
-        if(target>xcenter)
-        {
-            wheel_msg.velocity_y = -0.4;
-            ros::spinOnce();
-            wheel_pub.publish(wheel_msg);
-            ros::Duration(0.01).sleep();
-        }
-        if(target<xcenter)
-        {
-            wheel_msg.velocity_y = 0.4;
-            ros::spinOnce();
-            wheel_pub.publish(wheel_msg);
-            ros::Duration(0.01).sleep();
-        }
-    }
-    ros::Duration(0.05).sleep();
-    robot_wait();
-    msg_init();
-}
+// void third_level::trace_target()
+// {
+//     ros::spinOnce();
+//     while(abs(xcenter-target)>100)
+//     {
+//         if(target>xcenter)
+//         {
+//             wheel_msg.velocity_y = -0.4;
+//             ros::spinOnce();
+//             wheel_pub.publish(wheel_msg);
+//             ros::Duration(0.01).sleep();
+//         }
+//         if(target<xcenter)
+//         {
+//             wheel_msg.velocity_y = 0.4;
+//             ros::spinOnce();
+//             wheel_pub.publish(wheel_msg);
+//             ros::Duration(0.01).sleep();
+//         }
+//     }
+//     ros::Duration(0.05).sleep();
+//     robot_wait();
+//     msg_init();
+// }
 
 void third_level::robot_move(uint8_t direction, int distance)
 {

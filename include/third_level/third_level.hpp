@@ -1,7 +1,7 @@
 #include <ros/ros.h>
 #include "wheel_tokyo_weili/wheel_planner.h"
 #include "wheel_tokyo_weili/waitforidle.h"
-#include <ground_color/GroundColor.h>
+// #include <ground_color/GroundColor.h>
 
 enum DIRECTION
 {
@@ -32,7 +32,7 @@ private:
     void msg_init();
     bool waitforidle;
     uint8_t direction;
-    void ground_color_callback(const ground_color::GroundColor &color_msg);
+    // void ground_color_callback(const ground_color::GroundColor &color_msg);
     int target;
 public:
     third_level(const ros::NodeHandle &nh);

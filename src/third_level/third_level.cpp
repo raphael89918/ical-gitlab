@@ -3,8 +3,6 @@
 
 int main(int argc, char **argv)
 {
-    
-    
     ros::init(argc, argv, "third_level_node");
     ros::NodeHandle nh;
     third_level third_level(nh);
@@ -24,8 +22,10 @@ int main(int argc, char **argv)
     third_level.robot_far(left);
     ROS_INFO("robot_move");
     third_level.robot_move(front, 40);
-    ROS_INFO("trace_traget");
-    third_level.trace_target();
+    // ROS_INFO("trace_traget");
+    // third_level.trace_target();
+    ROS_INFO("far_right");
+    third_level.robot_far(right);
     ROS_INFO("robot_move");
     third_level.robot_move(front, 50);
 }

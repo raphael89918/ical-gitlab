@@ -24,7 +24,7 @@ find_package(OpenCV REQUIRED)
 
 
 set(DEPS_PATH
-    #${CMAKE_CURRENT_SOURCE_DIR}/deps/pid
+    ${CMAKE_CURRENT_SOURCE_DIR}/deps/pid
     ${CMAKE_CURRENT_SOURCE_DIR}/deps/conio/src
     #{PLAN_PATHS}
     )

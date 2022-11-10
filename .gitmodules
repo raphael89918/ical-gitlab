@@ -1,3 +1,6 @@
 [submodule "arduino/Arduino-Makefile"]
 	path = arduino/Arduino-Makefile
 	url = https://github.com/sudar/Arduino-Makefile
+[submodule "deps/pid"]
+	path = deps/pid
+	url = git@gitlab.ical.tw:b1065144/pid.git
