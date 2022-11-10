@@ -10,8 +10,8 @@ int main(int argc, char **argv)
     ROS_INFO("waiting");
     ros::Duration(10).sleep();
     ROS_INFO("GO");
-    ROS_INFO("far_left");
-    third_level.robot_far(left);
+    // ROS_INFO("far_left");
+    // third_level.robot_far(left);
     ROS_INFO("far_front");
     third_level.robot_far(front);
     ROS_INFO("far_right");
