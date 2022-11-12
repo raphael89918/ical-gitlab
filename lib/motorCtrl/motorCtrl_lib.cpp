@@ -18,7 +18,10 @@ void motorCtrl::start()
     m_sub = t_nh.subscribe("/cmd_vel", 1, &motorCtrl::callback, this);
     e_sub = t_nh.subscribe("/encoder", 1, &motorCtrl::encoder_callback, this);
     ROS_INFO("Initialzing motor parameter");
-    
+    enc_fl = 0;
+    enc_fr = 0;
+    enc_bl = 0;
+    enc_br = 0;
 }
 void motorCtrl::encoder_callback(const wheel_tokyo_weili::encoder &msg)
 {
