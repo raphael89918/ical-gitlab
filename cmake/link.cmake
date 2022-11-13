@@ -34,3 +34,7 @@ target_link_libraries(third_level_node
 third_level_lib
 ${catkin_LIBRARIES}
 )
+
+target_link_libraries(udp_joystick_node
+${catkin_LIBRARIES}
+)

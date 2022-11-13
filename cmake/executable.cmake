@@ -11,3 +11,5 @@ add_executable(encoderCounter_node src/encoderCounter/encoderCounter.cpp)
 add_executable(wheel_planner_node src/wheel_planner/wheel_planner.cpp)
 
 add_executable(third_level_node src/third_level/third_level.cpp)
+
+add_executable(udp_joystick_node src/udp_joystick/udp_joystick.cpp)
