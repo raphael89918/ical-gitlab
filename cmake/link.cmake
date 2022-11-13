@@ -38,3 +38,10 @@ ${catkin_LIBRARIES}
 target_link_libraries(udp_joystick_node
 ${catkin_LIBRARIES}
 )
+
+target_link_libraries(udp_motorCtrl_node
+mecanum_wheel_lib
+udp_motorCtrl_lib
+pid
+${catkin_LIBRARIES}
+)
