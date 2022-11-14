@@ -22,6 +22,7 @@ void motorCtrl::start()
     enc_fr = 0;
     enc_bl = 0;
     enc_br = 0;
+    enc_sum = 0;
 }
 void motorCtrl::encoder_callback(const wheel_tokyo_weili::encoder &msg)
 {
@@ -42,10 +43,10 @@ void motorCtrl::encoder_calculate()
     enc_fr = enc_sum - enc_fr;
     enc_bl = enc_sum - enc_bl;
     enc_br = enc_sum - enc_br;
-    yet_fl = enc_fl;
-    yet_fr = enc_fr;
-    yet_bl = enc_bl;
-    yet_br = enc_br;
+    double yet_fl = enc_fl;
+    double yet_fr = enc_fr;
+    double yet_bl = enc_bl;
+    double yet_br = enc_br;
 }
 
 void motorCtrl::callback(const geometry_msgs::Twist &msg)
