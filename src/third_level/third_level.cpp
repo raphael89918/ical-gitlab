@@ -12,9 +12,8 @@ int main(int argc, char **argv)
     ROS_INFO("GO");
     // ROS_INFO("far_left");
     // third_level.robot_far(left);
-    third_level.robot_move(front, 60);
-//    third_level.robot_move(right, 60);
-
+    // third_level.robot_move(front, 30);
+    third_level.robot_move(right, 60);
 
 /*    ROS_INFO("far_front");
     third_level.robot_far(front);

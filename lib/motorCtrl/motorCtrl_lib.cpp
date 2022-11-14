@@ -1,7 +1,8 @@
 #include "motorCtrl/motorCtrl.hpp"
 
 motorCtrl::motorCtrl(const ros::NodeHandle &nh)
-    : m_nh(nh), t_nh(nh), pid_wheel(0.05, 0, 0, 0), yet_bl(0), yet_br(0), yet_fl(0), yet_fr(0)
+    : m_nh(nh), t_nh(nh), pid_wheel(0.5, 0, 0, 0), yet_bl(0), yet_br(0), yet_fl(0), yet_fr(0)
+    ,con_fl(0),con_fr(0),con_bl(0),con_br(0)
 {
     ROS_INFO("class motorCtrl has been constructed");
 }
@@ -23,6 +24,10 @@ void motorCtrl::start()
     enc_bl = 0;
     enc_br = 0;
     enc_sum = 0;
+    m_msg.FL = 0;
+    m_msg.BL = 0;
+    m_msg.FR = 0;
+    m_msg.BR = 0;
 }
 void motorCtrl::encoder_callback(const wheel_tokyo_weili::encoder &msg)
 {
@@ -30,6 +35,7 @@ void motorCtrl::encoder_callback(const wheel_tokyo_weili::encoder &msg)
     enc_fr = msg.wheel_value[1];
     enc_bl = msg.wheel_value[2];
     enc_br = msg.wheel_value[3];
+    encoder_calculate();
 }
 
 void motorCtrl::encoder_calculate()
@@ -38,15 +44,15 @@ void motorCtrl::encoder_calculate()
     enc_fr = enc_fr - yet_fr;
     enc_bl = enc_bl - yet_bl;
     enc_br = enc_br - yet_br;
-    enc_sum = enc_fl + enc_fr + enc_bl + enc_br;
-    enc_fl = enc_sum - enc_fl;
-    enc_fr = enc_sum - enc_fr;
-    enc_bl = enc_sum - enc_bl;
-    enc_br = enc_sum - enc_br;
+    enc_sum = (enc_fl + enc_fr + enc_bl + enc_br)/4;
     yet_fl = enc_fl;
     yet_fr = enc_fr;
     yet_bl = enc_bl;
     yet_br = enc_br;
+    con_fl = enc_sum - enc_fl;
+    con_fr = enc_sum - enc_fr;
+    con_bl = enc_sum - enc_bl;
+    con_br = enc_sum - enc_br;
 }
 
 void motorCtrl::callback(const geometry_msgs::Twist &msg)
@@ -68,21 +74,23 @@ void motorCtrl::transform_to_pwm(float *wheel_vel)
         {
             wheel_dir[i] = false;
             wheel_vel[i] = wheel_vel[i] * -1;
+            if(wheel_vel[i]==0)
+            {
+                con_fl = 0;
+                con_fr = 0;
+                con_bl = 0;
+                con_br = 0;
+            }
         }
     }
-    m_msg.FL = pid_wheel.pidCtrl(-enc_fl, wheel_vel[FL]);
-    m_msg.BL = pid_wheel.pidCtrl(-enc_bl, wheel_vel[BL]);
-    m_msg.FR = pid_wheel.pidCtrl(-enc_fr, wheel_vel[FR]);
-    m_msg.BR = pid_wheel.pidCtrl(-enc_br, wheel_vel[BR]);
+    
+    m_msg.FL = pid_wheel.pidCtrl(con_fl, wheel_vel[FL]);
+    m_msg.BL = pid_wheel.pidCtrl(con_bl, wheel_vel[BL]);
+    m_msg.FR = pid_wheel.pidCtrl(con_fr, wheel_vel[FR]);
+    m_msg.BR = pid_wheel.pidCtrl(con_br, wheel_vel[BR]);
 
     m_msg.FL_DIR = wheel_dir[FL];
     m_msg.BL_DIR = wheel_dir[BL];
     m_msg.FR_DIR = wheel_dir[FR];
     m_msg.BR_DIR = wheel_dir[BR];
-}
-
-void motorCtrl::execute()
-{
-    ros::spinOnce();
-    m_pub.publish(m_msg);
 }

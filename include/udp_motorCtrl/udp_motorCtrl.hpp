@@ -40,8 +40,7 @@ public:
     void start();
 
     void callback(const geometry_msgs::Twist &msg);
-    void execute();
-
+    
     float vel_x;
     float vel_y;
     float vel_th;
@@ -52,15 +51,13 @@ private:
     ros::NodeHandle m_nh;
     ros::NodeHandle t_nh;
 
-    wheel_tokyo_weili::wheel_planner e_msg;
-    ros::Publisher e_pub;
-
     ros::Subscriber m_sub;
     ros::Subscriber e_sub;
     void encoder_callback(const wheel_tokyo_weili::encoder &msg);
     double right_vel, left_vel;
-    double enc_fl, enc_fr, enc_bl, enc_br, enc_sum;
-    double yet_fl, yet_fr, yet_bl, yet_br;
+    int enc_fl, enc_fr, enc_bl, enc_br, enc_sum;
+    int yet_fl, yet_fr, yet_bl, yet_br;
+    int con_fl, con_fr, con_bl, con_br;
     float wheel_vel[4];
     bool wheel_dir[4];
     PID pid_wheel;
