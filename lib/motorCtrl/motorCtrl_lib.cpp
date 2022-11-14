@@ -1,7 +1,7 @@
 #include "motorCtrl/motorCtrl.hpp"
 
 motorCtrl::motorCtrl(const ros::NodeHandle &nh)
-    : m_nh(nh), t_nh(nh), pid_wheel(0.05, 0, 0, 0), yet_bl(0), yet_br(0), yet_fl(0), yet_fr(0)
+    : m_nh(nh), t_nh(nh), pid_wheel(0.05, 0, 0, 0)
 {
     ROS_INFO("class motorCtrl has been constructed");
 }
@@ -34,6 +34,7 @@ void motorCtrl::encoder_callback(const wheel_tokyo_weili::encoder &msg)
 
 void motorCtrl::encoder_calculate()
 {
+    double yet_fl(0), yet_fr(0), yet_bl(0), yet_br(0);
     enc_fl = enc_fl - yet_fl;
     enc_fr = enc_fr - yet_fr;
     enc_bl = enc_bl - yet_bl;
@@ -43,10 +44,10 @@ void motorCtrl::encoder_calculate()
     enc_fr = enc_sum - enc_fr;
     enc_bl = enc_sum - enc_bl;
     enc_br = enc_sum - enc_br;
-    double yet_fl = enc_fl;
-    double yet_fr = enc_fr;
-    double yet_bl = enc_bl;
-    double yet_br = enc_br;
+    yet_fl = enc_fl;
+    yet_fr = enc_fr;
+    yet_bl = enc_bl;
+    yet_br = enc_br;
 }
 
 void motorCtrl::callback(const geometry_msgs::Twist &msg)
