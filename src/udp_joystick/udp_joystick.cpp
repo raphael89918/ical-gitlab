@@ -55,7 +55,7 @@ void Teleop::callback(const sensor_msgs::Joy::ConstPtr &Joy)
     {
         v.linear.x = (Joy->axes[axis_lin_x]) * vlinear;
         v.linear.y = -(Joy->axes[axis_lin_y]) * vlinear;
-        v.angular.z = -(Joy->axes[axis_ang]) * vangular;
+        v.angular.z = (Joy->axes[axis_ang]) * vangular;
         if(Joy->buttons[dyna_init] == 1)
         {
             msg.control = 6;
