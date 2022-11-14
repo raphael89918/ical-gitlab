@@ -1,7 +1,7 @@
 #include "udp_motorCtrl/udp_motorCtrl.hpp"
 
 motorCtrl::motorCtrl(const ros::NodeHandle &nh)
-    : m_nh(nh), t_nh(nh), pid_wheel(0.05, 0, 0, 0)
+    : m_nh(nh), t_nh(nh), pid_wheel(0.05, 0, 0, 0), yet_bl(0), yet_br(0), yet_fl(0), yet_fr(0)
 {
     ROS_INFO("class motorCtrl has been constructed");
 }
@@ -14,6 +14,7 @@ motorCtrl::~motorCtrl()
 void motorCtrl::start()
 {
     ROS_INFO("Starting to set up pub and sub");
+    e_pub = m_nh.advertise<wheel_tokyo_weili::wheel_planner>("/planner/encoder", 1);
     m_pub = m_nh.advertise<wheel_tokyo_weili::motor>("/wheel/motor", 1);
     m_sub = t_nh.subscribe("/cmd_vel", 1, &motorCtrl::callback, this, ros::TransportHints().unreliable().maxDatagramSize(1));
     e_sub = t_nh.subscribe("/encoder", 1, &motorCtrl::encoder_callback, this);
@@ -34,7 +35,6 @@ void motorCtrl::encoder_callback(const wheel_tokyo_weili::encoder &msg)
 
 void motorCtrl::encoder_calculate()
 {
-    double yet_fl(0), yet_fr(0), yet_bl(0), yet_br(0);
     enc_fl = enc_fl - yet_fl;
     enc_fr = enc_fr - yet_fr;
     enc_bl = enc_bl - yet_bl;
@@ -76,6 +76,23 @@ void motorCtrl::transform_to_pwm(float *wheel_vel)
     m_msg.FR = pid_wheel.pidCtrl(-enc_fr, wheel_vel[FR]);
     m_msg.BR = pid_wheel.pidCtrl(-enc_br, wheel_vel[BR]);
 
+    if (wheel_vel[FL] == 0)
+    {
+        m_msg.FL = 0;
+    }
+    if (wheel_vel[FR] == 0)
+    {
+        m_msg.FR = 0;
+    }
+    if (wheel_vel[BL] == 0)
+    {
+        m_msg.BL = 0;
+    }
+    if (wheel_vel[BR] == 0)
+    {
+        m_msg.BR = 0;
+    }
+
     m_msg.FL_DIR = wheel_dir[FL];
     m_msg.BL_DIR = wheel_dir[BL];
     m_msg.FR_DIR = wheel_dir[FR];
@@ -86,4 +103,6 @@ void motorCtrl::execute()
 {
     ros::spinOnce();
     m_pub.publish(m_msg);
+    e_msg.encoder_reset = true;
+    e_pub.publish(e_msg);
 }

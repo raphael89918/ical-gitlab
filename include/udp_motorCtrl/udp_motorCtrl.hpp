@@ -2,7 +2,9 @@
 #include "geometry_msgs/Twist.h"
 #include "wheel_tokyo_weili/motor.h"
 #include "wheel_tokyo_weili/encoder.h"
+#include "wheel_tokyo_weili/wheel_planner.h"
 #include "pid.hpp"
+
 #define LEFT 0
 #define RIGHT 1
 
@@ -50,11 +52,15 @@ private:
     ros::NodeHandle m_nh;
     ros::NodeHandle t_nh;
 
+    wheel_tokyo_weili::wheel_planner e_msg;
+    ros::Publisher e_pub;
+
     ros::Subscriber m_sub;
     ros::Subscriber e_sub;
     void encoder_callback(const wheel_tokyo_weili::encoder &msg);
     double right_vel, left_vel;
     double enc_fl, enc_fr, enc_bl, enc_br, enc_sum;
+    double yet_fl, yet_fr, yet_bl, yet_br;
     float wheel_vel[4];
     bool wheel_dir[4];
     PID pid_wheel;
