@@ -23,10 +23,9 @@ void motorCtrl::start()
     enc_bl = 0;
     enc_br = 0;
     enc_sum = 0;
-    m_msg.FL = 0;
-    m_msg.BL = 0;
-    m_msg.FR = 0;
-    m_msg.BR = 0;
+    vel_x = 0;
+    vel_y = 0;
+    vel_th = 0;
 }
 void motorCtrl::encoder_callback(const wheel_tokyo_weili::encoder &msg)
 {
