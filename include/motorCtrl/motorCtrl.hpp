@@ -44,7 +44,7 @@ public:
     float vel_th;
     void transform_to_pwm(float *wheel_vel);
     void encoder_calculate();
-
+    
 private:
     ros::NodeHandle m_nh;
     ros::NodeHandle t_nh;

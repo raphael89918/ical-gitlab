@@ -2,6 +2,7 @@
 
 motorCtrl::motorCtrl(const ros::NodeHandle &nh)
     : m_nh(nh), t_nh(nh), pid_wheel(1, 0, 0, 0), yet_bl(0), yet_br(0), yet_fl(0), yet_fr(0)
+    ,con_fl(0),con_fr(0),con_bl(0),con_br(0)
 {
     ROS_INFO("class motorCtrl has been constructed");
 }
@@ -15,6 +16,7 @@ void motorCtrl::start()
 {
     ROS_INFO("Starting to set up pub and sub");
     m_pub = t_nh.advertise<wheel_tokyo_weili::motor>("/wheel/motor", 1);
+    e_pub = m_nh.advertise<wheel_tokyo_weili::wheel_planner>("/planner/encoder", 1);
     m_sub = t_nh.subscribe("/cmd_vel", 1, &motorCtrl::callback, this, ros::TransportHints().unreliable().maxDatagramSize(30));
     e_sub = t_nh.subscribe("/encoder", 1, &motorCtrl::encoder_callback, this);
     ROS_INFO("Initialzing motor parameter");
@@ -90,4 +92,15 @@ void motorCtrl::transform_to_pwm(float *wheel_vel)
     m_msg.BL_DIR = wheel_dir[BL];
     m_msg.FR_DIR = wheel_dir[FR];
     m_msg.BR_DIR = wheel_dir[BR];
+    initEnc();
+}
+
+void motorCtrl::initEnc()
+{
+    e_msg.encoder_reset = true;
+    e_pub.publish(e_msg);
+    yet_fl = 0;
+    yet_fr = 0;
+    yet_bl = 0;
+    yet_br = 0;
 }
