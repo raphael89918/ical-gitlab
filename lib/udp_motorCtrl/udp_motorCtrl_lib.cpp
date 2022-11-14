@@ -1,7 +1,7 @@
 #include "udp_motorCtrl/udp_motorCtrl.hpp"
 
 motorCtrl::motorCtrl(const ros::NodeHandle &nh)
-    : m_nh(nh), t_nh(nh), pid_wheel(0.5, 0, 0, 0), yet_bl(0), yet_br(0), yet_fl(0), yet_fr(0)
+    : m_nh(nh), t_nh(nh), pid_wheel(1, 0, 0, 0), yet_bl(0), yet_br(0), yet_fl(0), yet_fr(0)
 {
     ROS_INFO("class motorCtrl has been constructed");
 }
@@ -42,15 +42,15 @@ void motorCtrl::encoder_calculate()
     enc_fr = enc_fr - yet_fr;
     enc_bl = enc_bl - yet_bl;
     enc_br = enc_br - yet_br;
-    enc_sum = (enc_fl + enc_fr + enc_bl + enc_br)/4;
+    enc_sum = (abs(enc_fl) + abs(enc_fr) + abs(enc_bl) + abs(enc_br))/4;
     yet_fl = enc_fl;
     yet_fr = enc_fr;
     yet_bl = enc_bl;
     yet_br = enc_br;
-    con_fl = enc_sum - enc_fl;
-    con_fr = enc_sum - enc_fr;
-    con_bl = enc_sum - enc_bl;
-    con_br = enc_sum - enc_br;
+    con_fl = enc_sum - abs(enc_fl);
+    con_fr = enc_sum - abs(enc_fr);
+    con_bl = enc_sum - abs(enc_bl);
+    con_br = enc_sum - abs(enc_br);
 }
 
 void motorCtrl::callback(const geometry_msgs::Twist &msg)
