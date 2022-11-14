@@ -3,9 +3,6 @@
     <param name ="/wheel_ratio_fr"  value="1"/>
     <param name ="/wheel_ratio_bl"  value="1"/>
     <param name ="/wheel_ratio_br"  value="1"/>
-    <node name="joystick_node" pkg="wheel_tokyo_weili" type="joystick_node"/>
-
-    <node respawn = "true" pkg="joy" type="joy_node" name="joy_node"/>
 
     <node name="udp_motorCtrl_node" pkg="wheel_tokyo_weili" type="udp_motorCtrl_node" output="screen"/>
 
