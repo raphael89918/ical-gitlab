@@ -79,6 +79,10 @@ void motorCtrl::transform_to_pwm(float *wheel_vel)
                 con_fr = 0;
                 con_bl = 0;
                 con_br = 0;
+                yet_fl = 0;
+                yet_fr = 0;
+                yet_bl = 0;
+                yet_br = 0;
             }
         }
     }
