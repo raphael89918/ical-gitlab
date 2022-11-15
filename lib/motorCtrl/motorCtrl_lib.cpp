@@ -1,7 +1,7 @@
 #include "motorCtrl/motorCtrl.hpp"
 
 motorCtrl::motorCtrl(const ros::NodeHandle &nh)
-    : m_nh(nh), t_nh(nh), pid_wheel(1, 0, 0, 0), yet_bl(0), yet_br(0), yet_fl(0), yet_fr(0)
+    : m_nh(nh), t_nh(nh), pid_wheel(1.2, 0, 0, 0), yet_bl(0), yet_br(0), yet_fl(0), yet_fr(0)
     ,con_fl(0),con_fr(0),con_bl(0),con_br(0)
 {
     ROS_INFO("class motorCtrl has been constructed");
