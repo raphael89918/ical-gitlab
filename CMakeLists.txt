@@ -17,11 +17,12 @@ find_package(catkin REQUIRED COMPONENTS
     sensor_msgs
     gpio
     dynamixel_control
+    ros_deep_learning
     )
 
 ## System dependencies are found with CMake's conventions
 find_package(OpenCV REQUIRED)
-
+find_package(jetson-inference)
 
 set(DEPS_PATH
     ${CMAKE_CURRENT_SOURCE_DIR}/deps/pid
@@ -132,7 +133,7 @@ generate_messages(
 catkin_package(
     INCLUDE_DIRS include
     LIBRARIES
-    CATKIN_DEPENDS roscpp rospy std_msgs message_runtime cv_bridge image_transport sensor_msgs
+    CATKIN_DEPENDS roscpp rospy std_msgs message_runtime cv_bridge image_transport sensor_msgs ros_deep_learning
     DEPENDS OpenCV
 )
 

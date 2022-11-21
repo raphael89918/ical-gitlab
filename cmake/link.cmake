@@ -1,11 +1,13 @@
 target_link_libraries(test_control_node
 conio
 ${catkin_LIBRARIES}
+jetson-inference
 )
 
 target_link_libraries(keyCtrl_node
 conio
 ${catkin_LIBRARIES}
+jetson-inference
 )
 
 target_link_libraries(motorCtrl_node
@@ -13,30 +15,38 @@ mecanum_wheel_lib
 motorCtrl_lib
 pid
 ${catkin_LIBRARIES}
+jetson-inference
 )
 
 target_link_libraries(joystick_node
 ${catkin_LIBRARIES}
+jetson-inference
 )
 
 target_link_libraries(encoderCounter_node
 mecanum_wheel_lib
 encoderCounter_lib
 ${catkin_LIBRARIES}
+jetson-inference
 )
 
 target_link_libraries(wheel_planner_node
 wheel_planner_lib
 ${catkin_LIBRARIES}
+jetson-inference
 )
 
-target_link_libraries(third_level_node
-third_level_lib
+target_link_libraries(first_level_node
+first_level_lib
+pid
+${OpenCV_LIBS}
 ${catkin_LIBRARIES}
+jetson-inference
 )
 
 target_link_libraries(udp_joystick_node
 ${catkin_LIBRARIES}
+jetson-inference
 )
 
 target_link_libraries(udp_motorCtrl_node
@@ -44,4 +54,5 @@ mecanum_wheel_lib
 udp_motorCtrl_lib
 pid
 ${catkin_LIBRARIES}
+jetson-inference
 )

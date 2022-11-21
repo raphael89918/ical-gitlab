@@ -252,7 +252,6 @@ void wheel_planner::go_to_far(bool left, bool right, bool front)
         msg.linear.x = 0;
         msg.linear.y = -0.3;
         msg.angular.z = 0;
-        std::cout <<"test"<< std::endl;
         ros::Rate loop_rate(100);
         state.callOne();
         ros::Duration(0.5).sleep();
