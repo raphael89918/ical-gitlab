@@ -13,13 +13,14 @@ int main(int argc, char **argv)
     // ROS_INFO("far_left");
     // third_level.robot_far(left);
     // third_level.robot_move(front, 30);
-    third_level.robot_move(front, 20);
-    third_level.robot_move(right, 10);
-    third_level.robot_move(front, 90);
-    third_level.robot_move(left, 30);
-    third_level.robot_move(front, 90);
-    third_level.robot_move(right, 40);
-    third_level.robot_move(front ,40);
+    third_level.robot_move(front, 50);
+    third_level.robot_far(right);
+    third_level.robot_move(left, 5);
+    third_level.robot_move(front, 120);
+    third_level.robot_far(left);
+
+    third_level.robot_move(front, 120);
+    
 /*    ROS_INFO("far_front");
     third_level.robot_far(front);
     ROS_INFO("far_right");
@@ -36,4 +37,5 @@ int main(int argc, char **argv)
     third_level.robot_far(right);
     ROS_INFO("robot_move");
     third_level.robot_move(front, 50);*/
+    return 0;
 }
