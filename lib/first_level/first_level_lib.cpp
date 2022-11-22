@@ -64,7 +64,7 @@ void third_level::msg_init()
     wheel_msg.velocity_x = 0;
     wheel_msg.velocity_y = 0;
     wheel_msg.velocity_z = 0;
-    wheel_pub.publish(wheel_msg);
+    // wheel_pub.publish(wheel_msg);
 }
 
 void third_level::visual_callback(const ros_deep_learning::alphabet &msg)
@@ -137,8 +137,13 @@ void third_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
         switch (temp[i])
         {
         case T:
-            ROS_INFO("trace T");
             ros::spinOnce();
+            if(T_z == 0)
+            {
+                ROS_INFO("cannot find T");
+                break;
+            }
+            ROS_INFO("trace T");
             while(T_z>=27 || T_z <=23)
             {
                 int target = T_z - center_z;
@@ -147,6 +152,7 @@ void third_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
                 {
                     wheel_msg.velocity_x = 0.4;
                 }
+                wheel_pub.publish(wheel_msg);
                 ros::Duration(0.01).sleep();
                 ros::spinOnce();
             }
@@ -158,13 +164,19 @@ void third_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
                 {
                     wheel_msg.velocity_y = 0.4;
                 }
+                wheel_pub.publish(wheel_msg);
                 ros::spinOnce();
                 ros::Duration(0.01).sleep();
             }
             break;
         case E:
-            ROS_INFO("trace E");
             ros::spinOnce();
+            if(E_z == 0)
+            {
+                ROS_INFO("cannot find E");
+                break;
+            }
+            ROS_INFO("trace E");
             while(E_z>=27 || E_z <=23)
             {
                 int target = E_z - center_z;
@@ -173,6 +185,7 @@ void third_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
                 {
                     wheel_msg.velocity_x = 0.4;
                 }
+                wheel_pub.publish(wheel_msg);
                 ros::Duration(0.01).sleep();
                 ros::spinOnce();
             }
@@ -184,13 +197,19 @@ void third_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
                 {
                     wheel_msg.velocity_y = 0.4;
                 }
+                wheel_pub.publish(wheel_msg);
                 ros::spinOnce();
                 ros::Duration(0.01).sleep();
             }
             break;
         case L:
-            ROS_INFO("trace L");
             ros::spinOnce();
+            if(L_z == 0)
+            {
+                ROS_INFO("cannot find L");
+                break;
+            }
+            ROS_INFO("trace L");
             while(L_z>=27 || L_z <=23)
             {
                 int target = L_z - center_z;
@@ -199,6 +218,7 @@ void third_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
                 {
                     wheel_msg.velocity_x = 0.4;
                 }
+                wheel_pub.publish(wheel_msg);
                 ros::Duration(0.01).sleep();
                 ros::spinOnce();
             }
@@ -210,6 +230,7 @@ void third_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
                 {
                     wheel_msg.velocity_y = 0.4;
                 }
+                wheel_pub.publish(wheel_msg);
                 ros::spinOnce();
                 ros::Duration(0.01).sleep();
             }

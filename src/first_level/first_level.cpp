@@ -10,11 +10,14 @@ int main(int argc, char **argv)
     ROS_INFO("waiting");
     ros::Duration(10).sleep();
     ROS_INFO("GO");
+    
     ROS_INFO("go front 90");
     third_level.robot_move(front, 90);
+    
     ROS_INFO("go to far left");
     third_level.robot_far(left);
     third_level.robot_move(right, 3);
+    
     ROS_INFO("choose target");
     third_level.choose_target();
     
