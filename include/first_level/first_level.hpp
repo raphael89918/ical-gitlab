@@ -3,6 +3,8 @@
 #include "wheel_tokyo_weili/waitforidle.h"
 #include "ros_deep_learning/alphabet.h"
 #include "ros_deep_learning/alphabet_info.h"
+#include "dynamixel_control/arm_trunk.h"
+
 #include "pid.hpp"
 
 enum DIRECTION : uint8_t
@@ -19,14 +21,16 @@ enum TARGET : uint8_t
     L = 2
 };
 
-class third_level
+class first_level
 {
 private:
     ros::NodeHandle nh;
     ros::Publisher wheel_pub;
+    ros::Publisher arm_pub;
     ros::Subscriber wait_sub;
     ros::Subscriber visual_sub;
     wheel_tokyo_weili::wheel_planner wheel_msg;
+    dynamixel_control::arm_trunk arm_msg;
 
     void wait_callback(const wheel_tokyo_weili::waitforidle &msg);
     void msg_init();
@@ -37,8 +41,11 @@ private:
     float T_z, E_z, L_z, C_z, F_z;
     void trace_target(uint8_t first, uint8_t second, uint8_t third);
     PID pid_x, pid_z;
+    void ready_grab_target();
+    void grab_target();
+    void heap_target();
 public:
-    third_level(const ros::NodeHandle &nh);
+    first_level(const ros::NodeHandle &nh);
     void init_pubsub();
     void robot_move(uint8_t direction, int distance);
     void robot_wait();

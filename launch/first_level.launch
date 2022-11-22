@@ -1,0 +1,3 @@
+<launch>
+    <node name="first_level_node" pkg="wheel_tokyo_weili" type="first_level_node" output="screen"/>
+</launch>

@@ -1,25 +1,26 @@
 #include "first_level/first_level.hpp"
 
-third_level::third_level(const ros::NodeHandle &nh) : nh(nh), direction(0), pid_x(0.02, 0.01, 0, 0), pid_z(0.1, 0.05, 0, 0)
+first_level::first_level(const ros::NodeHandle &nh) : nh(nh), direction(0), pid_x(0.1, 0.01, 0, 0), pid_z(0.005 , 0.0001, 0, 0)
 {
-    ROS_INFO("third_level constructed");
+    ROS_INFO("first_level constructed");
 }
 
-void third_level::init_pubsub()
+void first_level::init_pubsub()
 {
-    wheel_pub = nh.advertise<wheel_tokyo_weili::wheel_planner>("/wheel/planner", 1);
-    wait_sub = nh.subscribe("/wheel/waitforidle", 1, &third_level::wait_callback, this);
-    visual_sub = nh.subscribe("/alphabet", 1, &third_level::visual_callback, this);
+    wheel_pub = nh.advertise<wheel_tokyo_weili::wheel_planner>("/wheel/planner", 10);
+    arm_pub = nh.advertise<dynamixel_control::arm_trunk>("/dynamixel/arm_storage", 10);
+    wait_sub = nh.subscribe("/wheel/waitforidle", 1, &first_level::wait_callback, this);
+    visual_sub = nh.subscribe("/alphabet", 1, &first_level::visual_callback, this);
     msg_init();
     waitforidle = false;
 }
 
-void third_level::wait_callback(const wheel_tokyo_weili::waitforidle &msg)
+void first_level::wait_callback(const wheel_tokyo_weili::waitforidle &msg)
 {
     this->waitforidle = msg.wait;
 }
 
-void third_level::robot_far(uint8_t dir)
+void first_level::robot_far(uint8_t dir)
 {
     direction = dir;
     switch (direction)
@@ -43,7 +44,7 @@ void third_level::robot_far(uint8_t dir)
     msg_init();
 }
 
-void third_level::robot_wait()
+void first_level::robot_wait()
 {
     this->waitforidle = false;
     while (this->waitforidle == false)
@@ -53,7 +54,7 @@ void third_level::robot_wait()
     }
     ros::Duration(1).sleep();
 }
-void third_level::msg_init()
+void first_level::msg_init()
 {
     wheel_msg.distance_x = 0;
     wheel_msg.distance_y = 0;
@@ -64,10 +65,11 @@ void third_level::msg_init()
     wheel_msg.velocity_x = 0;
     wheel_msg.velocity_y = 0;
     wheel_msg.velocity_z = 0;
+    arm_msg.control = 0;
     // wheel_pub.publish(wheel_msg);
 }
 
-void third_level::visual_callback(const ros_deep_learning::alphabet &msg)
+void first_level::visual_callback(const ros_deep_learning::alphabet &msg)
 {
     T_x = msg.T.x;
     E_x = msg.E.x;
@@ -82,10 +84,10 @@ void third_level::visual_callback(const ros_deep_learning::alphabet &msg)
     F_z = msg.F.z;
 }
 
-void third_level::choose_target()
+void first_level::choose_target()
 {
     ros::spinOnce();
-    if (T_x == 0 && E_x == 0 && L_x == 0)
+    if (T_x == -1 && E_x == -1 && L_x == -1)
     {
         ROS_INFO("no TEL target");
         return;
@@ -94,44 +96,75 @@ void third_level::choose_target()
     {
         if (E_z == std::min(E_z, L_z))
         {
-            trace_target(T, E, L);
+            trace_target(E, L, T);
         }
         if (L_z == std::min(E_z, L_z))
         {
-            trace_target(T, L, E);
+            trace_target(L, E, T);
         }
     }
     if (E_z >= T_z && E_z >= L_z)
     {
         if (T_z == std::min(T_z, L_z))
         {
-            trace_target(E, T, L);
+            trace_target(T, L, E);
         }
         if (L_z == std::min(T_z, L_z))
         {
-            trace_target(E, L, T);
+            trace_target(L, T, E);
         }
     }
     if (L_z >= E_z && L_z >= T_z)
     {
         if (T_z == std::min(E_z, T_z))
         {
-            trace_target(L, T, E);
+            trace_target(T, E, L);
         }
         if (E_z == std::min(E_z, T_z))
         {
-            trace_target(L, E, T);
+            trace_target(E, T, L);
         }
     }
     robot_wait();
     msg_init();
 }
 
-void third_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
+void first_level::ready_grab_target()
+{
+    arm_msg.control = 4;
+    arm_pub.publish(arm_msg);
+    ros::Duration(0.1).sleep();
+    arm_msg.control = 1;
+    arm_pub.publish(arm_msg);
+    ros::Duration(0.1).sleep();
+}
+
+void first_level::grab_target()
+{
+    arm_msg.control = 2;
+    arm_pub.publish(arm_msg);
+    ros::Duration(0.1).sleep();
+    arm_msg.control = 3;
+    arm_pub.publish(arm_msg);
+    ros::Duration(0.1).sleep();
+}
+
+void first_level::heap_target()
+{
+    arm_msg.control = 5;
+    arm_pub.publish(arm_msg);
+    ros::Duration(0.1).sleep();
+    arm_msg.control = 6;
+    arm_pub.publish(arm_msg);
+    ros::Duration(0.1).sleep();
+}
+
+void first_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
 {
     int temp[3] = {first, second, third};
-    float center_z = 25;
+    float center_z = 250;
     int center_x = 640;
+    ready_grab_target();
     for (int i = 0; i < 3; i++)
     {
         switch (temp[i])
@@ -144,30 +177,47 @@ void third_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
                 break;
             }
             ROS_INFO("trace T");
-            while(T_z>=27 || T_z <=23)
+            while(T_z>=260 || T_z <=240 || T_z != 0)
             {
                 int target = T_z - center_z;
                 wheel_msg.velocity_x = pid_z.pidCtrl(target,0);
-                if(wheel_msg.velocity_x >= 0.4)
+                if(wheel_msg.velocity_x >= 0.2)
                 {
-                    wheel_msg.velocity_x = 0.4;
+                    wheel_msg.velocity_x = 0.2;
+                }
+                if(wheel_msg.velocity_x <= -0.2)
+                {
+                    wheel_msg.velocity_x = -0.2;
                 }
                 wheel_pub.publish(wheel_msg);
-                ros::Duration(0.01).sleep();
+                ros::Duration(0.1).sleep();
                 ros::spinOnce();
             }
-            while(T_x >= 655 || T_x <=645)
+            pid_z.init();
+            msg_init();
+            wheel_pub.publish(wheel_msg);
+            ros::Duration(1).sleep();
+            while(T_x >= 650 || T_x <=630)
             {
                 int target = center_x - T_x;
                 wheel_msg.velocity_y = pid_x.pidCtrl(target,0);
-                if(wheel_msg.velocity_y >= 0.4)
+                if(wheel_msg.velocity_y >= 0.2)
                 {
-                    wheel_msg.velocity_y = 0.4;
+                    wheel_msg.velocity_y = 0.2;
+                }
+                if(wheel_msg.velocity_y <= -0.2)
+                {
+                    wheel_msg.velocity_y = -0.2;
                 }
                 wheel_pub.publish(wheel_msg);
                 ros::spinOnce();
-                ros::Duration(0.01).sleep();
+                ros::Duration(0.1).sleep();
             }
+            pid_x.init();
+            msg_init();
+            wheel_pub.publish(wheel_msg);
+            grab_target();
+            ros::Duration(10).sleep();
             break;
         case E:
             ros::spinOnce();
@@ -177,30 +227,47 @@ void third_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
                 break;
             }
             ROS_INFO("trace E");
-            while(E_z>=27 || E_z <=23)
+            while(E_z>=260 || E_z <=240 || E_z != 0)
             {
                 int target = E_z - center_z;
                 wheel_msg.velocity_x = pid_z.pidCtrl(target,0);
-                if(wheel_msg.velocity_x >= 0.4)
+                if(wheel_msg.velocity_x >= 0.2)
                 {
-                    wheel_msg.velocity_x = 0.4;
+                    wheel_msg.velocity_x = 0.2;
+                }
+                if(wheel_msg.velocity_x <= -0.2)
+                {
+                    wheel_msg.velocity_x = -0.2;
                 }
                 wheel_pub.publish(wheel_msg);
-                ros::Duration(0.01).sleep();
+                ros::Duration(0.1).sleep();
                 ros::spinOnce();
             }
-            while(E_x >= 655 || E_x <=645)
+            pid_z.init();
+            msg_init();
+            wheel_pub.publish(wheel_msg);
+            ros::Duration(1).sleep();
+            while(E_x >= 650 || E_x <=630)
             {
                 int target = center_x - E_x;
                 wheel_msg.velocity_y = pid_x.pidCtrl(target,0);
-                if(wheel_msg.velocity_y >= 0.4)
+                if(wheel_msg.velocity_y >= 0.2)
                 {
-                    wheel_msg.velocity_y = 0.4;
+                    wheel_msg.velocity_y = 0.2;
+                }
+                if(wheel_msg.velocity_y <= -0.2)
+                {
+                    wheel_msg.velocity_y = -0.2;
                 }
                 wheel_pub.publish(wheel_msg);
                 ros::spinOnce();
-                ros::Duration(0.01).sleep();
+                ros::Duration(0.1).sleep();
             }
+            pid_x.init();
+            msg_init();
+            wheel_pub.publish(wheel_msg);
+            grab_target();
+            ros::Duration(10).sleep();
             break;
         case L:
             ros::spinOnce();
@@ -210,36 +277,56 @@ void third_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
                 break;
             }
             ROS_INFO("trace L");
-            while(L_z>=27 || L_z <=23)
+            while(L_z>=260 || L_z <=240 || L_z != 0)
             {
                 int target = L_z - center_z;
                 wheel_msg.velocity_x = pid_z.pidCtrl(target,0);
-                if(wheel_msg.velocity_x >= 0.4)
+                if(wheel_msg.velocity_x >= 0.2)
                 {
-                    wheel_msg.velocity_x = 0.4;
+                    wheel_msg.velocity_x = 0.2;
+                }
+                if(wheel_msg.velocity_x <= -0.2)
+                {
+                    wheel_msg.velocity_x = -0.2;
                 }
                 wheel_pub.publish(wheel_msg);
-                ros::Duration(0.01).sleep();
+                ros::Duration(0.1).sleep();
                 ros::spinOnce();
             }
-            while(T_x >= 655 || T_x <=645)
+            pid_z.init();
+            msg_init();
+            wheel_pub.publish(wheel_msg);
+            ros::Duration(1).sleep();
+            while(L_x >= 650 || L_x <=630)
             {
-                int target = center_x - T_x;
+                int target = center_x - L_x;
+                std::cout << "target "<< target<< std::endl;
+                std::cout << "L_z " << L_z << std::endl;
                 wheel_msg.velocity_y = pid_x.pidCtrl(target,0);
-                if(wheel_msg.velocity_y >= 0.4)
+                if(wheel_msg.velocity_y >= 0.2)
                 {
-                    wheel_msg.velocity_y = 0.4;
+                    wheel_msg.velocity_y = 0.2;
+                }
+                if(wheel_msg.velocity_y <= -0.2)
+                {
+                    wheel_msg.velocity_y = -0.2;
                 }
                 wheel_pub.publish(wheel_msg);
                 ros::spinOnce();
-                ros::Duration(0.01).sleep();
+                ros::Duration(0.1).sleep();
             }
+            pid_x.init();
+            msg_init();
+            wheel_pub.publish(wheel_msg);
+            grab_target();
+            ros::Duration(10).sleep();
             break;
         }
+        msg_init();
     }
 }
 
-void third_level::robot_move(uint8_t direction, int distance)
+void first_level::robot_move(uint8_t direction, int distance)
 {
     switch (direction)
     {
