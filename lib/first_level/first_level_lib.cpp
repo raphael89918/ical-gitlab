@@ -1,6 +1,6 @@
 #include "first_level/first_level.hpp"
 
-first_level::first_level(const ros::NodeHandle &nh) : nh(nh), direction(0), pid_x(0.1, 0.01, 0, 0), pid_z(0.005 , 0.0001, 0, 0)
+first_level::first_level(const ros::NodeHandle &nh) : nh(nh), direction(0), pid_x(0.0005, 0.0002, 0, 0), pid_z(0.0005 , 0.0002, 0, 0)
 {
     ROS_INFO("first_level constructed");
 }
@@ -87,7 +87,7 @@ void first_level::visual_callback(const ros_deep_learning::alphabet &msg)
 void first_level::choose_target()
 {
     ros::spinOnce();
-    if (T_x == -1 && E_x == -1 && L_x == -1)
+    if (T_z == 0 && E_z == 0 && L_z == 0)
     {
         ROS_INFO("no TEL target");
         return;
@@ -161,7 +161,9 @@ void first_level::heap_target()
 
 void first_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
 {
+    float max_speed = 0.4;
     int temp[3] = {first, second, third};
+    std::cout << temp[0] << temp[1] << temp[2] << std::endl;
     float center_z = 250;
     int center_x = 640;
     ready_grab_target();
@@ -177,20 +179,26 @@ void first_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
                 break;
             }
             ROS_INFO("trace T");
-            while(T_z>=260 || T_z <=240 || T_z != 0)
+            while(T_z>=260 || T_z <=240)
             {
                 int target = T_z - center_z;
                 wheel_msg.velocity_x = pid_z.pidCtrl(target,0);
-                if(wheel_msg.velocity_x >= 0.2)
+                if(wheel_msg.velocity_x >= max_speed)
                 {
-                    wheel_msg.velocity_x = 0.2;
+                    wheel_msg.velocity_x = max_speed;
                 }
-                if(wheel_msg.velocity_x <= -0.2)
+                if(wheel_msg.velocity_x <= -max_speed)
                 {
-                    wheel_msg.velocity_x = -0.2;
+                    wheel_msg.velocity_x = -max_speed;
+                }
+                if(T_z == 0)
+                {
+                    wheel_msg.velocity_x = 0;
+                    wheel_pub.publish(wheel_msg);
+                    break;
                 }
                 wheel_pub.publish(wheel_msg);
-                ros::Duration(0.1).sleep();
+                ros::Duration(0.01).sleep();
                 ros::spinOnce();
             }
             pid_z.init();
@@ -199,19 +207,25 @@ void first_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
             ros::Duration(1).sleep();
             while(T_x >= 650 || T_x <=630)
             {
-                int target = center_x - T_x;
+                int target = T_x - center_x;
                 wheel_msg.velocity_y = pid_x.pidCtrl(target,0);
-                if(wheel_msg.velocity_y >= 0.2)
+                if(wheel_msg.velocity_y >= max_speed)
                 {
-                    wheel_msg.velocity_y = 0.2;
+                    wheel_msg.velocity_y = max_speed;
                 }
-                if(wheel_msg.velocity_y <= -0.2)
+                if(wheel_msg.velocity_y <= -max_speed)
                 {
-                    wheel_msg.velocity_y = -0.2;
+                    wheel_msg.velocity_y = -max_speed;
+                }
+                if(T_x == -1)
+                {
+                    wheel_msg.velocity_y = 0;
+                    wheel_pub.publish(wheel_msg);
+                    break;
                 }
                 wheel_pub.publish(wheel_msg);
                 ros::spinOnce();
-                ros::Duration(0.1).sleep();
+                ros::Duration(0.01).sleep();
             }
             pid_x.init();
             msg_init();
@@ -227,20 +241,26 @@ void first_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
                 break;
             }
             ROS_INFO("trace E");
-            while(E_z>=260 || E_z <=240 || E_z != 0)
+            while(E_z>=260 || E_z <=240)
             {
                 int target = E_z - center_z;
                 wheel_msg.velocity_x = pid_z.pidCtrl(target,0);
-                if(wheel_msg.velocity_x >= 0.2)
+                if(wheel_msg.velocity_x >= max_speed)
                 {
-                    wheel_msg.velocity_x = 0.2;
+                    wheel_msg.velocity_x = max_speed;
                 }
-                if(wheel_msg.velocity_x <= -0.2)
+                if(wheel_msg.velocity_x <= -max_speed)
                 {
-                    wheel_msg.velocity_x = -0.2;
+                    wheel_msg.velocity_x = -max_speed;
+                }
+                if(E_z == 0)
+                {
+                    wheel_msg.velocity_x = 0;
+                    wheel_pub.publish(wheel_msg);
+                    break;
                 }
                 wheel_pub.publish(wheel_msg);
-                ros::Duration(0.1).sleep();
+                ros::Duration(0.01).sleep();
                 ros::spinOnce();
             }
             pid_z.init();
@@ -249,19 +269,25 @@ void first_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
             ros::Duration(1).sleep();
             while(E_x >= 650 || E_x <=630)
             {
-                int target = center_x - E_x;
+                int target = E_x - center_x;
                 wheel_msg.velocity_y = pid_x.pidCtrl(target,0);
-                if(wheel_msg.velocity_y >= 0.2)
+                if(wheel_msg.velocity_y >= max_speed)
                 {
-                    wheel_msg.velocity_y = 0.2;
+                    wheel_msg.velocity_y = max_speed;
                 }
-                if(wheel_msg.velocity_y <= -0.2)
+                if(wheel_msg.velocity_y <= -max_speed)
                 {
-                    wheel_msg.velocity_y = -0.2;
+                    wheel_msg.velocity_y = -max_speed;
+                }
+                if(E_x == -1)
+                {
+                    wheel_msg.velocity_y = 0;
+                    wheel_pub.publish(wheel_msg);
+                    break;
                 }
                 wheel_pub.publish(wheel_msg);
                 ros::spinOnce();
-                ros::Duration(0.1).sleep();
+                ros::Duration(0.01).sleep();
             }
             pid_x.init();
             msg_init();
@@ -277,20 +303,26 @@ void first_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
                 break;
             }
             ROS_INFO("trace L");
-            while(L_z>=260 || L_z <=240 || L_z != 0)
+            while(L_z>=260 || L_z <=240)
             {
                 int target = L_z - center_z;
                 wheel_msg.velocity_x = pid_z.pidCtrl(target,0);
-                if(wheel_msg.velocity_x >= 0.2)
+                if(wheel_msg.velocity_x >= max_speed)
                 {
-                    wheel_msg.velocity_x = 0.2;
+                    wheel_msg.velocity_x = max_speed;
                 }
-                if(wheel_msg.velocity_x <= -0.2)
+                if(wheel_msg.velocity_x <= -max_speed)
                 {
-                    wheel_msg.velocity_x = -0.2;
+                    wheel_msg.velocity_x = -max_speed;
+                }
+                if(L_z == 0)
+                {
+                    wheel_msg.velocity_x = 0;
+                    wheel_pub.publish(wheel_msg);
+                    break;
                 }
                 wheel_pub.publish(wheel_msg);
-                ros::Duration(0.1).sleep();
+                ros::Duration(0.01).sleep();
                 ros::spinOnce();
             }
             pid_z.init();
@@ -299,21 +331,25 @@ void first_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
             ros::Duration(1).sleep();
             while(L_x >= 650 || L_x <=630)
             {
-                int target = center_x - L_x;
-                std::cout << "target "<< target<< std::endl;
-                std::cout << "L_z " << L_z << std::endl;
+                int target = L_x - center_x;
                 wheel_msg.velocity_y = pid_x.pidCtrl(target,0);
-                if(wheel_msg.velocity_y >= 0.2)
+                if(wheel_msg.velocity_y >= max_speed)
                 {
-                    wheel_msg.velocity_y = 0.2;
+                    wheel_msg.velocity_y = max_speed;
                 }
-                if(wheel_msg.velocity_y <= -0.2)
+                if(wheel_msg.velocity_y <= -max_speed)
                 {
-                    wheel_msg.velocity_y = -0.2;
+                    wheel_msg.velocity_y = -max_speed;
+                }
+                if(L_x == -1)
+                {
+                    wheel_msg.velocity_y = 0;
+                    wheel_pub.publish(wheel_msg);
+                    break;
                 }
                 wheel_pub.publish(wheel_msg);
                 ros::spinOnce();
-                ros::Duration(0.1).sleep();
+                ros::Duration(0.01).sleep();
             }
             pid_x.init();
             msg_init();
