@@ -44,9 +44,9 @@ void wheel_planner::init_pubsub()
 
 void wheel_planner::encoder_callback(const wheel_tokyo_weili::encoder &msg)
 {
-    this->encRobot_x = msg.robot_distance[0] / 21.2;
-    this->encRobot_y = msg.robot_distance[1] / 20.03;
-    this->encRobot_z = msg.robot_distance[2] / 7;
+    this->encRobot_x = msg.robot_distance[0] / 17.25;
+    this->encRobot_y = msg.robot_distance[1] / 17.5;
+    this->encRobot_z = msg.robot_distance[2] / 7.2;
     this->wheel_fl = msg.wheel_value[0];
     this->wheel_fr = msg.wheel_value[1];
     this->wheel_bl = msg.wheel_value[2];
@@ -97,12 +97,14 @@ void wheel_planner::ctrl_method()
     {
         continue_robot();
         distance_processed_y();
+        std::cout << "fl" << wheel_fl << " fr" << wheel_fr << " bl" << wheel_bl << " br" << wheel_br << std::endl;
         wait_robot();
     }
     if (temp_z != 0)
     {
         continue_robot();
         distance_processed_z();
+        std::cout << "fl" << wheel_fl << " fr" << wheel_fr << " bl" << wheel_bl << " br" << wheel_br << std::endl;
         wait_robot();
     }
 

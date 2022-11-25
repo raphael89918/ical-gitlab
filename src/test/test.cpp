@@ -24,6 +24,15 @@ int main(int argc, char **argv)
                 msg.distance_y = 0;
                 msg.distance_z = 0;
                 break;
+            case 'U':
+                msg.distance_x = 60;
+                msg.distance_y = 0;
+                msg.distance_z = 0;
+            case 'J':
+                msg.distance_x = 100;
+                msg.distance_y = 0;
+                msg.distance_z = 0;
+                break;
             case 'D':
                 msg.distance_y = 30;
                 msg.distance_x = 0;

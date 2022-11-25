@@ -11,7 +11,9 @@ enum DIRECTION : uint8_t
 {
     left = 0,
     right = 1,
-    front = 2
+    front = 2,
+    rotate = 3,
+    back = 4
 };
 
 enum TARGET : uint8_t
@@ -43,7 +45,7 @@ private:
     PID pid_x, pid_z;
     void ready_grab_target();
     void grab_target();
-    void heap_target();
+    
 public:
     first_level(const ros::NodeHandle &nh);
     void init_pubsub();
@@ -51,4 +53,5 @@ public:
     void robot_wait();
     void robot_far(uint8_t dir);
     void choose_target();
+    void heap_target();
 };
