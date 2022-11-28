@@ -1,8 +1,7 @@
 #include "motorCtrl/motorCtrl.hpp"
 
 motorCtrl::motorCtrl(const ros::NodeHandle &nh)
-    : m_nh(nh), t_nh(nh), pid_wheel(1.2, 0, 0, 0), yet_bl(0), yet_br(0), yet_fl(0), yet_fr(0)
-    ,con_fl(0),con_fr(0),con_bl(0),con_br(0)
+    : m_nh(nh), t_nh(nh), pid_wheel(1.2, 0, 0, 0), yet_bl(0), yet_br(0), yet_fl(0), yet_fr(0), con_fl(0), con_fr(0), con_bl(0), con_br(0), wheel_dir{true, true, true, true}
 {
     ROS_INFO("class motorCtrl has been constructed");
 }
@@ -43,7 +42,7 @@ void motorCtrl::encoder_calculate()
     enc_fr = enc_fr - yet_fr;
     enc_bl = enc_bl - yet_bl;
     enc_br = enc_br - yet_br;
-    enc_sum = (abs(enc_fl) + abs(enc_fr) + abs(enc_bl) + abs(enc_br))/4;
+    enc_sum = (abs(enc_fl) + abs(enc_fr) + abs(enc_bl) + abs(enc_br)) / 4;
     yet_fl = enc_fl;
     yet_fr = enc_fr;
     yet_bl = enc_bl;
@@ -61,7 +60,7 @@ void motorCtrl::callback(const geometry_msgs::Twist &msg)
     vel_th = msg.angular.z;
 }
 
-void motorCtrl::transform_to_pwm(float *wheel_vel)
+void motorCtrl::transform_to_pwm(std::array<float, 4> wheel_vel)
 {
     for (int i = 0; i < 4; i++)
     {
@@ -73,7 +72,7 @@ void motorCtrl::transform_to_pwm(float *wheel_vel)
         {
             wheel_dir[i] = false;
             wheel_vel[i] = wheel_vel[i] * -1;
-            if(wheel_vel[i]==0)
+            if (wheel_vel[i] == 0)
             {
                 con_fl = 0;
                 con_fr = 0;
@@ -97,4 +96,3 @@ void motorCtrl::transform_to_pwm(float *wheel_vel)
     m_msg.FR_DIR = wheel_dir[FR];
     m_msg.BR_DIR = wheel_dir[BR];
 }
-

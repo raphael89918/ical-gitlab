@@ -1,24 +1,33 @@
+#include <ros/ros.h>
 #include <iostream>
 #include "wheel_tokyo_weili/encoder.h"
-#include <ros/ros.h>
+#include <bits/stdc++.h>
 
 class Encoder
 {
 public:
-    ros::NodeHandle nh;
-    ros::Subscriber sub;
-    wheel_tokyo_weili::encoder distance_msg;
-
-    Encoder(const ros::NodeHandle &nh);
-    void callback(const wheel_tokyo_weili::encoder &wheel_msg);
+    Encoder();
+    Encoder(ros::NodeHandle &nh);
+    ~Encoder();
     void init();
     void encoder_to_distance();
-
-    float fl, fr, bl, br;
-    float Encoder_robot[3];
-    void transform_to_msg(float dis[]);
-
-    ros::Publisher pub;
-
+    void transform_to_msg(std::array<float, 3> dis);
     void encoder_publish();
+    float get_fl();
+    float get_fr();
+    float get_bl();
+    float get_br();
+
+private:
+    ros::NodeHandle m_nh;
+    ros::Subscriber m_sub;
+    ros::Publisher m_pub;
+    float m_fl;
+    float m_fr;
+    float m_bl;
+    float m_br;
+    // std::vector<float> Encoder_robot;
+
+    wheel_tokyo_weili::encoder m_distance_msg;
+    void callback(const wheel_tokyo_weili::encoder &wheel_msg);
 };

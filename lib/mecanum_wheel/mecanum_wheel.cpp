@@ -8,9 +8,11 @@ mecanum_wheel::mecanum_wheel(float wheel_K, float wheel_R, float ratio_fl, float
     this->ratio_fr_ = ratio_fr;
     this->ratio_bl_ = ratio_bl;
     this->ratio_br_ = ratio_br;
+    wheel_movement_vector.fill(0);
+    robot_movement_vector.fill(0);
 }
 
-float* mecanum_wheel::wheel_to_robot(float wheel_fl, float wheel_fr, float wheel_bl, float wheel_br)
+std::array<float, 3> mecanum_wheel::wheel_to_robot(float wheel_fl, float wheel_fr, float wheel_bl, float wheel_br)
 {
     robot_movement_vector[linear_x] = -(wheel_fl + wheel_br + wheel_fr + wheel_bl)/4;
     robot_movement_vector[linear_y] = -(-wheel_fr + wheel_fl + wheel_br - wheel_bl)/4;
@@ -19,7 +21,7 @@ float* mecanum_wheel::wheel_to_robot(float wheel_fl, float wheel_fr, float wheel
     return robot_movement_vector;
 }
 
-float* mecanum_wheel::robot_to_wheel(float linear_x, float linear_y, float angular_z)
+std::array<float, 4> mecanum_wheel::robot_to_wheel(float linear_x, float linear_y, float angular_z)
 {
     //轉換成四個輪子的值
     wheel_movement_vector[fl] = (linear_x - linear_y - wheel_k * angular_z) * ratio_fl_;

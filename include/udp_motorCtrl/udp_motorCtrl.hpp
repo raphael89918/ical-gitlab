@@ -4,6 +4,7 @@
 #include "wheel_tokyo_weili/encoder.h"
 #include "wheel_tokyo_weili/wheel_planner.h"
 #include "pid.hpp"
+#include <array>
 
 #define LEFT 0
 #define RIGHT 1
@@ -45,7 +46,7 @@ public:
     float vel_x;
     float vel_y;
     float vel_th;
-    void transform_to_pwm(float *wheel_vel);
+    void transform_to_pwm(std::array<float, 4> wheel_vel);
     void encoder_calculate();
 
 private:
@@ -54,15 +55,14 @@ private:
 
     wheel_tokyo_weili::wheel_planner e_msg;
     ros::Publisher e_pub;
-    
+
     ros::Subscriber m_sub;
     ros::Subscriber e_sub;
     void encoder_callback(const wheel_tokyo_weili::encoder &msg);
-    double right_vel, left_vel;
     int enc_fl, enc_fr, enc_bl, enc_br, enc_sum;
     int yet_fl, yet_fr, yet_bl, yet_br;
     int con_fl, con_fr, con_bl, con_br;
-    float wheel_vel[4];
+    // float wheel_vel[4];
     bool wheel_dir[4];
     PID pid_wheel;
 };

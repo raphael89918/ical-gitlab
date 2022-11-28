@@ -9,6 +9,8 @@ int main(int argc, char **argv)
     ros::Rate loop_rate(10);
     wheel_tokyo_weili::wheel_planner msg;
 
+    int base_speed = 30;
+
     char kbin;
     while (kbin != 27)
     {
@@ -17,10 +19,13 @@ int main(int argc, char **argv)
         {
             kbin = getch();
             // Find speeds
+            if(base_speed<0)
+                base_speed = 0;
+
             switch (toupper(kbin))
             {
             case 'W':
-                msg.distance_x = 30;
+                msg.distance_x = base_speed;
                 msg.distance_y = 0;
                 msg.distance_z = 0;
                 break;
@@ -34,17 +39,17 @@ int main(int argc, char **argv)
                 msg.distance_z = 0;
                 break;
             case 'D':
-                msg.distance_y = 30;
+                msg.distance_y = base_speed;
                 msg.distance_x = 0;
                 msg.distance_z = 0;
                 break;
             case 'S':
-                msg.distance_x = -30;
+                msg.distance_x = -base_speed;
                 msg.distance_y = 0;
                 msg.distance_z = 0;
                 break;
             case 'A':
-                msg.distance_y = -30;
+                msg.distance_y = -base_speed;
                 msg.distance_x = 0;
                 msg.distance_z = 0;
                 break;
@@ -71,6 +76,14 @@ int main(int argc, char **argv)
                 msg.distance_x = 0;
                 msg.distance_y = 0;
                 msg.distance_z = 0;
+                break;
+            case ',':
+                base_speed -= 5;
+                ROS_INFO("base_speed: %d", base_speed);
+                break;
+            case '.':
+                base_speed += 5;
+                ROS_INFO("base_speed: %d", base_speed);
                 break;
             default:
                 msg.distance_x = 0;
