@@ -12,6 +12,7 @@ int main (int argc, char **argv)
     nh.getParam("/wheel_ratio_bl", r_bl);
     nh.getParam("/wheel_ratio_br", r_br);
     
+    ROS_INFO("motorCtrl_node: r_fl = %f, r_fr = %f, r_bl = %f, r_br = %f", r_fl, r_fr, r_bl, r_br);
     mecanum_wheel mecanum_wheel(0.21, 0.035, r_fl, r_fr, r_bl, r_br);
     motorCtrl motorCtrl(nh);
 
