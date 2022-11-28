@@ -4,11 +4,15 @@
     <param name ="/wheel_ratio_bl"  value="1"/>
     <param name ="/wheel_ratio_br"  value="1"/>
 
-    <node name="motorCtrl_node" pkg="wheel_tokyo_weili" type="motorCtrl_node" output="screen"/>
+    <param name ="/wheel/encoder_ratio_x"  type="double" value="17.255"/>
+    <param name ="/wheel/encoder_ratio_y"  type="double" value="17.55"/>
+    <param name ="/wheel/encoder_ratio_z"  type="double" value="7.25"/>
 
-    <node name="encoderCounter_node" pkg="wheel_tokyo_weili" type="encoderCounter_node" output="screen"/>
+    <node name="motorCtrl_node" pkg="wheel_tokyo_weili" type="motorCtrl_node" output="log"/>
 
-    <node name="wheel_planner_node" pkg="wheel_tokyo_weili" type="wheel_planner_node" output="screen"/>
+    <node name="encoderCounter_node" pkg="wheel_tokyo_weili" type="encoderCounter_node" output="log"/>
+
+    <node name="wheel_planner_node" pkg="wheel_tokyo_weili" type="wheel_planner_node" output="log"/>
 
 <!-- Launch 2 Arduino boards -->
 

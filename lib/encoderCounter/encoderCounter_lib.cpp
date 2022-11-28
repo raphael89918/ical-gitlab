@@ -3,13 +3,13 @@
 Encoder::Encoder()
 {
     ROS_INFO("Default Encoder constructed");
-    m_fl = 1;
-    m_fr = 1;
-    m_bl = 1;
-    m_br = 1;
+    m_fl = 0;
+    m_fr = 0;
+    m_bl = 0;
+    m_br = 0;
 }
 
-Encoder::Encoder(ros::NodeHandle &nh) : m_nh(nh), m_fl(1), m_fr(1), m_bl(1), m_br(1)
+Encoder::Encoder(ros::NodeHandle &nh) : m_nh(nh), m_fl(0), m_fr(0), m_bl(0), m_br(0)
 {
     ROS_INFO("Encoder constructed");
     m_sub = m_nh.subscribe("/encoder", 1, &Encoder::callback, this);

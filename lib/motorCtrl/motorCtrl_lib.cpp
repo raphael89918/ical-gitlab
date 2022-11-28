@@ -15,8 +15,8 @@ void motorCtrl::start()
 {
     ROS_INFO("Starting to set up pub and sub");
     m_pub = m_nh.advertise<wheel_tokyo_weili::motor>("/wheel/motor", 1);
-    m_sub = t_nh.subscribe("/cmd_vel", 1, &motorCtrl::callback, this);
-    e_sub = t_nh.subscribe("/encoder", 1, &motorCtrl::encoder_callback, this);
+    m_sub = t_nh.subscribe("/cmd_vel", 10, &motorCtrl::callback, this);
+    e_sub = t_nh.subscribe("/encoder", 10, &motorCtrl::encoder_callback, this);
     ROS_INFO("Initialzing motor parameter");
     enc_fl = 0;
     enc_fr = 0;

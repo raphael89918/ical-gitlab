@@ -19,7 +19,7 @@ int main(int argc, char **argv)
         {
             kbin = getch();
             // Find speeds
-            if(base_speed<0)
+            if (base_speed < 0)
                 base_speed = 0;
 
             switch (toupper(kbin))
@@ -79,10 +79,16 @@ int main(int argc, char **argv)
                 break;
             case ',':
                 base_speed -= 5;
+                msg.distance_x = 0;
+                msg.distance_y = 0;
+                msg.distance_z = 0;
                 ROS_INFO("base_speed: %d", base_speed);
                 break;
             case '.':
                 base_speed += 5;
+                msg.distance_x = 0;
+                msg.distance_y = 0;
+                msg.distance_z = 0;
                 ROS_INFO("base_speed: %d", base_speed);
                 break;
             default:

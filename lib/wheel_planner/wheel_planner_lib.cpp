@@ -44,13 +44,26 @@ void wheel_planner::init_pubsub()
 
 void wheel_planner::encoder_callback(const wheel_tokyo_weili::encoder &msg)
 {
-    this->encRobot_x = msg.robot_distance[0] / 17.25;
-    this->encRobot_y = msg.robot_distance[1] / 17.5;
-    this->encRobot_z = msg.robot_distance[2] / 7.2;
+    double encoder_ratio_x = 17.25;
+    double encoder_ratio_y = 17.5;
+    double encoder_ratio_z = 7.2;
+    planner_nh.getParamCached("/wheel/encoder_ratio_x", encoder_ratio_x);
+    planner_nh.getParamCached("/wheel/encoder_ratio_y", encoder_ratio_y);
+    planner_nh.getParamCached("/wheel/encoder_ratio_z", encoder_ratio_z);
+    this->encRobot_x = msg.robot_distance[0] / encoder_ratio_x;
+    this->encRobot_y = msg.robot_distance[1] / encoder_ratio_y;
+    this->encRobot_z = msg.robot_distance[2] / encoder_ratio_z;
     this->wheel_fl = msg.wheel_value[0];
     this->wheel_fr = msg.wheel_value[1];
     this->wheel_bl = msg.wheel_value[2];
     this->wheel_br = msg.wheel_value[3];
+    if (this->encRobot_x || this->encRobot_y || this->encRobot_z)
+    {
+        ROS_INFO("msg_dist: %lf, %lf, %lf", msg.robot_distance[0], msg.robot_distance[1], msg.robot_distance[2]);
+        ROS_INFO("encoder_ratio_x: %lf, %lf, %lf", encoder_ratio_x, encoder_ratio_y, encoder_ratio_z);
+        ROS_INFO("encoder_robot: %lf, %lf, %lf", encRobot_x, encRobot_y, encRobot_z);
+        ROS_INFO("wheel: %d, %d, %d, %d", wheel_fl, wheel_fr, wheel_bl, wheel_br);
+    }
 }
 
 void wheel_planner::planner_callback(const wheel_tokyo_weili::wheel_planner &msg)
@@ -244,6 +257,7 @@ void wheel_planner::stop_robot()
     msg.linear.x = 0;
     msg.linear.y = 0;
     msg.angular.z = 0;
+    ROS_INFO("stop");
     pub.publish(msg);
 }
 
