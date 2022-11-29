@@ -91,6 +91,16 @@ int main(int argc, char **argv)
                 msg.distance_z = 0;
                 ROS_INFO("base_speed: %d", base_speed);
                 break;
+            case '1':
+                msg.velocity_x=0.4;
+                msg.velocity_y=0;
+                msg.velocity_z=0;
+                break;
+            case '0':
+                msg.velocity_x=0;
+                msg.velocity_y=0;
+                msg.velocity_z=0;
+                break;
             default:
                 msg.distance_x = 0;
                 msg.distance_y = 0;
