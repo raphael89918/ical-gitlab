@@ -88,37 +88,38 @@ void first_level::choose_target()
     if (T_z == 0 && E_z == 0 && L_z == 0)
     {
         ROS_INFO("no TEL target");
+        robot_move(front, 5);
         return;
     }
     if (T_z >= E_z && T_z >= L_z)
     {
-        if (E_z < L_z && E_z != 0)
+        if (E_z < L_z)
         {
             trace_target(E, L, T);
         }
-        if (L_z < E_z && L_z != 0)
+        if (L_z <= E_z)
         {
             trace_target(L, E, T);
         }
     }
     if (E_z >= T_z && E_z >= L_z)
     {
-        if (T_z < L_z && T_z != 0)
+        if (T_z < L_z)
         {
             trace_target(T, L, E);
         }
-        if (L_z < T_z && L_z != 0)
+        if (L_z <= T_z)
         {
             trace_target(L, T, E);
         }
     }
     if (L_z >= E_z && L_z >= T_z)
     {
-        if (T_z < E_z && T_z != 0)
+        if (T_z < E_z)
         {
             trace_target(T, E, L);
         }
-        if (E_z < T_z && E_z != 0)
+        if (E_z <= T_z)
         {
             trace_target(E, T, L);
         }
@@ -159,11 +160,12 @@ void first_level::heap_target()
 
 void first_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
 {
-    float max_speed = 0.2;
+    float max_speed = 0.21;
     int temp[3] = {first, second, third};
     float center_z = 250;
-    int center_x = 640;
+    int center_x = 320;
     ready_grab_target();
+    ros::Rate loop_rate(30);
     for (int i = 0; i < 3; i++)
     {
         pid_x.init();
@@ -197,14 +199,14 @@ void first_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
                     wheel_msg.velocity_x = -max_speed;
                 }
                 wheel_pub.publish(wheel_msg);
-                ros::Duration(0.01).sleep();
+                loop_rate.sleep();
                 ros::spinOnce();
             }
             pid_z.init();
             msg_init();
             wheel_pub.publish(wheel_msg);
             ros::Duration(1).sleep();
-            while (T_x >= 645 || T_x <= 635)
+            while (T_x >= 330 || T_x <= 310)
             {
                 if (T_x == -1)
                 {
@@ -224,7 +226,7 @@ void first_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
                 }
                 wheel_pub.publish(wheel_msg);
                 ros::spinOnce();
-                ros::Duration(0.01).sleep();
+                loop_rate.sleep();
             }
             pid_x.init();
             msg_init();
@@ -259,14 +261,14 @@ void first_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
                     wheel_msg.velocity_x = -max_speed;
                 }
                 wheel_pub.publish(wheel_msg);
-                ros::Duration(0.01).sleep();
+                loop_rate.sleep();
                 ros::spinOnce();
             }
             pid_z.init();
             msg_init();
             wheel_pub.publish(wheel_msg);
             ros::Duration(1).sleep();
-            while (E_x >= 645 || E_x <= 635)
+            while (E_x >= 330 || E_x <= 310)
             {
                 if (E_x == -1)
                 {
@@ -286,7 +288,7 @@ void first_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
                 }
                 wheel_pub.publish(wheel_msg);
                 ros::spinOnce();
-                ros::Duration(0.01).sleep();
+                loop_rate.sleep();
             }
             pid_x.init();
             msg_init();
@@ -321,14 +323,14 @@ void first_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
                     wheel_msg.velocity_x = -max_speed;
                 }
                 wheel_pub.publish(wheel_msg);
-                ros::Duration(0.01).sleep();
+                loop_rate.sleep();
                 ros::spinOnce();
             }
             pid_z.init();
             msg_init();
             wheel_pub.publish(wheel_msg);
             ros::Duration(1).sleep();
-            while (L_x >= 645 || L_x <= 635)
+            while (L_x >= 330 || L_x <= 310)
             {
                 if (L_x == -1)
                 {
@@ -348,7 +350,7 @@ void first_level::trace_target(uint8_t first, uint8_t second, uint8_t third)
                 }
                 wheel_pub.publish(wheel_msg);
                 ros::spinOnce();
-                ros::Duration(0.01).sleep();
+                loop_rate.sleep();
             }
             pid_x.init();
             msg_init();

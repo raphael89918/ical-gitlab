@@ -19,7 +19,7 @@ int main(int argc, char **argv)
     first_level.robot_move(left, 5);
     
     ROS_INFO("go front 100");
-    first_level.robot_move(front, 110);
+    first_level.robot_move(front, 120);
 
     ROS_INFO("turn -90 angle");
     first_level.robot_move(rotate, -90);
@@ -28,25 +28,33 @@ int main(int argc, char **argv)
     first_level.choose_target();
     
     ROS_INFO("go back 10");
-    first_level.robot_move(back, 3);
+    first_level.robot_move(back, 5);
 
     ROS_INFO("turn -90 angle");
-    first_level.robot_move(rotate, -90);
+    first_level.robot_move(rotate, 90);
 
-    ROS_INFO("go back 120");
-    first_level.robot_move(back, 120);
-
-    ROS_INFO("Heap target");
-    first_level.heap_target();
-
-    ROS_INFO("go front 10");
-    first_level.robot_move(front, 10);
-
-    ROS_INFO("turn 180 angle");
-    first_level.robot_move(rotate, 180);
+    ROS_INFO("go front 120");
+    first_level.robot_move(front, 120);
 
     ROS_INFO("go to far left");
     first_level.robot_far(left);
+
+    ROS_INFO("go front 60");
+    first_level.robot_move(front, 60);
+
+    ROS_INFO("go to far right");
+    first_level.robot_far(right);
+    
+    ROS_INFO("go back 5");
+    first_level.robot_move(back, 5);
+    
+
+    ROS_INFO("Heap target");
+    first_level.heap_target();
+    ros::Duration(20).sleep();
+
+
+    
 
     return 0;
 }

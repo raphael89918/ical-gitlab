@@ -150,7 +150,7 @@ void wheel_planner::ctrl_method()
 void wheel_planner::distance_processed_x()
 {
     // std::cout << "distance_processed_x" << std::endl;
-    ros::Rate loop_rate(10);
+    ros::Rate loop_rate(100);
     state.callOne();
     while (fabs(encRobot_x) < fabs(temp_x))
     {
@@ -177,7 +177,7 @@ void wheel_planner::distance_processed_x()
 void wheel_planner::distance_processed_y()
 {
     // std::cout << "distance_processed_y" << std::endl;
-    ros::Rate loop_rate(10);
+    ros::Rate loop_rate(100);
     state.callOne();
     while (fabs(encRobot_y) < fabs(temp_y))
     {
@@ -204,7 +204,7 @@ void wheel_planner::distance_processed_y()
 void wheel_planner::distance_processed_z()
 {
     // std::cout << "distance_processed_z" << std::endl;
-    ros::Rate loop_rate(10);
+    ros::Rate loop_rate(100);
     state.callOne();
     while (fabs(encRobot_z) < fabs(temp_z))
     {
