@@ -152,7 +152,10 @@ void first_level::heap_target()
 {
     arm_msg.control = 5;
     arm_pub.publish(arm_msg);
-    ros::Duration(0.1).sleep();
+    ros::Duration(20).sleep();
+
+    robot_move(front, 5);
+
     arm_msg.control = 6;
     arm_pub.publish(arm_msg);
     ros::Duration(0.1).sleep();
@@ -392,4 +395,19 @@ void first_level::robot_move(uint8_t direction, int distance)
     ros::Duration(0.05).sleep();
     robot_wait();
     msg_init();
+}
+
+void first_level::continue_back()
+{
+    double max_time = 5.0;
+    ros::Time startTime = ros::Time::now();
+    ros::Duration maxTime(max_time);
+    while(ros::Time::now() < startTime + maxTime)
+    {
+        wheel_msg.velocity_x = -0.4;
+        wheel_pub.publish(wheel_msg);
+    }
+    ros::Duration(1).sleep();
+    msg_init();
+    wheel_pub.publish(wheel_msg);
 }

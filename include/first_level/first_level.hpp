@@ -54,4 +54,5 @@ public:
     void robot_far(uint8_t dir);
     void choose_target();
     void heap_target();
+    void continue_back();
 };

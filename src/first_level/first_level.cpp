@@ -28,33 +28,53 @@ int main(int argc, char **argv)
     first_level.choose_target();
     
     ROS_INFO("go back 10");
-    first_level.robot_move(back, 5);
+    first_level.robot_move(back, 3);
+
+    ROS_INFO("choose target");
+    first_level.choose_target();
+
+    ROS_INFO("go back 10");
+    first_level.robot_move(back, 3);
+
+    ROS_INFO("go left 5");
+    first_level.robot_move(left, 5);
+
+    ROS_INFO("choose target");
+    first_level.choose_target();
+
+    ROS_INFO("go back 10");
+    first_level.robot_move(back, 3);
 
     ROS_INFO("turn -90 angle");
     first_level.robot_move(rotate, 90);
 
-    ROS_INFO("go front 120");
-    first_level.robot_move(front, 120);
+    ROS_INFO("go front 40");
+    first_level.robot_move(front, 50);
 
     ROS_INFO("go to far left");
     first_level.robot_far(left);
 
-    ROS_INFO("go front 60");
-    first_level.robot_move(front, 60);
+    ROS_INFO("go right 5");
+    first_level.robot_move(right, 2);
+
+    ROS_INFO("go back far");
+    first_level.continue_back();
+
+
+    ROS_INFO("go front 180");
+    first_level.robot_move(front, 180);
 
     ROS_INFO("go to far right");
     first_level.robot_far(right);
-    
-    ROS_INFO("go back 5");
-    first_level.robot_move(back, 5);
-    
 
+    ROS_INFO("go left 5");
+    first_level.robot_move(left, 3);
+    
+    ROS_INFO("go back far");
+    first_level.continue_back();
+    
     ROS_INFO("Heap target");
     first_level.heap_target();
-    ros::Duration(20).sleep();
-
-
-    
 
     return 0;
 }
