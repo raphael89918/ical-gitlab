@@ -1,9 +1,9 @@
 # tokyo weili robot competition
 This is one of the sub-repositories of a project created for participation in the Tokyo Welcoming Robots competition.
 ## sub-repositories
-**[wheel_tokyo_weili](https://github.com/zisheng7777/wheel_tokyo_weili)**： writer: [林子勝](https://github.com/zisheng7777)
-**[tel_first_half](https://github.com/zisheng7777/tel_first_half)**： writer: [洪祐鈞](https://github.com/Sylvexia)
-**[dynamixel_control](https://github.com/zisheng7777/dynamixel_control)**： writer: 楊祐陞
+**[wheel_tokyo_weili](https://github.com/zisheng7777/wheel_tokyo_weili)**： writer: [林子勝](https://github.com/zisheng7777) <br>
+**[tel_first_half](https://github.com/zisheng7777/tel_first_half)**： writer: [洪祐鈞](https://github.com/Sylvexia) <br>
+**[dynamixel_control](https://github.com/zisheng7777/dynamixel_control)**： writer: 楊祐陞 <br>
 
 ### how to use wheel_tokyo_weili
 使用 publish 傳遞 wheel_planner.msg進行控制機器人<br>
