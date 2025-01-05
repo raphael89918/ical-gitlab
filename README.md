@@ -5,7 +5,7 @@ This is one of the sub-repositories of a project created for participation in th
 **[tel_first_half](https://github.com/zisheng7777/tel_first_half)**： writer: [洪祐鈞](https://github.com/Sylvexia) <br>
 **[dynamixel_control](https://github.com/zisheng7777/dynamixel_control)**： writer: 楊祐陞 <br>
 
-### how to use wheel_tokyo_weili
+## how to use wheel_tokyo_weili
 使用 publish 傳遞 wheel_planner.msg進行控制機器人<br>
 topic名稱 /wheel/planner<br>
 <br>
